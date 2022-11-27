@@ -1,3 +1,7 @@
+
+using AutoMapper;
+using BL;
+using DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +32,8 @@ namespace perfect
         {
 
             services.AddControllers();
+            services.AddScoped<IuserBL, UserBL>();
+            services.AddScoped<IuserDAL, UserDAL>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "perfect", Version = "v1" });

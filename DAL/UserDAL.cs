@@ -46,12 +46,24 @@ namespace DAL
 
         public User GetUserById(int id)
         {
-            throw new NotImplementedException();
+            User currentUser = contex.Users.SingleOrDefault(x => x.Id == id);
+            return currentUser;
         }
 
         public bool UpdateUser(int id, User user)
         {
-            throw new NotImplementedException();
+            try
+            {
+                user.Id = id;
+                User currentUser = contex.Users.SingleOrDefault(x => x.Id == id);
+                contex.Entry(currentUser).CurrentValues.SetValues(user);
+                contex.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using AutoMapper;
 using System.Text;
+using DAL.Models;
 
 namespace BL
 {
@@ -20,31 +21,34 @@ namespace BL
 
             });
 
-
+            mapper = config.CreateMapper();
         }
         public bool AddUser(UserDTO newUser)
         {
-            throw new NotImplementedException();
+            User currentUser = mapper.Map<UserDTO, User>(newUser);
+            return userDAL.AddUser(currentUser);
         }
 
         public bool DeleteUser(int id)
         {
-            throw new NotImplementedException();
+            return userDAL.DeleteUser(id);
         }
 
         public IList<UserDTO> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return mapper.Map<IList<User>, IList<UserDTO>>(userDAL.GetAllUsers());
         }
 
         public UserDTO GetUserById(int id)
         {
-            throw new NotImplementedException();
+            User user = userDAL.GetUserById(id);
+            return mapper.Map<User, UserDTO>(user);
         }
 
         public bool UpdateUser(int id, UserDTO user)
         {
-            throw new NotImplementedException();
+            User currentUser = mapper.Map<UserDTO, User>(user);
+            return userDAL.UpdateUser(id , currentUser);
         }
     }
 }
