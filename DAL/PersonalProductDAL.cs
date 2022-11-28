@@ -56,6 +56,7 @@ namespace DAL
             {
                 PersonalProduct curentpp = contex.PersonalProducts.SingleOrDefault(x => x.Id == id);
                 contex.Entry(curentpp).CurrentValues.SetValues(pp);
+                pp.Id = id;
                 contex.SaveChanges();
                 return true;
             }

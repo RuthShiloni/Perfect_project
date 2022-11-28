@@ -1,35 +1,52 @@
 ﻿using DTO;
+using DAL;
+using DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AutoMapper;
 
 namespace BL
 {
     public class PersonalProductBL : IpersonalProductBL
     {
+        private IPersonalProductDAL ppDAL;
+        IMapper mapper;
+        public PersonalProductBL(IPersonalProductDAL personalProduct)
+        {
+            ppDAL = personalProduct;
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<AutoMapperProfile>();
+            });
+            mapper = config.CreateMapper();
+        }
         public bool AddPersonalProduct(PersonalProductDTO pp)
         {
-            throw new NotImplementedException();
+            PersonalProduct currentPp = mapper.Map<PersonalProductDTO, PersonalProduct>(pp);
+            return ppDAL.AddPersonalProduct(currentPp);
         }
 
         public bool DeletePersonalProduct(int id)
         {
-            throw new NotImplementedException();
+            return ppDAL.DeletePersonalProduct(id);
         }
 
         public IList<PersonalProductDTO> GetAllPersonalProducts()
         {
-            throw new NotImplementedException();
+            return mapper.Map<IList<PersonalProduct>, IList<PersonalProductDTO>>(ppDAL.GetAllPersonalProducts());
         }
 
         public PersonalProductDTO GetPersonalProductById(int id)
         {
-            throw new NotImplementedException();
+            PersonalProduct currentPp = ppDAL.GetPersonalProductById(id);
+            return mapper.Map<PersonalProduct, PersonalProductDTO>(currentPp);
         }
 
         public bool UpdatePersonalProduct(int id, PersonalProductDTO pp)
         {
-            throw new NotImplementedException();
+            PersonalProduct currentPp = mapper.Map<PersonalProductDTO, PersonalProduct>(pp);
+            return ppDAL.UpdatePersonalProduct(id, currentPp);
         }
     }
 }

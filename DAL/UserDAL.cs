@@ -54,9 +54,9 @@ namespace DAL
         {
             try
             {
-                user.Id = id;
                 User currentUser = contex.Users.SingleOrDefault(x => x.Id == id);
                 contex.Entry(currentUser).CurrentValues.SetValues(user);
+                user.Id = id;
                 contex.SaveChanges();
                 return true;
             }
