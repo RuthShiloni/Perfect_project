@@ -12,6 +12,7 @@ namespace BL
     {
         private IuserDAL userDAL;
         IMapper mapper;
+
         public UserBL(IuserDAL UserDAL)
         {
             userDAL = UserDAL;
@@ -23,6 +24,7 @@ namespace BL
 
             mapper = config.CreateMapper();
         }
+
         public bool AddUser(UserDTO newUser)
         {
             User currentUser = mapper.Map<UserDTO, User>(newUser);

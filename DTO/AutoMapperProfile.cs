@@ -15,6 +15,18 @@ namespace DTO
             CreateMap<OrdersDTO, Order>();
             CreateMap<PersonalProduct, PersonalProductDTO>();
             CreateMap<PersonalProductDTO, PersonalProduct>();
+            CreateMap<ProductsDTO, Product>();
+            CreateMap<Product, ProductsDTO>();
+            CreateMap<Address, AddressDTO>();
+            CreateMap<AddressDTO, Address>();
+            CreateMap<CategoriesDTO, Category>();
+            CreateMap<Category, CategoriesDTO>();
+            CreateMap<SizePriceDTO, SizePrice>();
+            CreateMap<SizePrice, SizePriceDTO>();
+
+
+
+
         }
     }
 }
