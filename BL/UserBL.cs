@@ -52,5 +52,7 @@ namespace BL
             User currentUser = mapper.Map<UserDTO, User>(user);
             return userDAL.UpdateUser(id , currentUser);
         }
+
+
     }
 }

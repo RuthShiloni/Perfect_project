@@ -23,6 +23,8 @@ namespace DTO
             CreateMap<Category, CategoriesDTO>();
             CreateMap<SizePriceDTO, SizePrice>();
             CreateMap<SizePrice, SizePriceDTO>();
+            CreateMap<productToOrderDTO, ProductToOrder>();
+            CreateMap<ProductToOrder, productToOrderDTO>();
 
 
 
