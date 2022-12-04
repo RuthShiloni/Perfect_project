@@ -1,5 +1,6 @@
 ﻿using BL;
 using DTO;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,84 +11,92 @@ namespace perfect.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : Controller
+    public class AddressController : ControllerBase
     {
-        private IuserBL userBL;
-        public UserController(IuserBL UserBL)
+        private IAddressBL AddressBL;
+
+        public AddressController(IAddressBL addressBL)
         {
-            userBL = UserBL;
+            AddressBL = addressBL;
         }
 
-        [HttpGet]
-        [Route("getAllUser")]
-        public IActionResult GetAllUsers()
+        [HttpGet] 
+        [Route("getAllAddress")]
+        public IActionResult GetAllAddress()
         {
             try
             {
-                return Ok(userBL.GetAllUsers());
+                return Ok(AddressBL.GetAllAdresses());
             }
+
             catch(Exception ex)
             {
                 return StatusCode(500, ex.Message);
+
             }
         }
 
         [HttpPost]
-        [Route("addUser")]
-        public IActionResult AddUser([FromBody] UserDTO newUser)
+        [Route("addAddress")]
+        public IActionResult AddAddress()
         {
             try
             {
-                return Ok(userBL.AddUser(newUser));
+                return Ok(AddressBL.GetAllAdresses());
             }
             catch(Exception ex)
             {
                 return StatusCode(500, ex.Message);
+
             }
         }
 
         [HttpDelete]
-        [Route("deleteUser{id}")]
-        public IActionResult DeleteUser(int id)
+        [Route("deleteAddress")]
+        public IActionResult DeleteAddress(AddressDTO adress, int id)
         {
+            
             try
             {
-                return Ok(userBL.DeleteUser(id));
+                return Ok(AddressBL.DeleteAddress(adress,id));
             }
             catch(Exception ex)
             {
                 return StatusCode(500, ex.Message);
+
             }
         }
 
         [HttpGet]
-        [Route("getUserById{id}")]
-        public IActionResult GetUserById(int id)
+        [Route("getAddressById{id}")]
+        public IActionResult GetAddressById(int id)
         {
             try
             {
-                return Ok(userBL.GetUserById(id));
+                return Ok(AddressBL.GetAdressById(id));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
+
             }
         }
 
         [HttpPut]
-        [Route("updateUser{id}")]
-        public IActionResult UpdateUser(int id,[FromBody] UserDTO user)
+        [Route("updateAddress{id}")]
+        public IActionResult UpdateAddress([FromBody] AddressDTO address, int id)
         {
             try
-            {
-                return Ok(userBL.UpdateUser(id, user));
+            { 
+            return Ok(AddressBL.UpdateAdress(address,id));
             }
             catch(Exception ex)
             {
-                return StatusCode(500 , ex.Message);
+                return StatusCode(500, ex.Message);
+
             }
         }
-
+ 
 
     }
 }
