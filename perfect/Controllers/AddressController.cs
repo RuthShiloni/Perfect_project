@@ -38,11 +38,11 @@ namespace perfect.Controllers
 
         [HttpPost]
         [Route("addAddress")]
-        public IActionResult AddAddress()
+        public IActionResult AddAddress(AddressDTO adress)
         {
             try
             {
-                return Ok(AddressBL.GetAllAdresses());
+                return Ok(AddressBL.AddAdress(adress));
             }
             catch(Exception ex)
             {

@@ -11,56 +11,54 @@ namespace perfect.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoriesController : ControllerBase
+    public class SizePriceController : ControllerBase
     {
-        private ICategoriesBL CategoriesBL;
-        public  CategoriesController(ICategoriesBL categoriesBL)
+        private ISizePriceBL SizePriceBL;
+
+        public SizePriceController(ISizePriceBL sizePriceBL)
         {
-            CategoriesBL = categoriesBL;
+            SizePriceBL = sizePriceBL;
+        }
+
+        [HttpGet]
+        [Route("getAllSizePrice")]
+        public IActionResult GetAllSizePrice()
+        {
+            try
+            {
+                return Ok(SizePriceBL.GetAllSizePrice());
+            }
+
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+
+            }
         }
 
         [HttpPost]
-        [Route("AddCategories")]
-        public IActionResult AddCategories(CategoriesDTO newCategories)
+        [Route("addSizePrice")]
+        public IActionResult AddSizePrice(SizePriceDTO newSizePrice)
         {
             try
             {
-                return Ok(CategoriesBL.AddCategory(newCategories));
+                return Ok(SizePriceBL.AddSizePrice(newSizePrice));
             }
-            catch(Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
-
-
-        [HttpGet]
-        [Route("getAllCategories")]
-        public IActionResult GetAllCategories()
-        {
-            try
-            {
-                return Ok(CategoriesBL.GetAllCategories());
-            }
-
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
 
             }
         }
-
-
-
 
         [HttpDelete]
-        [Route("deleteCategories")]
-        public IActionResult DeleteCategories(int id)
+        [Route("deleteSizePrice")]
+        public IActionResult DeleteSizePrice( int id)
         {
 
             try
             {
-                return Ok(CategoriesBL.DeleteCategory( id));
+                return Ok(SizePriceBL.DeleteSizePrice(id));
             }
             catch (Exception ex)
             {
@@ -70,12 +68,12 @@ namespace perfect.Controllers
         }
 
         [HttpGet]
-        [Route("getCategoriesById{id}")]
-        public IActionResult GetCategoriesBLById(int id)
+        [Route("getSizePriceById{id}")]
+        public IActionResult GetSizePriceById(int id)
         {
             try
             {
-                return Ok(CategoriesBL.GetCategoryById(id));
+                return Ok(SizePriceBL.GetSizePriceById(id));
             }
             catch (Exception ex)
             {
@@ -85,12 +83,12 @@ namespace perfect.Controllers
         }
 
         [HttpPut]
-        [Route("updateCategories{id}")]
-        public IActionResult UpdateCategories( int id, [FromBody] CategoriesDTO Categories)
+        [Route("updateSizePrice{id}")]
+        public IActionResult UpdateSizePrice(int id, [FromBody] SizePriceDTO SizePrice)
         {
             try
             {
-                return Ok(CategoriesBL.UpdateCategory(id,Categories));
+                return Ok(SizePriceBL.UpdateSizePrice(id,SizePrice));
             }
             catch (Exception ex)
             {
