@@ -44,6 +44,8 @@ namespace perfect
             services.AddScoped<IshapeDAL, ShapeDAL>();
             services.AddScoped<IlayersBL, LayersBL>();
             services.AddScoped<IlayersDAL, LayersDAL>();
+            services.AddScoped<IProductsBL, ProductsBL>();
+            services.AddScoped<IProductsDAL, ProductsDAL>();
 
             services.AddSwaggerGen(c =>
             {
