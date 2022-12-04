@@ -13,4 +13,9 @@
     <ProjectReference Include="..\DTO\DTO.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Image\Desserts\" />
+    <Folder Include="Image\Pralines\" />
+  </ItemGroup>
+
 </Project>
