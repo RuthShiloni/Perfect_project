@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DAL
 {
-   public class CategoriesDAL
+   public class CategoriesDAL : ICategoriesDAL
     {
         PerfectContext context = new PerfectContext();
 
@@ -14,7 +14,7 @@ namespace DAL
         {
             try
             {
-                context.Add(newCategory);
+                context.Categories.Add(newCategory);
                 context.SaveChanges();
                 return true;
             }
