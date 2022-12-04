@@ -29,6 +29,12 @@ namespace DTO
 
 
 
+            CreateMap<ShoppingCart, ShoppingCartDTO>();
+            CreateMap<ShoppingCartDTO, ShoppingCart>();
+            CreateMap<Shape, ShapeDTO>();
+            CreateMap<ShapeDTO, Shape>();
+            CreateMap<Layer, LayersDTO>();
+            CreateMap<LayersDTO, Layer>();
         }
     }
 }
