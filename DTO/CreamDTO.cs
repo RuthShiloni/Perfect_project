@@ -4,11 +4,11 @@ using System.Text;
 
 namespace DTO
 {
-    public class SizePriceDTO
+    public class CreamDTO
     {
-        public int ProductId { get; set; }
-        public string Size { get; set; }
+        public string Details { get; set; }
         public int Price { get; set; }
+
 
     }
 }

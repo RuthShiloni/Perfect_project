@@ -25,6 +25,10 @@ namespace DTO
             CreateMap<SizePrice, SizePriceDTO>();
             CreateMap<productToOrderDTO, ProductToOrder>();
             CreateMap<ProductToOrder, productToOrderDTO>();
+            CreateMap<CreamDTO, Cream>();
+            CreateMap<Cream, CreamDTO>();
+            CreateMap<Color, ColorDTO>();
+            CreateMap<ColorDTO, Color>();
 
 
 

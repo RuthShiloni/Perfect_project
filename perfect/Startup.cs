@@ -48,6 +48,10 @@ namespace perfect
             services.AddScoped<IProductsDAL, ProductsDAL>();
             services.AddScoped<ICategoriesBL, CategoriesBL>();
             services.AddScoped<ICategoriesDAL, CategoriesDAL>();
+            services.AddScoped<IaddressDAL, AddressDAL>();
+            services.AddScoped<IAddressBL, AddressBL>();
+            services.AddScoped<IProductsBL, ProductsBL>();
+            services.AddScoped<IProductsDAL, ProductsDAL>();
 
             services.AddSwaggerGen(c =>
             {
