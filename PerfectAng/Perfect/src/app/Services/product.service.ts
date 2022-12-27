@@ -7,13 +7,25 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
- basicUrl : string = "https://localhost:44337/api/Products/"
+  basicUrl : string = "https://localhost:44337/api/Products/"
   constructor(private http : HttpClient) { }
-  public getAllProduct() : Observable< Product[] > {
+  public GetAllProduct() : Observable< Product[] > {
     return this.http.get<any>(this.basicUrl + "getAllProduct")
   } 
 
-  public getProductById(id : number) : Observable<Product> {
-    return this.http.get<any>(this.basicUrl + "getProductById/" + id)
+  public GetProductById(id : number) : Observable<Product> {
+    return this.http.get<any>(this.basicUrl + `getProductById/${id}`)
+  }
+  
+  public DeleteProduct(id : number) : Observable<boolean> {
+   return this.http.delete<boolean>(this.basicUrl + `deleteProduct/${id}`)
+  }
+  
+  public AddProduct(product : Product) : Observable<boolean> {
+   return this.http.post<boolean>(this.basicUrl + "addProduct" , product)
+  }
+
+  public UpdateProduct(id : number , product : Product)  : Observable<boolean>{
+    return this.http.put<any>(this.basicUrl + `updateProduct/${id}` , product)
   }
 }
