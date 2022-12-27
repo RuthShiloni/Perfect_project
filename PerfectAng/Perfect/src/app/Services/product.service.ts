@@ -29,3 +29,4 @@ export class ProductService {
     return this.http.put<any>(this.basicUrl + `updateProduct/${id}` , product)
   }
 }
+
