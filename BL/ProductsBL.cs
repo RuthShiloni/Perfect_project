@@ -54,6 +54,9 @@ namespace BL
             Product currentProduct = mapper.Map<ProductsDTO, Product>(product);
             return ProductsDAL.UpdateProduct(id, currentProduct);
         }
-
+        public IList<ProductsDTO> GetAllProductByCate(int categoryId)
+        {
+            return mapper.Map<IList<Product>, IList<ProductsDTO>>(ProductsDAL.GetAllProductByCate(categoryId));
+        }
     }
 }

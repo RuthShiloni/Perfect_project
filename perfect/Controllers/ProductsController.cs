@@ -90,7 +90,19 @@ namespace perfect.Controllers
             }
         }
 
-
+        [HttpGet]
+        [Route("getProductsByCate")]
+        public IActionResult GetAllProductByCate(int categoryId)
+        {
+            try
+            {
+                return Ok(ProductsBL.GetAllProductByCate(categoryId));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
     }
 }

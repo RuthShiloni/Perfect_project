@@ -12,6 +12,7 @@ namespace DAL
         public List<Product> GetAllProducts();
         public Product GetProductById(int id);
         public bool UpdateProduct(int id, Product product);
+        public IList<Product> GetAllProductByCate(int categoryId);
 
     }
 }

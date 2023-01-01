@@ -67,7 +67,11 @@ namespace DAL
             }
         }
 
- 
+        public IList<Product> GetAllProductByCate(int categoryId)
+        {
+            IList<Product> product = contex.Products.Where(x => x.CategId == categoryId).ToList();
+            return product;
+        }
 
     }
 }

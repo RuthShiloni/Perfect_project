@@ -12,6 +12,7 @@ namespace BL
         public List<ProductsDTO> GetAllProducts();
         public ProductsDTO GetProductById(int id);
         public bool UpdateProduct(int id, ProductsDTO product);
+        public IList<ProductsDTO> GetAllProductByCate(int categoryId);
 
 
     }

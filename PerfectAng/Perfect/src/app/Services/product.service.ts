@@ -28,5 +28,9 @@ export class ProductService {
   public UpdateProduct(id : number , product : Product)  : Observable<boolean>{
     return this.http.put<any>(this.basicUrl + `updateProduct/${id}` , product)
   }
+
+  public getProductsByCate(categoryId : number) : Observable<any>{
+    return this.http.get<any>(this.basicUrl + `getProductsByCate/${categoryId}`)
+  }
 }
 
