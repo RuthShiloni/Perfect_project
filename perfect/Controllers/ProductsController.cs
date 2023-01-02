@@ -91,7 +91,7 @@ namespace perfect.Controllers
         }
 
         [HttpGet]
-        [Route("getProductsByCate")]
+        [Route("getProductsByCate/{categoryId}")]
         public IActionResult GetAllProductByCate(int categoryId)
         {
             try

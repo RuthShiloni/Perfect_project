@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class ProductService {
   basicUrl : string = "https://localhost:44337/api/Products/"
   constructor(private http : HttpClient) { }
+
   public GetAllProduct() : Observable< Product[] > {
     return this.http.get<any>(this.basicUrl + "getAllProduct")
   } 
@@ -29,7 +30,7 @@ export class ProductService {
     return this.http.put<any>(this.basicUrl + `updateProduct/${id}` , product)
   }
 
-  public getProductsByCate(categoryId : number) : Observable<any>{
+  public getProductsByCate(categoryId : number) : Observable<Product[]>{
     return this.http.get<any>(this.basicUrl + `getProductsByCate/${categoryId}`)
   }
 }
