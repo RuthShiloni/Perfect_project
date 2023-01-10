@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit {
      this.productServ.getProductsByCate(this.categoryId).subscribe(
        data =>{
         console.log(data)
-        // this.allProducts = data
+        this.allProducts = data
        },
        err=>{
         console.log(err)

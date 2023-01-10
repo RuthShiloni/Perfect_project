@@ -1,1 +1,7 @@
 <p>product works!</p>
+
+  <mat-card-title-group *ngFor="let i of allProducts" role="group">
+        <img src={{i.img}} mat-card-lg-image>
+        <mat-card-content>{{i.name}}</mat-card-content>
+  </mat-card-title-group>
+  
