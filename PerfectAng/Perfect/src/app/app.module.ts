@@ -9,12 +9,15 @@ import { HomePageComponent } from './Components/home-page/home-page.component';
 import { ProductComponent } from './Components/product/product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { SingleProductComponent } from './Components/single-product/single-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    ProductComponent
+    ProductComponent,
+    SingleProductComponent
   ],
   imports: [
     HttpClientModule,
@@ -22,7 +25,8 @@ import {MatCardModule} from '@angular/material/card';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

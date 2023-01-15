@@ -7,7 +7,7 @@ namespace DTO
     public class ProductsDTO
     {
 
-      
+        public int id { get; set; }
         public string Name { get; set; }
         public string Details { get; set; }
         public string Allergens { get; set; }
