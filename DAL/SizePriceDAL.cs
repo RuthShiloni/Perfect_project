@@ -67,5 +67,11 @@ namespace DAL
             }
         }
 
+        public IList<SizePrice> getSizeAndPriceByProductId(int productId)
+        {
+            IList<SizePrice> sizePrice = contex.SizePrices.Where(x => x.ProductId == productId).ToList();
+            return sizePrice;
+        }
+
     }
 }

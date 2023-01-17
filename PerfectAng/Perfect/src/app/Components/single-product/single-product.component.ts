@@ -11,19 +11,21 @@ import { ProductService } from 'src/app/Services/product.service';
 export class SingleProductComponent implements OnInit {
  product !: Product
  productId !: any
-  constructor(private route : ActivatedRoute ,private productServ : ProductService ) { }
+  constructor(private route : ActivatedRoute ,private productServ : ProductService ) { 
+  }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params=>{
-      this.productId = params
-      console.log(params)
-    });
+    this.route.params.subscribe(
+      params=>{
+      this.productId = params.productId
+      //console.log(this.productId)
+    })
     this.productServ.GetProductById(this.productId).subscribe(
-      data=>{
-        alert("Hello")
+      data =>{
         console.log(data)
+        this.product = data
       },
-      err=>{
+      err =>{
         console.log(err)
       }
     )

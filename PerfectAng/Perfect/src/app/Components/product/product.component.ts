@@ -26,8 +26,9 @@ export class ProductComponent implements OnInit {
     )
   }
 
-  showDetails(product : any) {
-    this.myRouter.navigate(["/singleP",product.id])
+  showDetails(product : Product) {
+    var id = product.id
+    this.myRouter.navigate(["/singleP",id])
     console.log(product.id)
   }
 }

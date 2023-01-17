@@ -15,7 +15,6 @@ export class ProductService {
   } 
 
   public GetProductById(id : number) : Observable<Product> {
-    debugger
     return this.http.get<Product>(this.basicUrl + `getProductById/${id}`)
   }
   
