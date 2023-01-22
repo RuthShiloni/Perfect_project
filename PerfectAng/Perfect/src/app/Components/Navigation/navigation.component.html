@@ -1,0 +1,29 @@
+
+<div class="a">
+   <img src="../../../assets/images/לוגו11.jpg" >
+
+
+ 
+<button mat-button  routerLink="home" routerLinkActive="active">Home</button>
+
+
+<button style="    text-decoration: underline;" mat-button routerLink="products" routerLinkActive="active" 
+[matMenuTriggerFor]="productsMenu">Products</button>
+<mat-menu #productsMenu="matMenu" yPosition="below">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+<mat-menu #beforeMenu="matMenu" yPosition="below">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+
+
+<button mat-button [matMenuTriggerFor]="afterMenu">After</button>
+<mat-menu #afterMenu="matMenu" yPosition="below">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+</div>
