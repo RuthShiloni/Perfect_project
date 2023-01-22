@@ -97,6 +97,20 @@ namespace perfect.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("getSize&PriceByPId/{productId}")]
+        public IActionResult getSizeAndPriceByProductId(int productId)
+        {
+            try
+            {
+                return Ok(SizePriceBL.getSizeAndPriceByProductId(productId));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
 
 
     }

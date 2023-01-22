@@ -16,7 +16,7 @@ namespace BL
         public SizePriceDTO GetSizePriceById(int id);
 
         public bool UpdateSizePrice(int id, SizePriceDTO sizePrice);
-
+        public IList<SizePriceDTO> getSizeAndPriceByProductId(int productId);
 
 
     }

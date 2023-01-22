@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DAL
 {
-    public class SizePriceDAL
+    public class SizePriceDAL : ISizePriceDAL
     {
         PerfectContext contex = new PerfectContext();
         
@@ -65,6 +65,12 @@ namespace DAL
             {
                 throw ex;
             }
+        }
+
+        public IList<SizePrice> getSizeAndPriceByProductId(int productId)
+        {
+            IList<SizePrice> sizePrice = contex.SizePrices.Where(x => x.ProductId == productId).ToList();
+            return sizePrice;
         }
 
     }

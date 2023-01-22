@@ -16,7 +16,7 @@ namespace DAL
         public SizePrice GetSizePriceById(int id);
 
         public bool UpdateSizePrice(int id, SizePrice sizePrice);
-
+        public IList<SizePrice> getSizeAndPriceByProductId(int productId);
 
 
 

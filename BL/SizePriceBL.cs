@@ -53,5 +53,9 @@ namespace BL
             SizePrice currentSizePrice = mapper.Map<SizePriceDTO, SizePrice>(sizePrice);
             return SizePriceDAL.UpdateSizePrice(id, currentSizePrice);
         }
+        public IList<SizePriceDTO> getSizeAndPriceByProductId(int productId)
+        {
+            return mapper.Map<IList<SizePrice>, IList<SizePriceDTO>>(SizePriceDAL.getSizeAndPriceByProductId(productId));
+        }
     }
 }

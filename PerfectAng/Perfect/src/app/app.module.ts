@@ -8,8 +8,14 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './Components/home-page/home-page.component';
 import { ProductComponent } from './Components/product/product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { NavigationComponent } from './Components/navigation/navigation.component';
-import { MatMenuModule } from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { SingleProductComponent } from './Components/single-product/single-product.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {PersonalProductComponent } from './Components/personal-product/personal-product.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { NavigationComponent } from './Components/Navigation/navigation.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,7 +27,9 @@ import { FooterComponent } from './Components/footer/footer.component';
     HomePageComponent,
     ProductComponent,
     NavigationComponent,
-    FooterComponent
+    FooterComponent,
+    SingleProductComponent,
+    PersonalProductComponent
   ],
   imports: [
     HttpClientModule,
@@ -29,8 +37,12 @@ import { FooterComponent } from './Components/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatMenuModule,
-    MatButtonModule
+    MatCardModule,
+    MatGridListModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

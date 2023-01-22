@@ -15,7 +15,7 @@ export class ProductService {
   } 
 
   public GetProductById(id : number) : Observable<Product> {
-    return this.http.get<any>(this.basicUrl + `getProductById/${id}`)
+    return this.http.get<Product>(this.basicUrl + `getProductById/${id}`)
   }
   
   public DeleteProduct(id : number) : Observable<boolean> {

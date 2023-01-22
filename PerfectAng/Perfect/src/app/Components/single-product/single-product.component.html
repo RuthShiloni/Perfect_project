@@ -1,0 +1,31 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{product.name}}</mat-card-title>  
+      <p *ngFor="let s of sizeAndPrice">
+        {{s.price}} &nbsp; | &nbsp;</p>
+    </mat-card-header>
+      <mat-card-title-group>
+        <div class="container">
+          <div class="image">
+            <img mat-card-xl-image src={{product.img}} >
+           </div>
+          <div class="text">
+       
+            <header> : העוגה מכילה  </header>
+            {{product.details}}
+           <header> : אלרגנים </header>
+            {{product.allergens}}
+            <br>
+            </div>
+          </div>
+      </mat-card-title-group>
+      <p>הוסף כיתוב על העוגה</p>
+      <input/>
+      <br> <br>
+      <p *ngFor="let s of sizeAndPrice">
+      <button>{{s.size}}</button>  
+      </p>
+    <mat-card-actions>
+      <button mat-flat-button class="Sbutton" >הוספה לסל</button>
+    </mat-card-actions>
+  </mat-card>
