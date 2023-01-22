@@ -1,9 +1,8 @@
 export class SizePrice{
  
-    constructor(public Id : number,
-        public ProductId : number,
-        public Size : string,
-        public Price : number) {
-        
-    }
+    constructor(
+        public id : number,
+        public productId : number,
+        public size : string,
+        public price : number) {        }
 }

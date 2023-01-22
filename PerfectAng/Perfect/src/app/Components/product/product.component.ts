@@ -10,7 +10,7 @@ import { jitOnlyGuardedExpression } from '@angular/compiler/src/render3/util';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-  @Input() categoryId: number = 2
+  @Input() categoryId !: number 
   allProducts !: Product[]
   constructor(private productServ: ProductService , private myRouter : Router) { }
 

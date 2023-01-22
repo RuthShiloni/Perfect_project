@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/Classes/Products';
+import { SizePrice } from 'src/app/Classes/SizePrice';
 import { ProductService } from 'src/app/Services/product.service';
+import { SizeAndPriceService } from 'src/app/Services/size-and-price.service';
 
 @Component({
   selector: 'app-single-product',
@@ -11,7 +13,9 @@ import { ProductService } from 'src/app/Services/product.service';
 export class SingleProductComponent implements OnInit {
  product !: Product
  productId !: any
-  constructor(private route : ActivatedRoute ,private productServ : ProductService ) { 
+ sizeAndPrice !: SizePrice[]
+  constructor(private route : ActivatedRoute ,private productServ : ProductService ,
+   private sizeAndPriceServ : SizeAndPriceService) { 
   }
 
   ngOnInit(): void {
@@ -29,6 +33,14 @@ export class SingleProductComponent implements OnInit {
         console.log(err)
       }
     )
+    this.sizeAndPriceServ.getSizeAndPriceByPId(this.productId).subscribe(
+      data =>{
+       this.sizeAndPrice = data
+      },
+      err =>{
+        console.log(err)
+      }
+    )
   }
-
+ 
 }

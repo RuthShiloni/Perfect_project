@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DAL
 {
-    public class SizePriceDAL
+    public class SizePriceDAL : ISizePriceDAL
     {
         PerfectContext contex = new PerfectContext();
         

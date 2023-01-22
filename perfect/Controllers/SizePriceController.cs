@@ -98,7 +98,7 @@ namespace perfect.Controllers
         }
 
         [HttpGet]
-        [Route("getSize&PriceByPid{productId}")]
+        [Route("getSize&PriceByPId/{productId}")]
         public IActionResult getSizeAndPriceByProductId(int productId)
         {
             try
