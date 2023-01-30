@@ -11,11 +11,13 @@ import { jitOnlyGuardedExpression } from '@angular/compiler/src/render3/util';
 })
 export class ProductComponent implements OnInit {
   @Input() categoryId !: number 
-  allProducts !: Product[]
+  
+  allProducts !: Product[]|any
   constructor(private productServ: ProductService , private myRouter : Router) { }
 
   ngOnInit(): void {
-    this.productServ.getProductsByCate(this.categoryId).subscribe(
+
+    this.productServ.GetAllProduct().subscribe(
       data => {
         console.log(data)
         this.allProducts = data
@@ -24,6 +26,23 @@ export class ProductComponent implements OnInit {
         console.log(err)
       }
     )
+    // if(this.categoryId)
+    // this.allProducts=this.allProducts.map((x:Product)=>{
+    // if(x.categId==this.categoryId){
+    //   return x;
+    // }
+    // });
+
+
+    // this.productServ.getProductsByCate(this.categoryId).subscribe(
+    //   data => {
+    //     console.log(data)
+    //     this.allProducts = data
+    //   },
+    //   err => {
+    //     console.log(err)
+    //   }
+    // )
   }
 
   showDetails(product : Product) {

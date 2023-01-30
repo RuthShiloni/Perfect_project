@@ -6,7 +6,5 @@ export class User{
         public Phone : string,
         public Email : string,
         public Password : string,
-        public Birthdate? : Date) {
-        
-    }
+        public Birthdate? : Date) {}
 }

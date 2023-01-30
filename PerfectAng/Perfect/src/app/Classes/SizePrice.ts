@@ -4,5 +4,5 @@ export class SizePrice{
         public id : number,
         public productId : number,
         public size : string,
-        public price : number) {        }
+        public price : number) {}
 }
