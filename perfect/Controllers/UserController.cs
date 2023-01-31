@@ -61,7 +61,7 @@ namespace perfect.Controllers
         }
 
         [HttpGet]
-        [Route("getUserById{id}")]
+        [Route("getUserById/{id}")]
         public IActionResult GetUserById(int id)
         {
             try

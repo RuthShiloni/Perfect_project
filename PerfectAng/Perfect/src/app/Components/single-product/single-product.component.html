@@ -2,7 +2,7 @@
     <mat-card-header>
       <mat-card-title>{{product.name}}</mat-card-title>  
       <p *ngFor="let s of sizeAndPrice">
-        {{s.price}} &nbsp; | &nbsp;</p>
+        {{s.price | currency : 'ILS'}} &nbsp; | &nbsp;</p>
     </mat-card-header>
       <mat-card-title-group>
         <div class="container">
@@ -22,10 +22,10 @@
       <p>הוסף כיתוב על העוגה</p>
       <input/>
       <br> <br>
-      <p *ngFor="let s of sizeAndPrice">
-      <button>{{s.size}}</button>  
-      </p>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button *ngFor="let s of sizeAndPrice" [value]=s.id (click)="SaveCurrentSizeId(s.id)">{{s.size}} &nbsp;</mat-radio-button>
+      </mat-radio-group>
     <mat-card-actions>
-      <button mat-flat-button class="Sbutton" >הוספה לסל</button>
+      <button mat-flat-button class="Sbutton" (click)="AddToCart()" >הוספה לסל</button>
     </mat-card-actions>
   </mat-card>

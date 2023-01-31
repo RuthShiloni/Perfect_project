@@ -43,5 +43,10 @@ namespace DAL
             ShoppingCart shoppingCart = contex.ShoppingCarts.SingleOrDefault(x => x.Id == id);
             return shoppingCart;
         }
+        public IList<ShoppingCart> GetAllShoppingCartByUserId(int UserId)
+        {
+            IList<ShoppingCart> allUserCart = contex.ShoppingCarts.Where(x => x.UserId == UserId).ToList();
+            return allUserCart;
+        }
     }
 }

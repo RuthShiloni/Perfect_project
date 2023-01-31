@@ -1,3 +1,5 @@
+import { SizePrice } from "./SizePrice";
+
 export class Product{
 
     constructor(
@@ -7,6 +9,7 @@ export class Product{
         public allergens : string,
         public img : string,
         public categId : number,
-        public type : string) {   
+        public type : string ,
+        public sizeAndPrice? : SizePrice[]) {   
     }
 }
