@@ -6,6 +6,7 @@
     top : -5%;
   }
   mat-card{
+    max-width: 300px;
     padding: 1px;
   }
   header{
@@ -23,10 +24,13 @@
     img{
       width : 280px;
       height : 200px;
+      padding-left: 20px;
+      padding-top: 20px;
     }
-    // .example-card {
-    //   max-width: 205%;
-    // }
+    .example-card {
+      width: 600px;
+      height: 330px;
+    } 
     header{
       padding-left: 50px;
       font-size: x-large;
