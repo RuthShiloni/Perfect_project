@@ -16,5 +16,6 @@ namespace BL
         public bool UpdateUser(int id, UserDTO user);
 
         public bool DeleteUser(int id);
+        public UserDTO Login(string email, string pass);
     }
 }

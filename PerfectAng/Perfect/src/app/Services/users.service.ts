@@ -27,6 +27,9 @@ export class UsersService {
   public UpdateUser(id : number , user : User) : Observable<any>{
     return this.http.put<any>(this.basicUrl + `updateUser/${id}` , user)
   }
+  public Login(email : string , pass : string) : Observable<User>{
+    return this.http.get<User>(this.basicUrl + `Login/${email}/${pass}`)
+  }
   public GetCurrentUser() : User{
     return this.currentUser
   }

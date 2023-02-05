@@ -1,14 +1,48 @@
-<mat-grid-list cols="4" rowHeight="2:3">
+
+<!-- <mat-tab-group>
+      <mat-tab *ngFor="let c of allCategories" label={{c.name}} (click)="ShowByCat(c.id)">
+            
+      </mat-tab>
+    </mat-tab-group> -->
+    <div class="center">
+      <mat-chip-list
+      class="example-chip">
+      <mat-chip
+        class="example-box"
+        *ngFor="let c of allCategories" (click)="ShowByCat(c.id)">
+        {{c.name}}
+      </mat-chip>
+    </mat-chip-list>
+    </div>
+<mat-grid-list cols="4" rowHeight="3:3" *ngIf="showAll">
       <mat-grid-tile *ngFor="let i of allProducts">
       <mat-card class="example-card">
             <img mat-card-image src={{i.img}} (click)="showDetails(i)">   
             <header (click)="showDetails(i)">{{i.name}} </header>
             <br>
-            <p *ngFor="let p of i.sizeAndPrice"> {{p.price | currency : 'ILS'}} &nbsp; | &nbsp; </p> 
+            <p *ngFor="let p of i.sizePrices"> {{p.price | currency : 'ILS'}} &nbsp; | &nbsp; </p> 
       <mat-card-actions>
             <button mat-button  [matMenuTriggerFor]="aboveMenu">+</button>
             <mat-menu #aboveMenu="matMenu" yPosition="above">
-            <button mat-menu-item  *ngFor="let s of i.sizeAndPrice" (click)="AddToCart(i.id , s.id)">{{s.size}} - {{s.price | currency : 'ILS'}}</button>
+            <button mat-menu-item  *ngFor="let s of i.sizePrices" (click)="AddToCart(i.id , s.id)">{{s.size}} - {{s.price | currency : 'ILS'}}</button>
+            </mat-menu>
+      </mat-card-actions>
+      </mat-card>
+      </mat-grid-tile>
+</mat-grid-list>
+
+
+<mat-grid-list cols="4" rowHeight="2:3" *ngIf="ShowByCat">
+      <mat-grid-tile *ngFor="let i of allProductByCate">
+      <mat-card class="example-card">
+            <img mat-card-image src={{i.img}} (click)="showDetails(i)">   
+            <header (click)="showDetails(i)">{{i.name}} </header>
+            <br>
+            <p *ngFor="let p of i.sizePrices"> {{p.price | currency : 'ILS'}} &nbsp; | &nbsp; </p> 
+      <mat-card-actions>
+            <button mat-button  [matMenuTriggerFor]="aboveMenu">+</button>
+            <mat-menu #aboveMenu="matMenu" yPosition="above">
+            <button mat-menu-item  *ngFor="let s of i.sizePrices" (click)="AddToCart(i.id , s.id)">{{s.size}} - {{s.price | currency : 'ILS'}}</button>
             </mat-menu>
       </mat-card-actions>
       </mat-card>

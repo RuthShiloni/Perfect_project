@@ -53,6 +53,10 @@ namespace BL
             return userDAL.UpdateUser(id , currentUser);
         }
 
-
+        public UserDTO Login(string email, string pass)
+        {
+            UserDTO user = mapper.Map<User, UserDTO>(userDAL.Login(email, pass));
+            return user;
+        }
     }
 }

@@ -1,10 +1,24 @@
 .a{
     text-decoration-color: goldenrod; 
-    background-color: darkgrey; height: 100px;
+    //background-color: darkgrey; 
+    background-color: #eee;
+    height: 100px;
     display: flex;
-    position: fixed;
+    //position: fixed;
     width: 100%;
+    padding-bottom: 4px;
+    justify-content: center;
+    align-items: center;
   }
+  .logo{
+    width: 120px;
+    //padding-right: 500px;
+    padding-right: 450px;
+  }
+  .space{
+    margin-right: 400px;
+  }
+  
     
     
     //רקע שקוף

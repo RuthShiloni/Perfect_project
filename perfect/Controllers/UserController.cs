@@ -75,7 +75,7 @@ namespace perfect.Controllers
         }
 
         [HttpPut]
-        [Route("updateUser{id}")]
+        [Route("updateUser/{id}")]
         public IActionResult UpdateUser(int id,[FromBody] UserDTO user)
         {
             try
@@ -87,7 +87,19 @@ namespace perfect.Controllers
                 return StatusCode(500 , ex.Message);
             }
         }
-
+        [HttpGet]
+        [Route("login/{email}/{pass}")]
+        public IActionResult Login(string email , string pass)
+        {
+            try
+            {
+                return Ok(userBL.Login(email, pass));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
     }
 }

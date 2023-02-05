@@ -16,6 +16,7 @@ namespace DAL
         public bool UpdateUser(int id, User user);
 
         public bool DeleteUser(int id);
+        public User Login(string email, string pass);
 
     }
 }

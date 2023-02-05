@@ -32,5 +32,12 @@ export class CartComponent implements OnInit {
       )
     }
   }
+  deleteItem(id : number){
+    this.cartServ.DeleteCart(id).subscribe(
+      data=>{
+        console.log("ok")
+      }
+    )
+  }
 
 }

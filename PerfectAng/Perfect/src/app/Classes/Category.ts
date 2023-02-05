@@ -1,6 +1,7 @@
-export class Address{
-    constructor(public Id:number,
-        public Name:string,  
+export class Category{
+    constructor(
+        public id : number ,
+         public name:string
        ){}
 
 }

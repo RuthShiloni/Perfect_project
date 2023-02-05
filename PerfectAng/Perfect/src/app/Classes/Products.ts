@@ -10,6 +10,6 @@ export class Product{
         public img : string,
         public categId : number,
         public type : string ,
-        public sizeAndPrice? : SizePrice[]) {   
+        public sizePrices : SizePrice[]) {   
     }
 }

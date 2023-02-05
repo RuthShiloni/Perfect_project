@@ -14,6 +14,7 @@ namespace DTO
         public string Img { get; set; }
         public int CategId { get; set; }
         public string Type { get; set; }
+        public SizePriceDTO[] SizePrices { get; set; }
 
     }
 }

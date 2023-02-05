@@ -2,15 +2,14 @@
 
  <h2>מוצרים</h2>
 <mat-table [dataSource]="cart" class="mat-elevation-z8">
-
     <ng-container matColumnDef="מחק">
         <mat-header-cell *matHeaderCellDef> מחק </mat-header-cell>
-        <mat-cell *matCellDef="let element">  </mat-cell>
+        <mat-cell *matCellDef="let element"> <mat-icon (click)="deleteItem(element.id)">delete</mat-icon> </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="כמות">
         <mat-header-cell *matHeaderCellDef> כמות </mat-header-cell>
-        <mat-cell *matCellDef="let element">  </mat-cell>
+        <mat-cell *matCellDef="let element" >{{element.quantity}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="מחיר">
@@ -20,7 +19,7 @@
 
       <ng-container matColumnDef="שם מוצר">
         <mat-header-cell *matHeaderCellDef> שם מוצר </mat-header-cell>
-        <mat-cell *matCellDef="let element"> </mat-cell>
+        <mat-cell *matCellDef="let element">{{element.productId}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="תמונת מוצר">
@@ -31,3 +30,4 @@
     <mat-header-row *matHeaderRowDef="header"></mat-header-row>
     <mat-row *matRowDef="let row; columns: header;"></mat-row>
   </mat-table>
+

@@ -65,5 +65,10 @@ namespace DAL
                 throw ex;
             }
         }
+        public User Login(string email , string pass)
+        {
+            User user = contex.Users.SingleOrDefault(x => x.Email == email && x.Password == pass);
+            return user;
+        }
     }
 }

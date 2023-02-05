@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -13,7 +13,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { SingleProductComponent } from './Components/single-product/single-product.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
+import {MatIconModule} from '@angular/material/icon';
 import { PersonalProductComponent } from './Components/personal-product/personal-product.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { NavigationComponent } from './Components/Navigation/navigation.component';
@@ -22,8 +22,12 @@ import {MatRadioModule} from '@angular/material/radio';
 import { CartComponent } from './Components/cart/cart.component';
 import {MatTableModule} from '@angular/material/table';
 import { PaymentDetailsComponent } from './Components/payment-details/payment-details.component';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
+import {MatChipsModule} from '@angular/material/chips';
+import { LoginComponent } from './Components/login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +39,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SingleProductComponent,
     PersonalProductComponent,
     CartComponent,
-    PaymentDetailsComponent
+    PaymentDetailsComponent,
+    LoginComponent
   ],
   imports: [
     HttpClientModule,
@@ -53,6 +58,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatTableModule,
     MatStepperModule,
     ReactiveFormsModule,
+    MatTabsModule,
+    MatChipsModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]

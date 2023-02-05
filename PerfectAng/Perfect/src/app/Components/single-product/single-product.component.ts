@@ -27,7 +27,6 @@ export class SingleProductComponent implements OnInit {
     this.route.params.subscribe(
       params=>{
       this.productId = params.productId
-      //console.log(this.productId)
     })
     this.productServ.GetProductById(this.productId).subscribe(
       data =>{
@@ -38,20 +37,15 @@ export class SingleProductComponent implements OnInit {
         console.log(err)
       }
     )
-    this.sizeAndPriceServ.getSizeAndPriceByPId(this.productId).subscribe(
-      data =>{
-       this.sizeAndPrice = data
-      },
-      err =>{
-        console.log(err)
-      }
-    )
   }
   SaveCurrentSizeId(id : number){
    this.CurrentSizeId = id
   }
   AddToCart(){
-    if(this.userServ.GetCurrentUser() == null){
+    if(this.CurrentSizeId == null){
+      alert("please choose size :)")
+    }
+    else if(this.userServ.GetCurrentUser() == null){
       this.cart = new ShoppingCart( 0 , this.productId , 1 , this.CurrentSizeId)
       console.log(this.cart)
       this.cartServ.AddToUnRegisterUserCart(this.cart);
