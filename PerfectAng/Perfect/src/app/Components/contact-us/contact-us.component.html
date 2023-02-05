@@ -1,0 +1,39 @@
+<p>contact-us works!</p>
+<h1> רעבים לעוד?</h1>
+
+<br>
+<h2>חנות:039096387 </h2><br>
+<h2>להזמנות:0527180072</h2>
+<br>
+<h2>מחלקת אירועים ומגשי אירוח:039096387</h2><br>
+<h2>פקס:0390906387</h2><br>
+<h2> mirav@perfect.co.il</h2><br>
+<h2>כתובתינו:אלעד</h2>
+<!-- Default form contact -->
+<form class="text-center border border-light p-5" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <p class="h4 mb-4">צור קשר</p>
+    <!-- Name -->
+    <input type="text" formControlName="contactFormName" id="defaultContactFormName" mdbInput
+      class="form-control mb-4" placeholder="שם">
+    <!-- Email -->
+    <input type="email" formControlName="contactFormEmail" id="defaultContactFormEmail" mdbInput
+      class="form-control mb-4" placeholder="אימייל">
+    <!-- Subject -->
+    <label>נושא</label>
+    <select formControlName="contactFormSubjects" class="browser-default custom-select mb-4">
+      <option disabled>בחר נושא</option>
+      <option selected>רכישת לוועדי עובדים</option>
+      <option>ברור על הזמנות</option>
+      <option>תקלה באתר</option>
+      <option>אחר</option>
+    </select>
+    <!-- Message -->
+    <div class="form-group">
+      <textarea formControlName="contactFormMessage" class="form-control rounded-0" mdbInput id="exampleFormControlTextarea2"
+        rows="3" placeholder="ההודעה שלך"></textarea>
+    </div>
+    <!-- Send button -->
+    <button mdbBtn color="info" outline="true" block="true" class="z-depth-0 my-4 waves-effect"
+      mdbWavesEffect type="submit" [disabled]="disabledSubmitButton">שלח</button>
+  </form>
+  <!-- Default form contact -->

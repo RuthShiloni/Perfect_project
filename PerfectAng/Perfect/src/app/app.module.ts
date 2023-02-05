@@ -19,6 +19,11 @@ import {MatMenuModule} from '@angular/material/menu';
 import { NavigationComponent } from './Components/Navigation/navigation.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './Components/footer/footer.component';
+import { RegulationsComponent } from './Components/regulations/regulations.component';
+import { AboutComponent } from './Components/about/about.component';
+import { CreditComponent } from './Components/credit/credit.component';
+import { ContactComponent } from './Components/contact/contact.component';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,12 @@ import { FooterComponent } from './Components/footer/footer.component';
     NavigationComponent,
     FooterComponent,
     SingleProductComponent,
-    PersonalProductComponent
+    PersonalProductComponent,
+    RegulationsComponent,
+    AboutComponent,
+    CreditComponent,
+    ContactComponent,
+    ContactUsComponent
   ],
   imports: [
     HttpClientModule,

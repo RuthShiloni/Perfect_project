@@ -3,6 +3,8 @@ import { SingleProductComponent } from './Components/single-product/single-produ
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './Components/home-page/home-page.component';
 import { ProductComponent } from './Components/product/product.component';
+import { AboutComponent } from './Components/about/about.component';
+import { RegulationsComponent } from './Components/regulations/regulations.component';
 
 
 const routes: Routes = [
@@ -12,10 +14,11 @@ const routes: Routes = [
       {path:"item1",component:xxx}
     ]*/
   },
-  
-  {path : "singleP/:productId" , component : SingleProductComponent},
+  {path:"about", component:AboutComponent},
+  {path :"singleP/:productId" , component : SingleProductComponent},
+  {path:"regulations", component:RegulationsComponent},
   {path:"products",component:ProductComponent},
-  {path:"products/:category",component:ProductComponent}
+  {path:"products/:category",component:ProductComponent},
 
 ]
 @NgModule({
