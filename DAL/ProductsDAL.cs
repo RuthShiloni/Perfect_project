@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,13 +42,13 @@ namespace DAL
 
         public List<Product> GetAllProducts()
         {
-            List<Product> allProduct = contex.Products.ToList();
+            List<Product> allProduct = contex.Products.Include(x => x.SizePrices).ToList();
             return allProduct;
         }
 
         public Product GetProductById(int id)
         {
-            Product currentProduct = contex.Products.SingleOrDefault(x => x.Id == id);
+            Product currentProduct = contex.Products.Where(x => x.Id == id).Include(x => x.SizePrices).SingleOrDefault();
             return currentProduct;
         }
 
@@ -69,9 +70,11 @@ namespace DAL
 
         public IList<Product> GetAllProductByCate(int categoryId)
         {
-            IList<Product> product = contex.Products.Where(x => x.CategId == categoryId).ToList();
+            IList<Product> product = contex.Products.Where(x => x.CategId == categoryId).Include(x => x.SizePrices).ToList();
             return product;
         }
+
+
 
     }
 }

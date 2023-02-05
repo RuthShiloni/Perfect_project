@@ -56,5 +56,18 @@ namespace perfect.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        [HttpGet]
+        [Route("GetAllCartByUserId/{UserId}")]
+        public IActionResult GetAllShoppingCartByUserId(int UserId)
+        {
+            try
+            {
+                return Ok(shoppingCartBL.GetAllShoppingCartByUserId(UserId));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

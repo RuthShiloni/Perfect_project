@@ -10,5 +10,6 @@ namespace DAL
         public ShoppingCart GetShoppingCartById(int id);
         public bool DeleteShoppingCart(int id);
         public bool AddShoppingCart(ShoppingCart shoppingCart);
+        public IList<ShoppingCart> GetAllShoppingCartByUserId(int UserId);
     }
 }

@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -8,17 +8,26 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './Components/home-page/home-page.component';
 import { ProductComponent } from './Components/product/product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { SingleProductComponent } from './Components/single-product/single-product.component';
-import {MatInputModule} from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-import {PersonalProductComponent } from './Components/personal-product/personal-product.component';
-import {MatMenuModule} from '@angular/material/menu';
-
-import { NavigationComponent } from './Components/Navigation/navigation.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import { PersonalProductComponent } from './Components/personal-product/personal-product.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { NavigationComponent } from './Components/Navigation/navigation.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { CartComponent } from './Components/cart/cart.component';
+import {MatTableModule} from '@angular/material/table';
+import { PaymentDetailsComponent } from './Components/payment-details/payment-details.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
+import {MatChipsModule} from '@angular/material/chips';
+import { LoginComponent } from './Components/login/login.component';
+
 import { RegulationsComponent } from './Components/regulations/regulations.component';
 import { AboutComponent } from './Components/about/about.component';
 import { CreditComponent } from './Components/credit/credit.component';
@@ -34,6 +43,9 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
     FooterComponent,
     SingleProductComponent,
     PersonalProductComponent,
+    CartComponent,
+    PaymentDetailsComponent,
+    LoginComponent
     RegulationsComponent,
     AboutComponent,
     CreditComponent,
@@ -51,9 +63,15 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
     MatButtonModule,
     MatInputModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatRadioModule,
+    MatTableModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatTabsModule,
+    MatChipsModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

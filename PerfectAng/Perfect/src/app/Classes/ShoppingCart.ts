@@ -1,10 +1,11 @@
 export class ShoppingCart{
     
-    constructor(public Id : number,
-        public UserId : number,
-        public ProductId : number,
-        public Quantity : number,
-        public IdSize : number) {
-        
+    constructor(
+        public userId : number,
+        public productId : number,
+        public quantity : number,
+        public idSize : number,
+        public id? : number) {
+
     }
 }

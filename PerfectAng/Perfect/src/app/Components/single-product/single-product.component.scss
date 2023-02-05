@@ -1,12 +1,8 @@
 
-  .example-card {
-    max-width: 400px;
-    margin-bottom: 8px;
-  }
-  .Sbutton{
-  background-color: goldenrod;
-  margin-left: 150px;
+.Sbutton{
+  background-color: #c19a6d;
   font-size: 24px;
+  color: white;
 }
 header{
   font-size: 20px;
@@ -16,21 +12,65 @@ header{
   align-items: center;
   justify-content: center
 }
-.image {
-  flex-basis: 40%
+.type{
+  font-size: 20px;
 }
+.paddingTop{
+  padding-top: 20px;
+  font-size: 30px;
+  text-decoration: underline;
+}
+  .image {
+    flex-basis: 35%;
+  }
+  img{
+    width: 600px;
+    height: 400px;
+    border: 1px solid #eee;
+  }
+  .text {
+    width: 250px;
+    height: 500px;
+    font-size: 14px;
+    padding-left: 100px;
+    margin-top: 20px;
+    background-color: #eee;
+}
+@media (max-width : 1500px){
+  .image {
+    flex-basis: 40%;
+  }
+  img{
+    width: 400px;
+    height: 300px;
+    border: 1px solid #eee;
+  }
+  .text {
+    width: 250px;
+    height: 500px;
+    font-size: 14px;
+    padding-left: 100px;
+    margin-top: 20px;
+    background-color: #eee;
+  }
+}
+// @media (max-width : 340){
+//   img{
+//     width: 300px;
+//     height: 200px;
+//     border: 1px solid #eee;
+//   }
+//   .text {
+//     width: 500px;
+//     height: 300px;
+//     font-size: 14px;
+//     padding-left: 100px;
+//     margin-top: 20px;
+//     background-color: #eee;
+//   }
+// }
 
-.text {
-  font-size: 14px;
-  padding-left: 20px;
-}
-img{
-  width: 200px;
-  height: 200px;
-}
-.example-form-field {
-  width: 200px;
-}
+
 
 
 

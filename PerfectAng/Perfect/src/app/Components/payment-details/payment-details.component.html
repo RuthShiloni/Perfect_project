@@ -1,0 +1,69 @@
+<p>payment-details !</p>
+
+  <mat-stepper
+    class="example-stepper"
+    [orientation]="(stepperOrientation | async)!">
+    <mat-step [stepControl]="firstFormGroup" label="Fill out your name">
+      <form [formGroup]="firstFormGroup">
+         <mat-form-field appearance="fill">
+            <mat-label>הכנס שם פרטי</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="firstCtrl" required>
+       </mat-form-field>   
+       &nbsp;
+       <mat-form-field appearance="fill">
+           <mat-label>הכנס שם משפחה</mat-label>
+           <input matInput placeholder="Placeholder" formControlName="firstCtrl2" required>
+       </mat-form-field> 
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field appearance="fill">
+            <mat-label>עיר</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="secondCtrl" required>
+        </mat-form-field> 
+        &nbsp;
+        <mat-form-field appearance="fill">
+            <mat-label>רחוב</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="secondCtrl2" required>
+        </mat-form-field> 
+        &nbsp;
+        <mat-form-field appearance="fill">
+            <mat-label>מספר בניין</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="secondCtrl3" required>
+        </mat-form-field> 
+        &nbsp;
+        <mat-form-field appearance="fill">
+            <mat-label>מספר בית</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="secondCtrl4" required>
+        </mat-form-field> 
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" label="Fill out your phone number">
+      <form [formGroup]="thirdFormGroup">
+        <mat-form-field appearance="fill">
+          <mat-label> מספר טלפון</mat-label>
+          <input matInput formControlName="thirdCtrl" placeholder="0525558947" required>
+        </mat-form-field>      
+       <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+  
