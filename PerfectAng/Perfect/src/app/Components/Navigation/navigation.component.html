@@ -15,26 +15,27 @@
   <mat-icon (click)="showCart()">shopping_cart</mat-icon>&nbsp;&nbsp; &nbsp;&nbsp;
   <button mat-button routerLink="home" routerLinkActive="active" (click)="home()">בית</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <button mat-button routerLink="Blog" routerLinkActive="active" (click)="ShowProducts()">המוצרים שלנו</button>
+  <button mat-button routerLinkActive="active" (click)="ShowProducts()">המוצרים שלנו</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   
   <button mat-button routerLink="blogs" routerLinkActive="active">בלוגים</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <button mat-button routerLink="Club" routerLinkActive="active">מועדון</button>
+  <button mat-button routerLink="club" routerLinkActive="active">מועדון</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <button mat-button routerLink="About" routerLinkActive="active">אודותינו</button>
+  <button mat-button routerLink="about" routerLinkActive="active">אודותינו</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <button mat-button routerLink="Contact" routerLinkActive="active">צור קשר</button>
+  <button mat-button routerLink="contact" routerLinkActive="active">צור קשר</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <button mat-button routerLink="Login" routerLinkActive="active" (click)="login()">התחברות</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <button mat-button routerLink="Login" routerLinkActive="active">התחברות</button>
+  <button mat-button routerLink="regulations" routerLinkActive="active">תקנון</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 
 </div>
 
 
-
+<router-outlet></router-outlet>
 
 <!-- 
 ///אמבורגר-תפריט צדדי//

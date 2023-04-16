@@ -18,9 +18,12 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
 import { ClubComponent } from './Components/club/club.component';
 import { PersonalProductComponent } from './Components/personal-product/personal-product.component';
 
+
+
 const routes: Routes = [
   {path : "singleP/:productId" , component : SingleProductComponent},
   {path: "", component: HomePageComponent },
+  {path: "home", component: HomePageComponent},
   {path : "nav" , component : NavigationComponent},
   { path: "cart", component: CartComponent },
   {path:"products",component:ProductComponent},
