@@ -14,7 +14,6 @@ import { PaymentDetailsComponent } from './Components/payment-details/payment-de
 import { BlogsComponent } from './Components/blogs/blogs.component';
 import { SingleBlogComponent } from './Components/single-blog/single-blog.component';
 import { UserOptionComponent } from './Components/user-option/user-option.component';
-import { LoginComponent } from './Components/login/login.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { ClubComponent } from './Components/club/club.component';
 import { PersonalProductComponent } from './Components/personal-product/personal-product.component';

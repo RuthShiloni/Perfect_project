@@ -36,7 +36,7 @@ namespace DAL.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Perfect;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=(localdb)\\ProjectsV13;Database=Perfect;Trusted_Connection=True;");
             }
         }
 
@@ -168,6 +168,8 @@ namespace DAL.Models
 
                 entity.Property(e => e.Text).HasColumnName("text");
 
+                entity.Property(e => e.UserId).HasColumnName("userId");
+
                 entity.HasOne(d => d.ColorId1Navigation)
                     .WithMany(p => p.PersonalProductColorId1Navigations)
                     .HasForeignKey(d => d.ColorId1)
@@ -194,7 +196,6 @@ namespace DAL.Models
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.PersonalProducts)
                     .HasForeignKey(d => d.OrderId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PersonalProduct_Orders");
 
                 entity.HasOne(d => d.Shape)
@@ -202,6 +203,11 @@ namespace DAL.Models
                     .HasForeignKey(d => d.ShapeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PersonalProduct_Shape");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.PersonalProducts)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK__PersonalP__userI__48CFD27E");
             });
 
             modelBuilder.Entity<Product>(entity =>

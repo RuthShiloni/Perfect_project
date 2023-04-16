@@ -42,6 +42,7 @@ import { SingleBlogComponent } from './Components/single-blog/single-blog.compon
 import { UserOptionComponent } from './Components/user-option/user-option.component';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { RouterModule } from '@angular/router';
+import { ClubComponent } from './Components/club/club.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,7 @@ import { RouterModule } from '@angular/router';
     CreditComponent,
     BlogsComponent,
     SingleBlogComponent,
-    UserOptionComponent
+    UserOptionComponent,
     ContactUsComponent,
     ClubComponent,
     PersonalProductComponent,

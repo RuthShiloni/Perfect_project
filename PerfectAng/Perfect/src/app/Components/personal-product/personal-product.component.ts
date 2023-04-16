@@ -119,7 +119,7 @@ err => {
        }
       
       else{
-       this.personlProduct = new PersonalProduct(this.userServ.GetCurrentUser().Id,
+       this.personlProduct = new PersonalProduct(this.userServ.GetCurrentUser().id,
        p.ShapeId, p.ColorId1,p.CreamId,p.LayersId,p.Pictur,p.Text,p.Price,p.Quantity,p.ColorId2,undefined)
        console.log(this.personlProduct)
        this.personlProductserv.AddPersonalP(this.personlProduct).subscribe(

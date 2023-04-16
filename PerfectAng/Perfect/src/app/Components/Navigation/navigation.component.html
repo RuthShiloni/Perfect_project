@@ -1,38 +1,38 @@
 <div class="a">
- <img class="logo" src="../../../assets/Images/לוגו11.jpg">
- &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
- <!-- <mat-icon>facebook</mat-icon>  -->
- <!-- &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; -->
- <!-- <mat-icon class="mat-icon-lg" svgIcon="instagram"></mat-icon> -->
- <div *ngIf="showUser" class="user">
-    <mat-icon (click)="Openoption()" >account_circle</mat-icon>
+  <img class="logo" src="../../../assets/Images/לוגו11.jpg">
+  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+  <!-- <mat-icon>facebook</mat-icon>  -->
+  <!-- &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; -->
+  <!-- <mat-icon class="mat-icon-lg" svgIcon="instagram"></mat-icon> -->
+  <div *ngIf="showUser" class="user">
+    <mat-icon (click)="Openoption()">account_circle</mat-icon>
     <p>{{user.firstName}}</p>
- </div>
-
-
- 
- &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-<mat-icon (click)="showCart()">shopping_cart</mat-icon>&nbsp;&nbsp; &nbsp;&nbsp;
-<button mat-button  routerLink="home" routerLinkActive="active" (click)="home()">בית</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button mat-button  routerLink="Blog" routerLinkActive="active" (click)="ShowProducts()">המוצרים שלנו</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</mat-menu>  -->
-<button mat-button  routerLink="blogs" routerLinkActive="active">בלוגים</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button mat-button  routerLink="Club" routerLinkActive="active">מועדון</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button mat-button  routerLink="About" routerLinkActive="active">אודותינו</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button mat-button  routerLink="Contact" routerLinkActive="active">צור קשר</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button mat-button  routerLink="Login" routerLinkActive="active" (click)="login()">התחברות</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button mat-button  routerLink="Login" routerLinkActive="active">התחברות</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
   </div>
+
+
+
+  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+  <mat-icon (click)="showCart()">shopping_cart</mat-icon>&nbsp;&nbsp; &nbsp;&nbsp;
+  <button mat-button routerLink="home" routerLinkActive="active" (click)="home()">בית</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button mat-button routerLink="Blog" routerLinkActive="active" (click)="ShowProducts()">המוצרים שלנו</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  
+  <button mat-button routerLink="blogs" routerLinkActive="active">בלוגים</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button mat-button routerLink="Club" routerLinkActive="active">מועדון</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button mat-button routerLink="About" routerLinkActive="active">אודותינו</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button mat-button routerLink="Contact" routerLinkActive="active">צור קשר</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button mat-button routerLink="Login" routerLinkActive="active" (click)="login()">התחברות</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button mat-button routerLink="Login" routerLinkActive="active">התחברות</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 </div>
+
 
 
 
