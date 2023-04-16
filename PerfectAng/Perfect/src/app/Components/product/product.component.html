@@ -1,9 +1,4 @@
 
-<!-- <mat-tab-group>
-      <mat-tab *ngFor="let c of allCategories" label={{c.name}} (click)="ShowByCat(c.id)">
-            
-      </mat-tab>
-    </mat-tab-group> -->
     <div class="center">
       <mat-chip-list
       class="example-chip">
@@ -24,7 +19,7 @@
       <mat-card-actions>
             <button mat-button  [matMenuTriggerFor]="aboveMenu">+</button>
             <mat-menu #aboveMenu="matMenu" yPosition="above">
-            <button mat-menu-item  *ngFor="let s of i.sizePrices" (click)="AddToCart(i.id , s.id)">{{s.size}} - {{s.price | currency : 'ILS'}}</button>
+            <button mat-menu-item  *ngFor="let s of i.sizePrices" (click)="AddToCart(i , s)">{{s.size}} - {{s.price | currency : 'ILS'}}</button>
             </mat-menu>
       </mat-card-actions>
       </mat-card>
@@ -42,7 +37,7 @@
       <mat-card-actions>
             <button mat-button  [matMenuTriggerFor]="aboveMenu">+</button>
             <mat-menu #aboveMenu="matMenu" yPosition="above">
-            <button mat-menu-item  *ngFor="let s of i.sizePrices" (click)="AddToCart(i.id , s.id)">{{s.size}} - {{s.price | currency : 'ILS'}}</button>
+            <button mat-menu-item  *ngFor="let s of i.sizePrices" (click)="AddToCart(i , s)">{{s.size}} - {{s.price | currency : 'ILS'}}</button>
             </mat-menu>
       </mat-card-actions>
       </mat-card>

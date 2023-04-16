@@ -42,5 +42,11 @@ namespace BL
             IList<ShoppingCartDTO> allUserCart = mapper.Map<IList<ShoppingCart>, IList<ShoppingCartDTO>>(shoppingCartDAL.GetAllShoppingCartByUserId(UserId));
             return allUserCart;
         }
+        public bool UpdateShoppingCart(int id, ShoppingCartDTO shoppingCart)
+        {
+            ShoppingCart sp = mapper.Map<ShoppingCartDTO, ShoppingCart>(shoppingCart);
+            return shoppingCartDAL.UpdateShoppingCart(id, sp);
+             
+        }
     }
 }

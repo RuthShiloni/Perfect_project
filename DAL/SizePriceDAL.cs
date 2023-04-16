@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,13 +42,13 @@ namespace DAL
 
         public IList<SizePrice> GetAllSizePrice()
         {
-            IList<SizePrice> allSizePrice = contex.SizePrices.ToList();
+            IList<SizePrice> allSizePrice = contex.SizePrices.AsNoTracking().ToList();
             return allSizePrice;
         }
 
         public SizePrice GetSizePriceById(int id)
         {
-            SizePrice currentSizePrice = contex.SizePrices.SingleOrDefault(x => x.Id == id);
+            SizePrice currentSizePrice = contex.SizePrices.AsNoTracking().SingleOrDefault(x => x.Id == id);
             return currentSizePrice;
         }
 
@@ -55,7 +56,7 @@ namespace DAL
         {
             try
             {
-                SizePrice currentSizePrice = contex.SizePrices.SingleOrDefault(x => x.Id == id);
+                SizePrice currentSizePrice = contex.SizePrices.AsNoTracking().SingleOrDefault(x => x.Id == id);
                 contex.Entry(currentSizePrice).CurrentValues.SetValues(currentSizePrice);
                 sizePrice.Id = id;
                 contex.SaveChanges();
@@ -69,7 +70,7 @@ namespace DAL
 
         public IList<SizePrice> getSizeAndPriceByProductId(int productId)
         {
-            IList<SizePrice> sizePrice = contex.SizePrices.Where(x => x.ProductId == productId).ToList();
+            IList<SizePrice> sizePrice = contex.SizePrices.AsNoTracking().Where(x => x.ProductId == productId).ToList();
             return sizePrice;
         }
 

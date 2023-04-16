@@ -17,7 +17,7 @@ export class SingleProductComponent implements OnInit {
  product !: Product
  productId !: any
  sizeAndPrice !: SizePrice[]
- CurrentSizeId !: number
+ CurrentSize !: SizePrice
  cart !: ShoppingCart
   constructor(private route : ActivatedRoute ,private productServ : ProductService ,
    private sizeAndPriceServ : SizeAndPriceService , private userServ : UsersService , private cartServ : CartService) { 
@@ -38,28 +38,42 @@ export class SingleProductComponent implements OnInit {
       }
     )
   }
-  SaveCurrentSizeId(id : number){
-   this.CurrentSizeId = id
+  SaveCurrentSizeId(size : SizePrice){
+   this.CurrentSize = size
   }
   AddToCart(){
-    if(this.CurrentSizeId == null){
+    if(this.CurrentSize == null){
       alert("please choose size :)")
     }
     else if(this.userServ.GetCurrentUser() == null){
-      this.cart = new ShoppingCart( 0 , this.productId , 1 , this.CurrentSizeId)
+      this.cart = new ShoppingCart( 0 ,this.CurrentSize.id , this.product.id , 1 ,this.CurrentSize , this.product , 0)
       console.log(this.cart)
       this.cartServ.AddToUnRegisterUserCart(this.cart);
    }
    else{
-    this.cart = new ShoppingCart(this.userServ.GetCurrentUser().Id , this.productId , 1 ,this.CurrentSizeId)
-    console.log(this.cart)
-    this.cartServ.AddCart(this.cart).subscribe(
-      data =>{
-        console.log(data)
-      },
-      err =>{
-        console.log(err)
-      }
+    this.cartServ.GetAllCartByUserId(this.userServ.GetCurrentUser().id).subscribe(
+      data => {
+        if (data.findIndex(e => e.idSizeNavigation.id == this.CurrentSize.id) >= 0) {
+          const element = data.find(e => e.idSizeNavigation.id == this.CurrentSize.id)!;
+          this.cart = new ShoppingCart(this.userServ.GetCurrentUser().id ,this.CurrentSize.id , this.product.id , 1 ,this.CurrentSize , this.product , 0 )
+          this.cartServ.UpdateCart(element.id, this.cart).subscribe(
+            data => { },
+            err => {
+              console.log(err)
+            }
+          )
+        }
+        else {
+          this.cart = new ShoppingCart(this.userServ.GetCurrentUser().id ,this.CurrentSize.id , this.product.id , 1 ,this.CurrentSize , this.product , 0 )
+          this.cartServ.AddCart(this.cart).subscribe(
+            data => {
+            },
+            err => {
+              console.log(err)
+            }
+          )
+        }   
+     }
     )
    }
   }

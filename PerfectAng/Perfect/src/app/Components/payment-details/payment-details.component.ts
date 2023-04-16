@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
-import {BreakpointObserver} from '@angular/cdk/layout';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 
@@ -13,30 +10,28 @@ import {map} from 'rxjs/operators';
 ]
 })
 export class PaymentDetailsComponent implements OnInit {
-  stepperOrientation: Observable<"horizontal" | "vertical">;
 
-  constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver) {
-     this.stepperOrientation = breakpointObserver
-     .observe('(min-width: 800px)')
-     .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
+  constructor(private _formBuilder: FormBuilder) {
   }
+  firstFormGroup !: FormGroup;
+  secondFormGroup !: FormGroup;
+  ThirdFormGroup !: FormGroup
+  isEditable = true;
 
- firstFormGroup = this._formBuilder.group({
-  firstCtrl: ['', Validators.required],
-  firstCtrl2: ['' , Validators.required]
-});
-secondFormGroup = this._formBuilder.group({
-  secondCtrl: ['', Validators.required],
-  secondCtrl2 : ['', Validators.required],
-  secondCtrl3 : ['', Validators.required],
-  secondCtrl4 : ['', Validators.required]
-});
-thirdFormGroup = this._formBuilder.group({
-  thirdCtrl: ['', Validators.required],
-});
   ngOnInit(): void {
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required] ,
+      firstCtr2 : ['' , Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required],
+      secondCtrl2: ['', Validators.required],
+      secondCtrl3: ['', Validators.required]
+    });
+    this.ThirdFormGroup = this._formBuilder.group({
+      thirdCtrl : ['' , [Validators.required ,  Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
+    });
   }
-
 
 
 

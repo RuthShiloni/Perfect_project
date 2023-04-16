@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -31,9 +31,17 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegulationsComponent } from './Components/regulations/regulations.component';
 import { AboutComponent } from './Components/about/about.component';
 import { CreditComponent } from './Components/credit/credit.component';
-import { ContactComponent } from './Components/contact/contact.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { BlogsComponent } from './Components/blogs/blogs.component';
+import { SingleBlogComponent } from './Components/single-blog/single-blog.component';
+import { UserOptionComponent } from './Components/user-option/user-option.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,12 +53,14 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
     PersonalProductComponent,
     CartComponent,
     PaymentDetailsComponent,
-    LoginComponent
+    LoginComponent,
     RegulationsComponent,
     AboutComponent,
     CreditComponent,
-    ContactComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    BlogsComponent,
+    SingleBlogComponent,
+    UserOptionComponent
   ],
   imports: [
     HttpClientModule,
@@ -69,9 +79,16 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
     MatStepperModule,
     ReactiveFormsModule,
     MatTabsModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatDividerModule,
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [ ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

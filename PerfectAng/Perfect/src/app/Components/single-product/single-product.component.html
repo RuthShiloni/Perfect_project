@@ -7,7 +7,7 @@
       <header class="paddingTop">{{product.name}}</header>
       <br>
       <p *ngFor="let s of product.sizePrices">
-        {{s.price | currency : 'ILS'}} &nbsp; | &nbsp;</p>    
+        {{s.price | currency : 'ILS'}} </p>    
       <header> : העוגה מכילה  </header>
       <br>
       {{product.details}}
@@ -19,12 +19,12 @@
       <br>   
       <br>
       <p class="type">  העוגה {{product.type}}  </p>
-      <p>הוסף כיתוב על העוגה</p>
-      <input/>
+      <!-- <p>הוסף כיתוב על העוגה</p>
+      <input/> -->
       <br>
       <br>
       <mat-radio-group aria-label="Select an option">
-        <mat-radio-button *ngFor="let s of product.sizePrices" [value]=s.id (click)="SaveCurrentSizeId(s.id)">{{s.size}} &nbsp;</mat-radio-button>
+        <mat-radio-button *ngFor="let s of product.sizePrices" [value]=s.id (click)="SaveCurrentSizeId(s)">{{s.size}} &nbsp;</mat-radio-button>
       </mat-radio-group>
        <br><br>
       <button mat-flat-button class="Sbutton" (click)="AddToCart()" >הוספה לסל</button> 

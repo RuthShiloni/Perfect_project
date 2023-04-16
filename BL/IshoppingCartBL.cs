@@ -11,6 +11,7 @@ namespace BL
         public ShoppingCartDTO GetShoppingCartById(int id);
         public bool DeleteShoppingCart(int id);
         public bool AddShoppingCart(ShoppingCartDTO shoppingCart);
+        public bool UpdateShoppingCart(int id , ShoppingCartDTO shoppingCart);
         public IList<ShoppingCartDTO> GetAllShoppingCartByUserId(int UserId);
     }
 }

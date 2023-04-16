@@ -42,13 +42,16 @@ namespace DAL
 
         public List<Product> GetAllProducts()
         {
-            List<Product> allProduct = contex.Products.Include(x => x.SizePrices).ToList();
+            List<Product> allProduct = contex.Products
+                .Include(x => x.SizePrices)
+                .AsNoTracking()
+                .ToList();
             return allProduct;
         }
 
         public Product GetProductById(int id)
         {
-            Product currentProduct = contex.Products.Where(x => x.Id == id).Include(x => x.SizePrices).SingleOrDefault();
+            Product currentProduct = contex.Products.Where(x => x.Id == id).Include(x => x.SizePrices).AsNoTracking().SingleOrDefault();
             return currentProduct;
         }
 
@@ -70,7 +73,7 @@ namespace DAL
 
         public IList<Product> GetAllProductByCate(int categoryId)
         {
-            IList<Product> product = contex.Products.Where(x => x.CategId == categoryId).Include(x => x.SizePrices).ToList();
+            IList<Product> product = contex.Products.Where(x => x.CategId == categoryId).Include(x => x.SizePrices).AsNoTracking().ToList();
             return product;
         }
 

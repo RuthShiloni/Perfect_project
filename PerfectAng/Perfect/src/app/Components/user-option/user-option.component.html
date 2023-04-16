@@ -1,0 +1,52 @@
+
+<br>
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="עדכון משתמש">
+       <br>
+       <form>
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>שם משפחה</mat-label>
+                    <input matInput value="{{user.lastName}}" #lname>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>שם פרטי</mat-label>
+                    <input matInput value="{{user.firstName}}" #fname>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>מספר טלפון</mat-label>
+                    <input matInput value="{{user.phone}}" #phone>
+                </mat-form-field>
+              </p>
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>אימייל</mat-label>
+                    <input matInput value="{{user.email}}" #email>
+                </mat-form-field>
+              </p>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>תאריך יומהולדת</mat-label>
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" (dateChange)="onDateChange($event)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>              <br>
+              <button mat-flat-button class="button" (click)="Update(lname.value,fname.value,phone.value,email.value)" > עדכן</button> 
+       </form>
+        
+
+    </mat-tab>
+    <mat-tab label="צפיה בהזמנות שלי"> 
+
+    </mat-tab>
+    <mat-tab label="יציאה מהמערכת">
+        <br>
+        <div class="div">
+            <p>האם אתה בטוח שברצונך לצאת מהמערכת </p><br>
+            <button mat-flat-button class="button2" (click)="exit()" > כן</button>
+        </div>
+    </mat-tab>
+  </mat-tab-group>

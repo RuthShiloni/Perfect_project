@@ -1,1 +1,31 @@
-<p>login works!</p>
+<h1>Login</h1>
+<div class="container">
+    <div class="image">
+      <img class="logo" src="../../../assets/Images/לוגו11.jpg" >
+    </div>
+   <div class="text">
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com"  [formControl]="email" required >
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input name="pass" #pass matInput  [type]="hide ? 'password' : 'text'" >
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        <p *ngIf="showErr" class="errMassege">אחד או יותר מהשדות אינו תקין*</p>
+        <p>עדיין לא רשום ? הרשם כאן </p>
+   </div>
+   <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button (click)="login(email.value , pass.value)" mat-button cdkFocusInitial>Login</button>
+  </mat-dialog-actions>
+</div>
+
+
