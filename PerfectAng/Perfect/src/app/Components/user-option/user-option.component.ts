@@ -29,7 +29,7 @@ export class UserOptionComponent implements OnInit {
     console.log(this.selectedDate); // logs the selected date in a Date object format
   }
   Update(lname : string , fname : string , phone : string , email : string){
-   this.newUser = new User(this.user.id , fname , lname , phone , email)
+   this.newUser = new User(this.user.id , fname , lname , phone , email,this.user.password)
    this.userServ.UpdateUser(this.user.id , this.newUser).subscribe(
     response => {
       alert("seccede update")
