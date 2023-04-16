@@ -1,9 +1,79 @@
 
-h1 {
-    color: rgba(250, 242, 5, 0.928);
-    text-align: center;
-    font-size: 40px;
+// h1 {
+//     color: rgba(250, 242, 5, 0.928);
+//     text-align: center;
+//     font-size: 40px;
+//   }
+//   h2{
+//     text-align: center;
+//   }
+h2{
+  font-family: monospace;
+}
+.g{
+  direction: rtl;
+  text-align: center;
+  color:rgb(169, 106, 4);
+  font-size:xx-large;
+}
+    
+.appearance,.center{
+  margin: auto;
+   width: 60%;
+   margin-top: 8px;
+   margin-bottom: 8px;
+}
+input,textarea,button{
+  width: 100%;
+  height: 30px;
+  border-color:gray;
+  border-radius: 6px 6px 6px 6px;
+  // border:100px;
+  margin-top: 8px;
+  box-shadow: #0000000f 0px 5px 10px;
+}
+// select,button{
+//   width: 102%;
+//   height:35px;
+// }
+mat-label,h2{  
+font-family: rubik;
+font-size: 12pt;
+}
+
+button{
+margin-top: 30px;
+width: 102%;
+  height:45px;
+  background-color: #61ce70;
+font-size: 16pt;
+font-family: rubik;
+}
+.center{
+margin: auto;
+
+}
+h2,h5{
+font-size: 18pt;
+//display: contents;
+text-align: center;
+
+}
+h5{
+    font-size: 14pt; 
+    color: rgb(113, 114, 114); 
+}
+.wrapper{
+    display: flex;
+    flex-flow: column;
+    margin-top: auto;
+    margin-bottom: auto;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
   }
-  h2{
-    text-align: center;
-  }
+//       .details-input{
+// height: 100px;
+
+//       }
+  

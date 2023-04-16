@@ -9,17 +9,28 @@ namespace DAL
     public class UserDAL : IuserDAL
     {
         PerfectContext contex = new PerfectContext();
+
         public bool AddUser(User newUser)
         {
-            try
+            using (var contex = new PerfectContext())
             {
-                contex.Add(newUser);
-                contex.SaveChanges();
-                return true;
-            }
-            catch(Exception ex)
-            {
-                throw ex;
+                var user = contex.Users.Where(u => u.Email == newUser.Email).FirstOrDefault();
+                if (user == null)
+                {
+                    try
+                    {
+                        contex.Add(newUser);
+                        contex.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error adding user");
+                        return false;
+                    }
+                }
+                Console.WriteLine("Error- user exist");
+                return false;
             }
         }
 
@@ -32,7 +43,7 @@ namespace DAL
                 contex.SaveChanges();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -60,12 +71,12 @@ namespace DAL
                 contex.SaveChanges();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public User Login(string email , string pass)
+        public User Login(string email, string pass)
         {
             User user = contex.Users.SingleOrDefault(x => x.Email == email && x.Password == pass);
             return user;

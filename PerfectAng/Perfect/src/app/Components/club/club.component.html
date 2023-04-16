@@ -1,0 +1,57 @@
+<br><br>
+
+<div>
+  <img src="../../../assets/images/תמונה אודותינו.jpg" style="width: 100%;">
+
+  <h1>מועדון הלקוחות שלנו</h1>
+</div>
+<h2>החברים שלנו נהנים יותר</h2>
+
+<h3>להצטרפות יש למלא את הפרטים הבאים</h3>
+
+<div [formGroup]="clubForm" class="border">
+
+  <label for="firstName">שם פרטי</label>
+  <input id="firstName" type="text" formControlName="firstName" name="firstName" #firstName>
+  <p class="error" *ngIf="clubForm.controls['firstName'].errors?.required">this field is required</p>
+  <p class="error" *ngIf="clubForm.controls['firstName'].errors?.pattern">insert valid firstName</p>
+
+  <label for="lastName">שם משפחה</label>
+  <input id="lastName" type="text" formControlName="lastName" name="lastName" #lastName>
+  <p class="error" *ngIf="clubForm.controls['lastName'].errors?.required">this field is required</p>
+  <p class="error" *ngIf="clubForm.controls['lastName'].errors?.pattern">insert valid lastName</p>
+  
+
+  <!-- <br><br> -->
+  <label for="email">אימייל</label>
+  <input id="email" type="email" formControlName="email" name="email" #email>
+  <p class="error" *ngIf="clubForm.controls['email'].errors?.required">this field is required</p>
+  <p class="error" *ngIf="clubForm.controls['email'].errors?.pattern">insert valid email</p>
+  <!-- <p *ngIf="this.clubForm.value.email.hasError('required')">this field is required</p>
+  <p *ngIf="this.clubForm.value.email.hasError('email')">insert valid email</p> -->
+
+  <!-- <br><br> -->
+  <label for="phoneNumber">טלפון</label>
+  <input id="phoneNumber" type="text" formControlName="phoneNumber" name="phoneNumber" #phoneNumber >
+  <p class="error" *ngIf="clubForm.controls['phoneNumber'].errors?.required">this field is required</p>
+  <p class="error" *ngIf="clubForm.controls['phoneNumber'].errors?.pattern">insert valid phoneNumber</p>
+  
+  <!-- <br><br> -->
+  <label for="Birthday">יום הולדת</label>
+  <input id="Birthday" type="date" formControlName="Birthday" name="Birthday" #Birthday>
+    <!-- <p class="error" *ngIf="clubForm.controls['Birthday'].errors?.required">this field is required</p> 
+  <p class="error" *ngIf="clubForm.controls['Birthday'].errors?.pattern">insert valid Birthday</p>
+    -->
+  <label for="password">סיסמא</label>
+  <input id="password" type="password" formControlName="password" name="password" #password>
+  <p class="error" *ngIf="clubForm.controls['password'].errors?.required">this field is required</p>
+  <p class="error" *ngIf="clubForm.controls['password'].errors?.pattern">insert valid password</p>
+  <!-- <p *ngIf="this.clubForm.value.Password.hasError('required')">this field is required</p>
+  <p *ngIf="this.clubForm.value.Password.hasError('Password')">insert valid Password</p> -->
+
+  <div class="example-button">
+    <button (click)="addUser()" mat-button>שלח</button>
+  </div>
+</div>
+
+<div style="height: 50px;"></div>

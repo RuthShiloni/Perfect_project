@@ -3,19 +3,57 @@ body {
     background-color: lightblue;
   }
   
-  h1 {
+  h1,h2 {
     color: rgb(250, 66, 5);
     text-align: center;
-  
-  }
-  
-  p {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 20px;
-    text-align: center;
-  }
-  p.rtl {
     direction: rtl;
   }
+  
+  // p {
+  //   // font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  //   // font-size: 20px;
+  // }
+
+  div{
+    margin-left: 50px;
+    margin-right: 50px;text-align: justify;direction: rtl;
+    text-align: justify;
+  }
  
- 
+
+
+
+
+
+//  דוגמא מתוך אתר נוגטין-לכותרת מדיניות
+
+// .h3 {
+// 	width: 100%;
+// 	text-align: center;
+// 	color: #c9ab81;
+// 	font-size: 40px;
+// 	position: relative;
+// 	line-height: 40px;
+// 	margin-bottom: 50px;
+
+// }
+
+// 	&:before {
+// 		content: "";
+// 		bottom: -20px;
+// 		left: 50%;
+// 		transform: translateX(-50%);
+// 		width: 60px;
+// 		height: 1px;
+// 		background-color: #c9ab81;
+// 		position: absolute;
+// 	}
+
+
+
+
+// @media (max-width: 480px) {
+//   font-size: 16px;
+// }
+
+

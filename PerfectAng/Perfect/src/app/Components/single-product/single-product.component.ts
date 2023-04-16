@@ -1,3 +1,4 @@
+
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/Classes/Products';
@@ -10,7 +11,7 @@ import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
   selector: 'app-single-product',
-  templateUrl: './single-product.component.html',
+  templateUrl:'./single-product.component.html',
   styleUrls: ['./single-product.component.scss']
 })
 export class SingleProductComponent implements OnInit {

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { PersonalProduct } from '../Classes/PersonalProduct';
 import { ShoppingCart } from '../Classes/ShoppingCart';
 import { UsersService } from './users.service';
 
@@ -13,11 +14,20 @@ export class CartService {
   
   UnregisterUserCart : ShoppingCart[] = []
 
+  //personal Product
+  // UnregisterUser : PersonalProduct[] = []
+
   constructor(private http : HttpClient , private userServ : UsersService) { }
   
   public AddCart(newCart : ShoppingCart) : Observable<any>{
     return this.http.post<any>(this.basicUrl+"addShoppingCart" , newCart)
   }
+
+// //personal Product
+//   public AddPersonalProduct(newPersonalProduct : PersonalProduct) : Observable<any>{
+//     return this.http.post<any>(this.basicUrl+"addShoppingCart" , newPersonalProduct)
+//   }
+
   public DeleteCart(id : number):Observable<any>{
     return this.http.delete<any>(this.basicUrl+`deleteShoppingCart/${id}`)
   }
@@ -28,6 +38,13 @@ export class CartService {
      this.UnregisterUserCart.push(newCart)
     console.log(this.UnregisterUserCart)
   }
+  
+// //personal Product-להוספת מוצר אישי
+//   public AddToUnRegisterUser(newPersonalProduct : PersonalProduct){
+//     this.UnregisterUser.push(newPersonalProduct)
+//    console.log(this.UnregisterUser)
+//  }
+
   public DeleteFromUnRegisterUserCart(id : number){
    
   }

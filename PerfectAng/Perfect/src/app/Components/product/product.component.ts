@@ -64,6 +64,7 @@ export class ProductComponent implements OnInit {
     //     console.log(err)
     //   }
     // )
+    
   }
   ShowByCat(id : number){
     debugger
@@ -82,6 +83,8 @@ export class ProductComponent implements OnInit {
     this.myRouter.navigate(["/singleP",id])
     console.log(product.id)
   }
+
+  
   AddToCart(productId : number , sizeId : number ){
    if(this.userServ.GetCurrentUser() == null){
       this.cart = new ShoppingCart(0 , productId , 1 , sizeId)

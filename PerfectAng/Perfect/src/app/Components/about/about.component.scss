@@ -1,21 +1,29 @@
 
-body {
-    background-color: lightblue;
-  }
+// body {
+//     background-color: lightblue;
+//   }
   
-  h1 {
+  .size {
     color: rgb(250, 66, 5);
     text-align: center;
-  
+  font-size:xx-large;
   }
-  
+
+  .a{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
   p {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 20px;
-    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    // font-family:'Franklin Gothic Medium', 'Arial Narrow', inherit, sans-serif;
+    // font-size: 15px;
+    // text-align: center;
   }
-  p.rtl {
-    direction: rtl;
-  }
- 
- 
+  
+  // p.rtl {
+  //   direction: rtl;
+  // }

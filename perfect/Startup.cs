@@ -55,6 +55,9 @@ namespace perfect
             services.AddScoped<ISizePriceBL, SizePriceBL>();
             services.AddScoped<ISizePriceDAL, SizePriceDAL>();
            
+            services.AddScoped<IColorBL, ColorBL>();
+     services.AddScoped<IColorDAL, ColorDAL>();
+
 
             services.AddSwaggerGen(c =>
             {

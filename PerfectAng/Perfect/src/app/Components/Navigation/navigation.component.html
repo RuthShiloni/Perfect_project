@@ -1,36 +1,28 @@
-
 <div class="a">
- <img class="logo" src="../../../assets/Images/לוגו11.jpg" >
- <!-- <mat-icon>facebook</mat-icon> -->
- <!-- &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; -->
-<!-- <mat-icon class="mat-icon-lg" svgIcon="instagram"></mat-icon> -->
-<mat-icon (click)="showCart()">shopping_cart</mat-icon>&nbsp;&nbsp; &nbsp;&nbsp;
-<button mat-button  routerLink="home" routerLinkActive="active">בית</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button mat-button  routerLink="Blog" routerLinkActive="active" (click)="ShowProducts()">המוצרים שלנו</button>
- <!-- <button style="text-decoration: underline;" mat-button routerLink="products" routerLinkActive="active" 
- [matMenuTriggerFor]="productsMenu" (click)="ShowProducts()">המוצרים שלנו</button> -->
-<!-- <mat-menu #productsMenu="matMenu" yPosition="below"> 
-  <button mat-menu-item routerLink="chocolate-cakes" routerLinkActive="active">עוגות שוקולד</button> 
- <button mat-menu-item>פרלינים </button>
- <button mat-menu-item>קינוחים  </button>
- <button mat-menu-item>עוגות שמרים </button>
- <button mat-menu-item>עוגות מוס</button>
- <button mat-menu-item>עוגות קרם</button>
- <button mat-menu-item>עוגות שוקולד </button> 
-</mat-menu>  -->
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <div>
+    <img class="logo" src="../../../assets/images/לוגו11.jpg">
+  </div>
+  <div class="navigator">
+    <mat-icon (click)="showCart()">shopping_cart</mat-icon>
+    <button mat-button routerLink="home" routerLinkActive="active">בית</button>
+    <button mat-button routerLinkActive="active" (click)="ShowProducts()">המוצרים שלנו</button>
+    <button mat-button routerLink="personalProduct" routerLinkActive="active">לעיצוב אישי</button>
 
-<button mat-button  routerLink="Blog" routerLinkActive="active">בלוגים</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button mat-button  routerLink="Club" routerLinkActive="active">מועדון</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button mat-button  routerLink="About" routerLinkActive="active">אודותינו</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button mat-button  routerLink="Contact" routerLinkActive="active">צור קשר</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button mat-button  routerLink="Login" routerLinkActive="active">התחברות</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button mat-button routerLink="blog" routerLinkActive="active">בלוגים</button>
+    <button mat-button routerLink="club" routerLinkActive="active">מועדון</button>
+    <button mat-button routerLink="about" routerLinkActive="active">אודותינו</button>
+    <button mat-button routerLink="contact" routerLinkActive="active">צור קשר</button>
+    <button mat-button routerLink="regulations" routerLinkActive="active">תקנון</button>
 
+  </div>
 </div>
-<router-outlet></router-outlet>
+
+
+
+<!-- 
+///אמבורגר-תפריט צדדי//
+<button class="mobile-menu-btn hamburger hamburger--spin" type="button">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button> -->

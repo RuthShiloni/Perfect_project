@@ -2,7 +2,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './Components/home-page/home-page.component';
@@ -18,7 +17,7 @@ import { PersonalProductComponent } from './Components/personal-product/personal
 import { MatMenuModule } from '@angular/material/menu';
 import { NavigationComponent } from './Components/Navigation/navigation.component';
 import { FooterComponent } from './Components/footer/footer.component';
-import {MatRadioModule} from '@angular/material/radio';
+import {MatRadioButton, MatRadioGroup, MatRadioModule} from '@angular/material/radio';
 import { CartComponent } from './Components/cart/cart.component';
 import {MatTableModule} from '@angular/material/table';
 import { PaymentDetailsComponent } from './Components/payment-details/payment-details.component';
@@ -27,12 +26,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatChipsModule} from '@angular/material/chips';
 import { LoginComponent } from './Components/login/login.component';
-
 import { RegulationsComponent } from './Components/regulations/regulations.component';
 import { AboutComponent } from './Components/about/about.component';
 import { CreditComponent } from './Components/credit/credit.component';
-import { ContactComponent } from './Components/contact/contact.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ClubComponent } from './Components/club/club.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {ErrorStateMatcher} from '@angular/material/core';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -45,12 +49,15 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
     PersonalProductComponent,
     CartComponent,
     PaymentDetailsComponent,
-    LoginComponent
+    LoginComponent,
     RegulationsComponent,
     AboutComponent,
     CreditComponent,
-    ContactComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    ClubComponent,
+    PersonalProductComponent,
+    NavigationComponent,
+    
   ],
   imports: [
     HttpClientModule,
@@ -69,9 +76,15 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
     MatStepperModule,
     ReactiveFormsModule,
     MatTabsModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    RouterModule,
+
   ],
   providers: [ ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[AppComponent]
 })
 export class AppModule { }

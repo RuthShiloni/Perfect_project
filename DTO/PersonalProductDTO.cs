@@ -6,7 +6,7 @@ namespace DTO
 {
     public class PersonalProductDTO
     {
-        public int OrderId { get; set; }
+        public int? OrderId { get; set; }
         public int ShapeId { get; set; }
         public int ColorId1 { get; set; }
         public int? ColorId2 { get; set; }
@@ -16,5 +16,7 @@ namespace DTO
         public string Text { get; set; }
         public int Price { get; set; }
         public int? Quantity { get; set; }
+        public int? UserId { get; set; }
+
     }
 }

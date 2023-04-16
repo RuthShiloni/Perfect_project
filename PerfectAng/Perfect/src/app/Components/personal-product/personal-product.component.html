@@ -1,9 +1,126 @@
-<p>personal-product works!</p>
-<button mat-button [matMenuTriggerFor]="menu">Menu</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
+<div style="display: flex;">
+  <div>
+    <form [formGroup]="personalProductForm" (ngSubmit)="onSubmit()">
+      <div class="field">
+        <mat-label>צורה:</mat-label>
+        <mat-form-field appearance="fill">
+          <!-- <mat-label>Choose one</mat-label> -->
+          <mat-select disableOptionCentering [formControl]="selected" [errorStateMatcher]="matcher">
+            <mat-option>בחר צורה</mat-option>
+            <mat-option value="valid">מלבן</mat-option>
+            <mat-option value="valid">עגול</mat-option>
+          </mat-select>
+          <!-- <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+          <mat-error *ngIf="selected.hasError('pattern') && !selected.hasError('required')">
+            Your selection is invalid
+          </mat-error> -->
+        </mat-form-field>
+      </div>
 
+      <div class="field">
+        <mat-label>צבע 1:</mat-label>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose one</mat-label>
+          <mat-select disableOptionCentering [formControl]="selected" [errorStateMatcher]="matcher">
+            <mat-option>בחר צבע 1</mat-option>
+            <mat-option value="valid" *ngFor="let c of allColors">{{c.name}} {{c.price | currency: 'ILS'}}</mat-option>
+            
 
+            <!-- <mat-option value="invalid">Invalid option</mat-option> -->
+          </mat-select>
+          <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+          <mat-error *ngIf="selected.hasError('pattern') && !selected.hasError('required')">
+            Your selection is invalid
+          </mat-error>
+        </mat-form-field>
+      </div>
 
+      <div class="field">
+        <mat-label>צבע 2:</mat-label>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose one</mat-label>
+          <mat-select disableOptionCentering [formControl]="selected" [errorStateMatcher]="matcher">
+            <mat-option>בחר צבע 2</mat-option>
+            <mat-option value="valid">שחור</mat-option>
+            <mat-option value="valid">כתום</mat-option>
+            <mat-option value="valid">צהוב</mat-option>
+            <mat-option value="valid">ירוק</mat-option>
+            <mat-option value="valid">אדום</mat-option>
+          </mat-select>
+          <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+          <mat-error *ngIf="selected.hasError('pattern') && !selected.hasError('required')">
+            Your selection is invalid
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="field">
+        <mat-label>קרם:</mat-label>
+        <mat-form-field appearance="fill">
+          <mat-select disableOptionCentering [formControl]="selected" [errorStateMatcher]="matcher">
+            <mat-option value="valid">זהב</mat-option>
+          </mat-select>
+          <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+          <mat-error *ngIf="selected.hasError('pattern') && !selected.hasError('required')">
+            Your selection is invalid
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-select disableOptionCentering [formControl]="selected" [errorStateMatcher]="matcher">
+            <mat-option value="valid">שחור</mat-option>
+          </mat-select>
+          <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+          <mat-error *ngIf="selected.hasError('pattern') && !selected.hasError('required')">
+            Your selection is invalid
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="field">
+        <mat-label>שכבות:</mat-label>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose one</mat-label>
+          <mat-select disableOptionCentering [formControl]="selected" [errorStateMatcher]="matcher">
+            <mat-option>בחר מס' קומות</mat-option>
+            <mat-option value="valid">1</mat-option>
+            <mat-option value="valid">2</mat-option>
+            <mat-option value="valid">3</mat-option>
+            <mat-option value="valid">4</mat-option>
+            <mat-option value="valid">5</mat-option>
+          </mat-select>
+          <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+          <mat-error *ngIf="selected.hasError('pattern') && !selected.hasError('required')">
+            Your selection is invalid
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="field">
+        <mat-label>*להוספת כיתוב:</mat-label>
+        <mat-form-field appearance="fill">
+          <mat-label>להוספת כיתוב</mat-label> 
+          <!-- formControlName="firstCtrl"  -->
+          <input matInput placeholder="להוספת כיתוב לעוגה"required>
+        </mat-form-field>
+        <!-- <mat-label>*לתמונה אישית:</mat-label> -->
+      </div>
+    </form>
+    <div>
+      <button type="submit"  mat-button color="red">הוספה לסל</button>
+    </div> 
+  </div>
+  <div><img src=" ../../../assets/images/עיצוב אישי.jpg" height="250px" width="350px" /></div>
+
+<!-- </div>
+
+ <div class="flex-container"> 
+
+  <div>
+    <form >
+      
+    </form>
+  </div>
+
+</div> -->
+<!-- 
+<div>
+  <button mat-button color="red" (click)="addToCart()">הוספה לסל</button>
+</div>  -->

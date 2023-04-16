@@ -15,9 +15,10 @@ export class UsersService {
   public GetAllUsers() : Observable<User[]>{
     return this.http.get<User[]>(this.basicUrl + "getAllUser")
   }
-  public GetUserBtId(id : number) : Observable<User>{
+  public GetUserById(id : number) : Observable<User>{
     return this.http.get<User>(this.basicUrl + `getUserById/${id}`)
   }
+  
   public AddUser(user : User) : Observable<any>{
     return this.http.post<any>(this.basicUrl + "addUser" , user)
   }

@@ -1,0 +1,5 @@
+                optionsBuilder.UseSqlServer("Server=(localdb)\\ProjectsV13;Database=Perfect;Trusted_Connection=True;");
+
+PerfectContext -לא להעלות לשינויים
+
+                optionsBuilder.UseSqlServer("Server=(localdb)\\ProjectsV13;Database=Perfect;Trusted_Connection=True;");

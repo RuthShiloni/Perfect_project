@@ -13,9 +13,9 @@ namespace BL
         private IColorDAL ColorDAL;
         IMapper mapper;
 
-        public ColorBL(IColorDAL ColorDAL)
+        public ColorBL(IColorDAL colorDAL)
         {
-            ColorDAL = ColorDAL;
+            ColorDAL = colorDAL;
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<AutoMapperProfile>();
