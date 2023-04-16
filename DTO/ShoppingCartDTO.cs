@@ -11,6 +11,8 @@ namespace DTO
         public int ProductId { get; set; }
         public int Quantity { get; set; }
         public int IdSize { get; set; }
+        public ProductsDTO product { get; set; }
+        public SizePriceDTO IdSizeNavigation { get; set; }
 
     }
 }

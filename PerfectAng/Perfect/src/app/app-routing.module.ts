@@ -9,22 +9,31 @@ import { CartComponent } from './Components/cart/cart.component';
 import { AboutComponent } from './Components/about/about.component';
 import { RegulationsComponent } from './Components/regulations/regulations.component';
 import { LoginComponent } from './Components/login/login.component';
+import { AppComponent } from './app.component';
+import { PaymentDetailsComponent } from './Components/payment-details/payment-details.component';
+import { BlogsComponent } from './Components/blogs/blogs.component';
+import { SingleBlogComponent } from './Components/single-blog/single-blog.component';
+import { UserOptionComponent } from './Components/user-option/user-option.component';
+import { LoginComponent } from './Components/login/login.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { ClubComponent } from './Components/club/club.component';
 import { PersonalProductComponent } from './Components/personal-product/personal-product.component';
 
 const routes: Routes = [
   {path : "singleP/:productId" , component : SingleProductComponent},
-  {path: "", component: HomePageComponent},
-  {path: "home", component: HomePageComponent},
+  {path: "", component: HomePageComponent },
+  {path : "nav" , component : NavigationComponent},
   { path: "cart", component: CartComponent },
   {path:"products",component:ProductComponent},
  {path:"about", component:AboutComponent},
-  {path:"login", component:LoginComponent},
-  // {path:"blog", component:},
-  {path:"club", component:ClubComponent},
+ {path:"club", component:ClubComponent},
   {path:"contact", component:ContactUsComponent},
   {path:"regulations", component:RegulationsComponent},
+  {path:"paymentD" , component: PaymentDetailsComponent},
+  {path : "login" , component : LoginComponent},
+  {path : "blogs" , component : BlogsComponent},
+  {path : "singleBlog/:blogId" , component : SingleBlogComponent},
+  {path : "UserOp" , component : UserOptionComponent},
   {path:"personalProduct", component:PersonalProductComponent},
 ]
 @NgModule({

@@ -8,8 +8,8 @@ import { User } from '../Classes/User';
 })
 export class UsersService {
 
-  basicUrl : string = "https://localhost:44337/api/User/"
-  currentUser !: User 
+  private basicUrl : string = "https://localhost:44337/api/User/"
+ // private currentUser !: User 
   constructor(private http : HttpClient) { }
 
   public GetAllUsers() : Observable<User[]>{
@@ -32,6 +32,15 @@ export class UsersService {
     return this.http.get<User>(this.basicUrl + `Login/${email}/${pass}`)
   }
   public GetCurrentUser() : User{
-    return this.currentUser
+  //  return this.currentUser
+   var str = sessionStorage.getItem('currentUser')
+   if(str != null)
+   var user =JSON.parse(str) 
+   return user
+  }
+  public SetCurrentUser(user : User){
+   //this.currentUser = user
+   var jsonUser = JSON.stringify(user)
+   sessionStorage.setItem('currentUser' , jsonUser)
   }
 }

@@ -2,4 +2,58 @@
   table {
     width: 100%;
   }
-  
+  img{
+    width: 150px;
+  }
+  h1{
+    text-align: center;
+    color:  #c19a6d;
+    border-bottom: 5px double;
+  }
+  h2{
+    background-color:  #c19a6d;
+    color: white;
+    padding-left: 85%;
+    font-size: 20px;
+    
+  }
+  .empty{
+    text-align: center;
+    font-size: 28px;
+  }
+  .button{
+    background-color: #c19a6d;
+    font-size: 24px;
+    color: white;
+    width: 200px;
+    margin-left: 20px;
+  }
+  .shippingIcon{
+    margin-left: 2500%;
+    font-size: 80px;
+  }
+  .icon{
+    margin-left: 2600%;
+    font-size: 80px;
+  }
+  .option{
+    margin-left: 95%;
+  }
+  .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .margin{
+    margin-left: 55%;
+  }
+  .margin2{
+    margin-left:80% ;
+  }
+  .Icon{
+   margin-left : 2300% ;
+    font-size : 80px;
+  }
+  .pQuantity{
+    font-size: 16px;
+  }

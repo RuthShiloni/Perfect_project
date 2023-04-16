@@ -7,6 +7,8 @@ import { CartService } from 'src/app/Services/cart.service';
 import { ShoppingCart } from 'src/app/Classes/ShoppingCart';
 import { Category } from 'src/app/Classes/Category';
 import { CategoriesService } from 'src/app/Services/categories.service';
+import { SizePrice } from 'src/app/Classes/SizePrice';
+
 
 @Component({
   selector: 'app-product',
@@ -15,14 +17,14 @@ import { CategoriesService } from 'src/app/Services/categories.service';
 })
 export class ProductComponent implements OnInit {
   allProducts !: Product[]
-  cart !: ShoppingCart 
+  cart !: ShoppingCart
   allCategories !: Category[]
   allProductByCate !: Product[]
-  showAll : boolean = true
-  showByCateg : boolean = false
- 
-  constructor(private productServ: ProductService , private userServ : UsersService,
-    private cartServ : CartService , private categServ : CategoriesService , private myRouter : Router) { }
+  showAll: boolean = true
+  showByCateg: boolean = false
+
+  constructor(private productServ: ProductService, private userServ: UsersService,
+    private cartServ: CartService, private categServ: CategoriesService, private myRouter: Router) { }
 
   ngOnInit(): void {
     this.productServ.GetAllProduct().subscribe(
@@ -37,36 +39,13 @@ export class ProductComponent implements OnInit {
     this.categServ.GetAllCategories().subscribe(
       data => {
         this.allCategories = data
-        console.log(this.allCategories)
       },
       err => {
         console.log(err)
       }
     )
-
-    /////////////
-    
-    
-    // if(this.categoryId)
-    // this.allProducts=this.allProducts.map((x:Product)=>{
-    // if(x.categId==this.categoryId){
-    //   return x;
-    // }
-    // });
-
-
-    // this.productServ.getProductsByCate(this.categoryId).subscribe(
-    //   data => {
-    //     console.log(data)
-    //     this.allProducts = data
-    //   },
-    //   err => {
-    //     console.log(err)
-    //   }
-    // )
-    
   }
-  ShowByCat(id : number){
+  ShowByCat(id: number) {
     debugger
     this.productServ.getProductsByCate(id).subscribe(
       data => {
@@ -78,31 +57,42 @@ export class ProductComponent implements OnInit {
     )
   }
 
-  showDetails(product : Product) {
+  showDetails(product: Product) {
     var id = product.id
-    this.myRouter.navigate(["/singleP",id])
+    this.myRouter.navigate(["/singleP", id])
     console.log(product.id)
   }
-
-  
-  AddToCart(productId : number , sizeId : number ){
-   if(this.userServ.GetCurrentUser() == null){
-      this.cart = new ShoppingCart(0 , productId , 1 , sizeId)
+  AddToCart(product: Product, size: SizePrice) {
+    if (this.userServ.GetCurrentUser() == null) {
+      this.cart = new ShoppingCart(0, size.id, product.id, 1, size, product, 0)
       console.log(this.cart)
       this.cartServ.AddToUnRegisterUserCart(this.cart);
-      console.log(this.cartServ.UnregisterUserCart)
-   }
-   else{
-    this.cart = new ShoppingCart(this.userServ.GetCurrentUser().Id , productId , 1 ,sizeId)
-    console.log(this.cart)
-    this.cartServ.AddCart(this.cart).subscribe(
-      data =>{
-        console.log(data)
-      },
-      err =>{
-        console.log(err)
-      }
-    )
-   }
+    }
+    else {
+      this.cartServ.GetAllCartByUserId(this.userServ.GetCurrentUser().id).subscribe(
+        data => {
+          if (data.findIndex(e => e.idSizeNavigation.id == size.id) >= 0) {
+            const element = data.find(e => e.idSizeNavigation.id == size.id)!;
+            this.cart = new ShoppingCart(this.userServ.GetCurrentUser().id, size.id, product.id, element.quantity += 1, size, product, element.id)
+            this.cartServ.UpdateCart(element.id, this.cart).subscribe(
+              data => { },
+              err => {
+                console.log(err)
+              }
+            )
+          }
+          else {
+            this.cart = new ShoppingCart(this.userServ.GetCurrentUser().id, size.id, product.id, 1, size, product, 0)
+            this.cartServ.AddCart(this.cart).subscribe(
+              data => {
+              },
+              err => {
+                console.log(err)
+              }
+            )
+          }   
+       }
+      )
+    }
   }
 }

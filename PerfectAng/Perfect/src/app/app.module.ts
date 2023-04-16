@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,13 +31,17 @@ import { AboutComponent } from './Components/about/about.component';
 import { CreditComponent } from './Components/credit/credit.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { ClubComponent } from './Components/club/club.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-import {ErrorStateMatcher} from '@angular/material/core';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { BlogsComponent } from './Components/blogs/blogs.component';
+import { SingleBlogComponent } from './Components/single-blog/single-blog.component';
+import { UserOptionComponent } from './Components/user-option/user-option.component';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { RouterModule } from '@angular/router';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +57,9 @@ import { RouterModule } from '@angular/router';
     RegulationsComponent,
     AboutComponent,
     CreditComponent,
+    BlogsComponent,
+    SingleBlogComponent,
+    UserOptionComponent
     ContactUsComponent,
     ClubComponent,
     PersonalProductComponent,
@@ -78,10 +85,13 @@ import { RouterModule } from '@angular/router';
     MatTabsModule,
     MatChipsModule,
     MatDialogModule,
-    MatFormFieldModule,
     MatSelectModule,
-    RouterModule,
-
+    MatSnackBarModule,
+    MatDividerModule,
+    MatListModule,
+    MatDatepickerModule,
+      MatNativeDateModule,
+      RouterModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent],

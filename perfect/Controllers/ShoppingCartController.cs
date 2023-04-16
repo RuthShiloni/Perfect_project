@@ -69,5 +69,18 @@ namespace perfect.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        [HttpPut]
+        [Route("UpdateShoppingCart/{id}")]
+        public IActionResult UpdateShoppingCart(int id , ShoppingCartDTO shoppingCart)
+        {
+            try
+            {
+                return Ok(shoppingCartBL.UpdateShoppingCart(id, shoppingCart));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }
