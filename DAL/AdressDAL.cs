@@ -27,7 +27,7 @@ namespace DAL
 
         
 
-        public bool DeleteAddress(Address address, int id)
+        public bool DeleteAddress(int id)
         {
             try
             {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router , RouterModule  } from '@angular/router';
 
 
 
@@ -11,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PaymentDetailsComponent implements OnInit {
 
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(private _formBuilder: FormBuilder , private myrouter : Router) {
   }
   firstFormGroup !: FormGroup;
   secondFormGroup !: FormGroup;
@@ -32,7 +33,9 @@ export class PaymentDetailsComponent implements OnInit {
       thirdCtrl : ['' , [Validators.required ,  Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
     });
   }
-
+  payment(){
+    this.myrouter.navigate(["/credit"])
+  }
 
 
 }

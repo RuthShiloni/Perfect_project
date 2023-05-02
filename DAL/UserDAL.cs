@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using System.Text;
 
 namespace DAL
@@ -57,7 +58,8 @@ namespace DAL
 
         public User GetUserById(int id)
         {
-            User currentUser = contex.Users.SingleOrDefault(x => x.Id == id);
+            User currentUser = contex.Users.Where(x => x.Id == id).Include(x => x.Addresses).AsNoTracking().SingleOrDefault();
+
             return currentUser;
         }
 
@@ -78,7 +80,7 @@ namespace DAL
         }
         public User Login(string email, string pass)
         {
-            User user = contex.Users.SingleOrDefault(x => x.Email == email && x.Password == pass);
+            User user = contex.Users.Where(x => x.Email == email && x.Password == pass).Include(x => x.Addresses).SingleOrDefault();
             return user;
         }
     }

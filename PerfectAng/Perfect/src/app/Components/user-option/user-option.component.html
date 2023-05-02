@@ -34,11 +34,72 @@
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>              <br>
-              <button mat-flat-button class="button" (click)="Update(lname.value,fname.value,phone.value,email.value)" > עדכן</button> 
+              <button mat-flat-button class="button" (click)="Update(lname.value,fname.value,phone.value,email.value)" > אישור</button> 
        </form>
         
 
     </mat-tab>
+      
+    <mat-tab label="עדכון כתובת">
+      <br>
+      <form>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>עיר </mat-label>
+                <input matInput  #city>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill">
+                <mat-label>רחוב</mat-label>
+                <input matInput #street>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill">
+                <mat-label>מספר בנין</mat-label>
+                <input matInput  #numB>
+            </mat-form-field>
+          </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>מספר דירה</mat-label>
+                <input matInput  #numH>
+            </mat-form-field>
+          </p>
+          <br>
+          <button mat-flat-button class="button" (click)="AddAddress(city.value,street.value,numB.value,numH.value)" > הוסך כתובת</button> 
+   </form>
+   <form *ngIf="isfull">
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>{{currentAdd.city}} </mat-label>
+            <input matInput  #city>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+            <mat-label>{{currentAdd.street}}</mat-label>
+            <input matInput #street>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+            <mat-label>{{currentAdd.buildingN}}</mat-label>
+            <input matInput  #numB>
+        </mat-form-field>
+      </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>{{currentAdd.houseN}}</mat-label>
+            <input matInput  #numH>
+        </mat-form-field>
+      </p>
+      <br>
+      <button mat-flat-button class="button" (click)="AddAddress(city.value,street.value,numB.value,numH.value)" > הוסך כתובת</button> 
+</form>
+    </mat-tab>
+
     <mat-tab label="צפיה בהזמנות שלי"> 
 
     </mat-tab>
@@ -49,4 +110,5 @@
             <button mat-flat-button class="button2" (click)="exit()" > כן</button>
         </div>
     </mat-tab>
+
   </mat-tab-group>

@@ -14,7 +14,7 @@ export class CartService {
   
   private UnregisterUserCart : ShoppingCart[] = []
   private add !: boolean
-
+  //private numItem : number = 0
   //personal Product
   // UnregisterUser : PersonalProduct[] = []
 
@@ -64,5 +64,30 @@ export class CartService {
   public GetUnRegisterCart() : ShoppingCart[]{
    return this.UnregisterUserCart
   }
+
+  // public GetnumItem() : number{
+  //   debugger
+  //   if(this.userServ.GetCurrentUser() == null){
+  //     this.UnregisterUserCart.forEach(e => {
+  //       this.numItem += e.quantity
+  //     });
+  //   }
+  //   else {
+  //   this.GetAllCartByUserId(this.userServ.GetCurrentUser().id).subscribe(
+  //     data => {
+  //      this.registerCart = data
+  //      this.registerCart.forEach(e => {
+  //       this.numItem += e.quantity
+  //      });
+  //     },
+  //     err => {
+  //       console.log(err)
+  //     }
+  //   )
+  //   }
+  //   var JsonItem = JSON.stringify(this.numItem)
+  //   sessionStorage.setItem('num item' , JsonItem)
+  //   return this.numItem
+  // }
   
 }

@@ -6,7 +6,7 @@ namespace DTO
 {
     public class UserDTO
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Phone { get; set; }
@@ -14,7 +14,7 @@ namespace DTO
         public DateTime? Birthdate { get; set; }
         public string Password { get; set; }
 
-        public AddressDTO? Address { get; set; }
+        public AddressDTO[] Addresses { get; set; }
 
     }
 }
