@@ -14,7 +14,7 @@ namespace DTO
         public int LayersId { get; set; }
         public string Picture { get; set; }
         public string Text { get; set; }
-        public int Price { get; set; }
+        public int? Price { get; set; }
         public int? Quantity { get; set; }
         public int? UserId { get; set; }
 

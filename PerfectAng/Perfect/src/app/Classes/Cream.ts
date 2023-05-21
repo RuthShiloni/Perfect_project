@@ -1,6 +1,6 @@
 export class Cream{
-    constructor(public Id:number,
-        public Details:string,
-        public Price:number
+    constructor(public id:number,
+        public details:string,
+        public price:number
        ){}
 }

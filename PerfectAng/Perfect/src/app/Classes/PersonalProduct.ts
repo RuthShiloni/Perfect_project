@@ -4,7 +4,7 @@ export class PersonalProduct{
         public  ColorId1:number,
         public CreamId:number,
         public LayersId:number,
-        public  Pictur:string,
+        public  Picture:string,
         public  Text:string,
         public  Price:number,
         public Quantity ?:number,

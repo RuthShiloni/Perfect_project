@@ -1,8 +1,8 @@
 
 export class Layer{
-    constructor(public Id:number,
-        public Number:number,
-        public Price:number,
+    constructor(public id:number,
+        public number:number,
+        public price:number,
        ){}
 }
 

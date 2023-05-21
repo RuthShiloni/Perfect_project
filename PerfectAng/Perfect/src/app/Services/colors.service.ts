@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Color } from '../Classes/Color';
 import { Observable } from 'rxjs';
+import { Cream } from '../Classes/Cream';
 
 @Injectable({
   providedIn: 'root'
