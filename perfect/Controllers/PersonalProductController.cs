@@ -30,6 +30,7 @@ namespace perfect.Controllers
                 return StatusCode(500, ex.Message);
             } 
         }
+
         [HttpDelete]
         [Route("deletePersonalP/{id}")]
         public IActionResult DeletePersonalProduct(int id)
