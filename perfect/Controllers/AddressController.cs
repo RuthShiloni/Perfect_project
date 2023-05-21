@@ -38,7 +38,7 @@ namespace perfect.Controllers
 
         [HttpPost]
         [Route("addAddress")]
-        public IActionResult AddAddress(AddressDTO adress)
+        public IActionResult AddAddress([FromBody]AddressDTO adress)
         {
             try
             {
@@ -53,12 +53,12 @@ namespace perfect.Controllers
 
         [HttpDelete]
         [Route("deleteAddress")]
-        public IActionResult DeleteAddress(AddressDTO adress, int id)
+        public IActionResult DeleteAddress(int id)
         {
             
             try
             {
-                return Ok(AddressBL.DeleteAddress(adress,id));
+                return Ok(AddressBL.DeleteAddress(id));
             }
             catch(Exception ex)
             {

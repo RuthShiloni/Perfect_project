@@ -4,6 +4,7 @@ import { LoginComponent } from '../login/login.component';
 import {MatDialog} from '@angular/material/dialog';
 import { User } from 'src/app/Classes/User';
 import { UsersService } from 'src/app/Services/users.service';
+import { CartService } from 'src/app/Services/cart.service';
 
 @Component({
   selector: 'app-navigation',

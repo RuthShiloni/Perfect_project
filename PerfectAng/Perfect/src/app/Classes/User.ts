@@ -1,3 +1,5 @@
+import { Address } from "./Address";
+
 export class User{
     
     constructor(public id : number,
@@ -6,6 +8,7 @@ export class User{
         public phone : string,
         public email : string,
         public password : string,
+        public Addresses? : Address[],
         public birthdate? : Date  
         ) {}
 }

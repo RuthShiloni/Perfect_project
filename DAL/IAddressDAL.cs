@@ -10,6 +10,6 @@ namespace DAL
         public Address GetAdressById(int id);
         public bool AddAdress(Address address);
         public bool UpdateAdress(Address address,int id);
-        public bool DeleteAddress(Address adress, int id);
+        public bool DeleteAddress(int id);
     }
 }

@@ -44,7 +44,8 @@ namespace BL
         public UserDTO GetUserById(int id)
         {
             User user = userDAL.GetUserById(id);
-            return mapper.Map<User, UserDTO>(user);
+            UserDTO a = mapper.Map<User, UserDTO>(user);
+            return a;
         }
 
         public bool UpdateUser(int id, UserDTO user)

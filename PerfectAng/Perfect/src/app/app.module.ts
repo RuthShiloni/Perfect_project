@@ -40,7 +40,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { BlogsComponent } from './Components/blogs/blogs.component';
 import { SingleBlogComponent } from './Components/single-blog/single-blog.component';
 import { UserOptionComponent } from './Components/user-option/user-option.component';
-import { ErrorStateMatcher } from '@angular/material/core';
+import {MatBadgeModule} from '@angular/material/badge';
 import { RouterModule } from '@angular/router';
 import { ClubComponent } from './Components/club/club.component';
 import { UploadComponent } from './Components/upload/upload.component';
@@ -93,8 +93,9 @@ import { UploadComponent } from './Components/upload/upload.component';
     MatDividerModule,
     MatListModule,
     MatDatepickerModule,
-      MatNativeDateModule,
-      RouterModule,
+    MatNativeDateModule,
+    RouterModule,
+    MatBadgeModule
   ],
   providers: [ ],
   bootstrap: [AppComponent],

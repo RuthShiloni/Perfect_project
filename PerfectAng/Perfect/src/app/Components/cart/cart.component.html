@@ -53,7 +53,7 @@
 </div>
 <mat-divider *ngIf="underline"></mat-divider>
 <br>
-<div class="margin">
+<div>
   <mat-form-field appearance="fill" *ngIf="pickUp" >
     <mat-label>בחר תאריך איסוף</mat-label>
     <input matInput [matDatepicker]="picker">
@@ -91,7 +91,7 @@
     <mat-icon class="Icon">shopping_basket</mat-icon>
   </div>
   <div> 
-    {{price | currency : 'ILS'}} : עלות ההזמנה  
+    עלות ההזמנה  : {{price | currency : 'ILS'}}  
   </div>
 </div>
 <mat-divider></mat-divider>
@@ -100,7 +100,7 @@
     <mat-icon class="Icon"> local_shipping</mat-icon> 
   </div>
   <div> 
-   {{deliveryP | currency : 'ILS'}}  : עלות משלוח  
+     עלות משלוח : {{deliveryP | currency : 'ILS'}}   
   </div>
 </div>
 <mat-divider></mat-divider>
@@ -109,7 +109,7 @@
     <mat-icon class="Icon">payment</mat-icon>
   </div>
   <div> 
-     {{sumP | currency : 'ILS'}} : סה"כ כולל משלוח 
+     סה"כ כולל משלוח  :  {{sumP | currency : 'ILS'}} 
   </div>
 </div>
 

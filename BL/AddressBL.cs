@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using AutoMapper;
 using DAL;
+using DAL.Models;
 using DTO;
 
 namespace BL
@@ -28,27 +29,29 @@ namespace BL
 
         public bool AddAdress(AddressDTO address)
         {
-            throw new NotImplementedException();
+            Address add = mapper.Map<AddressDTO, Address>(address);
+            return addressDAL.AddAdress(add);
         }
 
-        public bool DeleteAddress(AddressDTO adress, int id)
+        public bool DeleteAddress(int id)
         {
-            throw new NotImplementedException();
+            return addressDAL.DeleteAddress(id);
         }
 
         public AddressDTO GetAdressById(int id)
         {
-            throw new NotImplementedException();
+            return mapper.Map<Address, AddressDTO>(addressDAL.GetAdressById(id));
         }
 
         public List<AddressDTO> GetAllAdresses()
         {
-            throw new NotImplementedException();
+            return mapper.Map<List<Address>,List< AddressDTO>>(addressDAL.GetAllAdresses());
         }
 
         public bool UpdateAdress(AddressDTO address, int id)
         {
-            throw new NotImplementedException();
+            Address add = mapper.Map<AddressDTO, Address>(address);
+            return addressDAL.UpdateAdress(add, id);
         }
     }
 }

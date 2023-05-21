@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
           this.showErr = true
         else{ 
           this._snackBar.open("login successfully" , "close")
+          console.log(data)
           this.router.navigate([""])
           this.dialogRef.close()
           this.userServ.SetCurrentUser(data);
