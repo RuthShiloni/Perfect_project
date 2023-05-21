@@ -43,6 +43,7 @@ import { UserOptionComponent } from './Components/user-option/user-option.compon
 import { ErrorStateMatcher } from '@angular/material/core';
 import { RouterModule } from '@angular/router';
 import { ClubComponent } from './Components/club/club.component';
+import { UploadComponent } from './Components/upload/upload.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { ClubComponent } from './Components/club/club.component';
     ClubComponent,
     PersonalProductComponent,
     NavigationComponent,
+    UploadComponent,
     
   ],
   imports: [
