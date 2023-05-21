@@ -129,8 +129,19 @@ export class PersonalProductComponent implements OnInit {
       this.allCream.find((e) => e.id == p.CreamId)?.price!+
       this.allLayers.find((e)=>e.id==p.LayersId)?.price!;
     this.personlProduct = new PersonalProduct(
-      this.userServ.GetCurrentUser().id,
-     
+      //this.userServ.GetCurrentUser().id,
+      // public ShapeId:number,
+      //   public ColorId1:number,
+      //   public CreamId:number,
+      //   public LayersId:number,
+      //   public Picture:string,
+      //   public Text:string,
+      //   public Price:number,
+      //   public userId : number,
+      //   public Quantity ?:number,
+      //   public ColorId2 ?:number,
+      //   public OrderId ?:number,
+      //   public id ?: number
       p.ShapeId,
       p.ColorId1,
       p.CreamId,
@@ -138,9 +149,10 @@ export class PersonalProductComponent implements OnInit {
       p.Picture,
       p.Text,
       sumPrice,
+      this.userServ.GetCurrentUser().id,
       p.Quantity,
-      p.ColorId2,
-      undefined
+      p.ColorId2
+      
     );
     console.log(this.personlProduct);
     this.personlProductserv.AddPersonalP(this.personlProduct).subscribe(

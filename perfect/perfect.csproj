@@ -14,10 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Images\Desserts\" />
-    <Folder Include="Resources\Images\Pralines\" />
     <Folder Include="Resources\Images\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>
