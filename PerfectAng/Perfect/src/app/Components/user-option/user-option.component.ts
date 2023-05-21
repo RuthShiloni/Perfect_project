@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Address } from 'src/app/Classes/Address';
 import { User } from 'src/app/Classes/User';
 import { AddressService } from 'src/app/Services/address.service';
@@ -20,7 +21,7 @@ export class UserOptionComponent implements OnInit {
   isfull : boolean = false
   currentAdd !: Address
 
-  constructor(private userServ : UsersService , private addressServ : AddressService) { 
+  constructor(private userServ : UsersService , private addressServ : AddressService , private router : Router) { 
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 100, 0, 1);
     this.maxDate = new Date(currentYear - 13, 11, 31);

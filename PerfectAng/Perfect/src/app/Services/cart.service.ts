@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PersonalProduct } from '../Classes/PersonalProduct';
 import { ShoppingCart } from '../Classes/ShoppingCart';
@@ -14,13 +14,14 @@ export class CartService {
   
   private UnregisterUserCart : ShoppingCart[] = []
   private add !: boolean
-  //private numItem : number = 0
-  //personal Product
-  // UnregisterUser : PersonalProduct[] = []
+  public numItem : number = 0
+  cartUpdated: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private http : HttpClient , private userServ : UsersService) { }
   
   public AddCart(newCart : ShoppingCart) : Observable<any>{
+    this.numItem += newCart.quantity
+    this.cartUpdated.emit()
     return this.http.post<any>(this.basicUrl+"addShoppingCart" , newCart)
   }
 
@@ -48,6 +49,8 @@ export class CartService {
     });  
     if(this.add == false)
       this.UnregisterUserCart.push(newCart)
+      this.numItem += newCart.quantity
+    this.cartUpdated.emit()
   }
   public DeleteFromUnRegisterUserCart(pId : number , idSize : number){
   
@@ -64,30 +67,40 @@ export class CartService {
   public GetUnRegisterCart() : ShoppingCart[]{
    return this.UnregisterUserCart
   }
-
-  // public GetnumItem() : number{
-  //   debugger
-  //   if(this.userServ.GetCurrentUser() == null){
-  //     this.UnregisterUserCart.forEach(e => {
-  //       this.numItem += e.quantity
-  //     });
-  //   }
-  //   else {
-  //   this.GetAllCartByUserId(this.userServ.GetCurrentUser().id).subscribe(
-  //     data => {
-  //      this.registerCart = data
-  //      this.registerCart.forEach(e => {
-  //       this.numItem += e.quantity
-  //      });
-  //     },
-  //     err => {
-  //       console.log(err)
-  //     }
-  //   )
-  //   }
-  //   var JsonItem = JSON.stringify(this.numItem)
-  //   sessionStorage.setItem('num item' , JsonItem)
-  //   return this.numItem
-  // }
-  
+// פונקציה שבזמן לוגין שומרת את מספר הפריטים ב
+//sessionstorage 
+//כדי שבזמן ריענון לא יעלם
+  public SetNumItem(number : number){
+    var numberItem = JSON.stringify(number)
+    sessionStorage.setItem('numItem' , numberItem)
+    this.numItem = number
+  }
+  public getNumItem(){
+    if(this.userServ.GetCurrentUser() != null){
+       var str = sessionStorage.getItem('numItem')
+       if(str != null)
+      this.numItem =JSON.parse(str) 
+    }
+    return this.numItem
+  }
+//פונקציות שמרידות ומעלות 1 ממספר הפריטים  ומעדכנות
+  public Add1(){
+    debugger
+    if(this.userServ.GetCurrentUser() != null){
+      var numberItem = JSON.stringify(this.numItem+1)
+      sessionStorage.setItem('numItem' , numberItem)
+    }
+    else{
+      this.numItem += 1
+    }
+    this.cartUpdated.emit()
+  }
+  public Remove1(){
+    if(this.userServ.GetCurrentUser() != null){
+      var numberItem = JSON.stringify(this.numItem-1)
+      sessionStorage.setItem('numItem' , numberItem)
+    }
+   this.numItem -= 1
+   this.cartUpdated.emit()
+  }
 }

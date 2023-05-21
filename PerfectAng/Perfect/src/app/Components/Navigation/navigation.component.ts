@@ -17,13 +17,21 @@ export class NavigationComponent implements OnInit {
    
   showUser = false
   user !: User
-  constructor(private router : Router , public dialog: MatDialog , private userServ : UsersService) { }
+  totalProduct : number = 0
+
+  constructor(private router : Router , public dialog: MatDialog , private userServ : UsersService , 
+  private cartServ : CartService) { }
 
   ngOnInit(): void {
     if(this.userServ.GetCurrentUser() != null){
+     this.totalProduct = this.cartServ.getNumItem()
       this.user = this.userServ.GetCurrentUser()
       this.showUser = true
     }
+    this.cartServ.cartUpdated.subscribe(() => {
+      this.fetchCartItems();
+    });
+    
   }
   ShowProducts(){
    this.router.navigate(["/products"])
@@ -35,6 +43,7 @@ export class NavigationComponent implements OnInit {
     this.router.navigate([""])
   }
   login(){
+    
     const dialogRef = this.dialog.open(LoginComponent)
 
     dialogRef.afterClosed().subscribe(data => {
@@ -46,5 +55,9 @@ export class NavigationComponent implements OnInit {
   }
   Openoption(){
     this.router.navigate(["/UserOp"])
+  }
+  fetchCartItems(){
+    debugger
+    this.totalProduct = this.cartServ.getNumItem()
   }
   }

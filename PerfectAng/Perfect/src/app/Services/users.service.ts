@@ -32,14 +32,12 @@ export class UsersService {
     return this.http.get<User>(this.basicUrl + `Login/${email}/${pass}`)
   }
   public GetCurrentUser() : User{
-  //  return this.currentUser
    var str = sessionStorage.getItem('currentUser')
    if(str != null)
    var user =JSON.parse(str) 
    return user
   }
   public SetCurrentUser(user : User){
-   //this.currentUser = user
    var jsonUser = JSON.stringify(user)
    sessionStorage.setItem('currentUser' , jsonUser)
   }

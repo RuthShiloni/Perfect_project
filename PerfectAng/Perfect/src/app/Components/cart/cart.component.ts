@@ -74,11 +74,13 @@ export class CartComponent implements OnInit {
         this.cart =  this.cartServ.DeleteFromUnRegisterUserCart(pId , idSize.id)     
         console.log(typeof(this.cart))     
         this.cart = this.cart.filter(u =>  u.idSizeNavigation !== idSize)
+        this.cartServ.Remove1()
         this.resetPage()
     }
     else{
         this.cartServ.DeleteCart(id).subscribe(
           data=>{
+          this.cartServ.Remove1()
           console.log(data)
           this.ngOnInit()
           },
@@ -87,7 +89,7 @@ export class CartComponent implements OnInit {
           }
         ) 
     } 
-    
+   
   }
   Delivery(){
     this.delivery = true
@@ -122,6 +124,7 @@ export class CartComponent implements OnInit {
       this.cartServ.UpdateUnRegisterCart(product , product.productId)
      this.resetPage()
     }  
+    this.cartServ.Add1()
   }
   minusP(product : ShoppingCart){
     if(product.quantity == 1)
@@ -136,7 +139,7 @@ export class CartComponent implements OnInit {
         this.cartServ.UpdateUnRegisterCart(product , product.productId)
         this.resetPage()
     }
-   
+    this.cartServ.Remove1()
   }
   resetPage(){
     if (this.cart.length != 0 ){

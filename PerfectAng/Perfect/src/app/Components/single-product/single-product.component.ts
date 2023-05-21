@@ -61,6 +61,7 @@ export class SingleProductComponent implements OnInit {
           this.cart = new ShoppingCart(this.userServ.GetCurrentUser().id, this.CurrentSize.id, this.product.id, element.quantity += 1, this.CurrentSize, this.product, element.id)
           this.cartServ.UpdateCart(element.id, this.cart).subscribe(
             data => { 
+             this.cartServ.Add1()
              this._snackBar.open("התווסף בהצלחה" , "close")
             },
             err => {

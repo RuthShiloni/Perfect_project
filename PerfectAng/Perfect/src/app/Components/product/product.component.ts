@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ProductService } from 'src/app/Services/product.service';
 import { Product } from 'src/app/Classes/Products';
 import { Router } from '@angular/router';
@@ -75,7 +75,9 @@ export class ProductComponent implements OnInit {
             const element = data.find(e => e.idSizeNavigation.id == size.id)!;
             this.cart = new ShoppingCart(this.userServ.GetCurrentUser().id, size.id, product.id, element.quantity += 1, size, product, element.id)
             this.cartServ.UpdateCart(element.id, this.cart).subscribe(
-              data => { },
+              data => {
+                this.cartServ.Add1()
+               },
               err => {
                 console.log(err)
               }
@@ -90,9 +92,10 @@ export class ProductComponent implements OnInit {
                 console.log(err)
               }
             )
-          }   
+          } 
        }
       )
     }
+    //this.cartServ.cartUpdated.emit();
   }
 }
