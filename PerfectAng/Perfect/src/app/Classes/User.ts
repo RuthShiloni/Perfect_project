@@ -8,7 +8,7 @@ export class User{
         public phone : string,
         public email : string,
         public password : string,
-        public Addresses? : Address[],
+        public address? : Address,
         public birthdate? : Date  
         ) {}
 }

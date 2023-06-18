@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { PersonalProduct } from '../Classes/PersonalProduct';
 import { ShoppingCart } from '../Classes/ShoppingCart';
 import { UsersService } from './users.service';
+import { Product } from '../Classes/Products';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,9 @@ export class CartService {
   private add !: boolean
   public numItem : number = 0
   cartUpdated: EventEmitter<void> = new EventEmitter<void>();
+  public isDelivary : boolean = false
+  public productsToOrder : ShoppingCart[] = []
+  public personalPToOrder : PersonalProduct[] = []
 
   constructor(private http : HttpClient , private userServ : UsersService) { }
   
@@ -25,20 +29,18 @@ export class CartService {
     return this.http.post<any>(this.basicUrl+"addShoppingCart" , newCart)
   }
 
-// //personal Product
-//   public AddPersonalProduct(newPersonalProduct : PersonalProduct) : Observable<any>{
-//     return this.http.post<any>(this.basicUrl+"addShoppingCart" , newPersonalProduct)
-//   }
-
   public DeleteCart(id : number):Observable<any>{
     return this.http.delete<any>(this.basicUrl+`deleteShoppingCart/${id}`)
   }
+
   public GetAllCartByUserId(userid : number) : Observable<ShoppingCart[]>{
   return this.http.get<ShoppingCart[]>(this.basicUrl + `GetAllCartByUserId/${userid}`)
   }
+
   public UpdateCart(id : number , sp : ShoppingCart) : Observable<boolean>{
     return this.http.put<boolean>(this.basicUrl + `UpdateShoppingCart/${id}` , sp )
   }
+
   public AddToUnRegisterUserCart(newCart : ShoppingCart){
     this.add = false
     this.UnregisterUserCart.forEach(element => {
@@ -49,9 +51,10 @@ export class CartService {
     });  
     if(this.add == false)
       this.UnregisterUserCart.push(newCart)
-      this.numItem += newCart.quantity
-    this.cartUpdated.emit()
+    //   this.numItem += newCart.quantity
+    // this.cartUpdated.emit()
   }
+
   public DeleteFromUnRegisterUserCart(pId : number , idSize : number){
   
     for (let i = 0; i < this.UnregisterUserCart.length; i++) {
@@ -60,12 +63,17 @@ export class CartService {
     }
     return this.UnregisterUserCart
   }
+
   public UpdateUnRegisterCart(shc : ShoppingCart , id : number){
   const index = this.UnregisterUserCart.findIndex(x => x.productId == id)
   this.UnregisterUserCart[index] = shc
   }
+
   public GetUnRegisterCart() : ShoppingCart[]{
    return this.UnregisterUserCart
+  }
+  public SetUnRegisterCart(cart : ShoppingCart[]){
+    this.UnregisterUserCart = cart
   }
 // פונקציה שבזמן לוגין שומרת את מספר הפריטים ב
 //sessionstorage 
@@ -74,7 +82,9 @@ export class CartService {
     var numberItem = JSON.stringify(number)
     sessionStorage.setItem('numItem' , numberItem)
     this.numItem = number
+    this.cartUpdated.emit()
   }
+
   public getNumItem(){
     if(this.userServ.GetCurrentUser() != null){
        var str = sessionStorage.getItem('numItem')
@@ -95,9 +105,10 @@ export class CartService {
     }
     this.cartUpdated.emit()
   }
-  public Remove1(){
+
+  public Remove(number : number){
     if(this.userServ.GetCurrentUser() != null){
-      var numberItem = JSON.stringify(this.numItem-1)
+      var numberItem = JSON.stringify(this.numItem-number)
       sessionStorage.setItem('numItem' , numberItem)
     }
    this.numItem -= 1

@@ -70,6 +70,19 @@ namespace perfect.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        [HttpGet]
+        [Route("getAllPPByUserId/{UserId}")]
+        public IActionResult GetAllPPByUserId(int UserId)
+        {
+            try
+            {
+                return Ok(personalPBL.GetAllPPByUserId(UserId));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
         [HttpPut]
         [Route("updatePersonalP/{id}")]
         public IActionResult UpdatePersonalProduct(int id,[FromBody] PersonalProductDTO pp)

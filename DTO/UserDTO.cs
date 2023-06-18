@@ -14,7 +14,7 @@ namespace DTO
         public DateTime? Birthdate { get; set; }
         public string Password { get; set; }
 
-        public AddressDTO[] Addresses { get; set; }
+        public AddressDTO Address { get; set; }
 
     }
 }

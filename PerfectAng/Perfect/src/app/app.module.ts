@@ -44,6 +44,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { RouterModule } from '@angular/router';
 import { ClubComponent } from './Components/club/club.component';
 import { UploadComponent } from './Components/upload/upload.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,7 +96,8 @@ import { UploadComponent } from './Components/upload/upload.component';
     MatDatepickerModule,
     MatNativeDateModule,
     RouterModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatFormFieldModule
   ],
   providers: [ ],
   bootstrap: [AppComponent],

@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +49,12 @@ namespace DAL
         {
             PersonalProduct curentpp = contex.PersonalProducts.SingleOrDefault(x => x.Id == id);
             return curentpp;
+        }
+
+        public IList<PersonalProduct> GetAllPPByUserId(int UserId)
+        {
+            return contex.PersonalProducts.Where(x => x.UserId == UserId).Include(x => x.Cream).Include(x => x.Layers).Include(x => x.Shape).Include(x => x.ColorId1Navigation).Include(x => x.ColorId2Navigation)
+                .ToList();
         }
 
         public bool UpdatePersonalProduct(int id, PersonalProduct pp)

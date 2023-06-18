@@ -42,7 +42,12 @@ namespace BL
             PersonalProduct currentPp = ppDAL.GetPersonalProductById(id);
             return mapper.Map<PersonalProduct, PersonalProductDTO>(currentPp);
         }
-
+        public IList<PersonalProductDTO> GetAllPPByUserId(int UserId)
+        {
+            IList<PersonalProductDTO> pp = mapper.Map<IList<PersonalProduct> , 
+                IList< PersonalProductDTO >>(ppDAL.GetAllPPByUserId(UserId));
+            return pp;
+        }
         public bool UpdatePersonalProduct(int id, PersonalProductDTO pp)
         {
             PersonalProduct currentPp = mapper.Map<PersonalProductDTO, PersonalProduct>(pp);

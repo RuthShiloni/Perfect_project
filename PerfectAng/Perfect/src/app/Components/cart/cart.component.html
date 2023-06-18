@@ -1,11 +1,11 @@
 <h1>עגלת קניות</h1>
-<div *ngIf="full">
- <h2>מוצרים</h2>
+<div >
+  <div *ngIf="full">
+ <h2 >מוצרים</h2>
 <mat-table [dataSource]="cart" class="mat-elevation-z8">
-
     <ng-container matColumnDef="מחק">
         <mat-header-cell *matHeaderCellDef> מחק </mat-header-cell>
-        <mat-cell *matCellDef="let element"> <mat-icon (click)="deleteItem(element.id ,element.productId , element.idSizeNavigation )">delete</mat-icon> </mat-cell>
+        <mat-cell *matCellDef="let element"> <mat-icon (click)="deleteItem(element )">delete</mat-icon> </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="כמות">
@@ -36,6 +36,65 @@
     <mat-row *matRowDef="let row; columns: header;"></mat-row>
   </mat-table>
 <br>
+</div>
+<div *ngIf="fullpp">
+<h2 >מוצרים בעיצוב אישי</h2>
+<mat-table [dataSource]="personalProductUser" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="מחק">
+    <mat-header-cell *matHeaderCellDef> מחק </mat-header-cell>
+    <mat-cell *matCellDef="let element"> <mat-icon (click)="deletePersonalP(element)" >delete</mat-icon> </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="כמות">
+    <mat-header-cell *matHeaderCellDef> כמות </mat-header-cell>
+    <mat-cell *matCellDef="let element"> <p class="pQuantity"><button (click)="minusPp(element)">-</button> &nbsp; {{element.quantity}} &nbsp;<button (click)="plusPp(element)">+</button></p>
+       </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="טקסט">
+    <mat-header-cell *matHeaderCellDef> טקסט </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.text}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="גודל">
+    <mat-header-cell *matHeaderCellDef> גודל </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.shape.shape1}}
+      , {{element.shape.size}}
+      </mat-cell> 
+  </ng-container>
+
+  <ng-container matColumnDef="מחיר">
+    <mat-header-cell *matHeaderCellDef> מחיר </mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.price | currency : "ILS"}} </mat-cell>
+  </ng-container>
+  
+  <ng-container matColumnDef="תאור">
+    <mat-header-cell *matHeaderCellDef> תאור </mat-header-cell>
+    <mat-cell *matCellDef="let element">מס' שכבות: {{element.layers.number}} ,  צבע הקרם : {{element.cream.details}}
+      <br>
+      צבע 1 :
+      {{element.colorId1Navigation.name}}  ,
+      צבע 2 : 
+      {{element.colorId2Navigation.name}} 
+     
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="תמונה להמחשה">
+    <mat-header-cell *matHeaderCellDef> תמונה להמחשה </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+       <img src="../../../assets/Images/עיצוב אישי.jpg">  
+    </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="headerPP"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: headerPP;"></mat-row>
+</mat-table>
+<br>
+</div>
+<div *ngIf="show">
   <h2>אופן אספקה</h2>
 <div class="container"> 
   <div>
@@ -44,9 +103,9 @@
   <div>
         <mat-form-field appearance="fill" class="option">
           <mat-label>בחר אופן אספקה</mat-label>
-          <mat-select>
+          <mat-select [(ngModel)]="defaultValue">
             <mat-option value="option1" (click)="Delivery()">משלוח עד הבית - 50 שח</mat-option>
-            <mat-option value="option2" (click)="PickUp()">איסוף עצמי - 0 שח </mat-option>
+            <mat-option  value="option2" (click)="PickUp()">איסוף עצמי - 0 שח </mat-option>
           </mat-select>
         </mat-form-field>   
     </div>
@@ -54,23 +113,11 @@
 <mat-divider *ngIf="underline"></mat-divider>
 <br>
 <div>
-  <mat-form-field appearance="fill" *ngIf="pickUp" >
-    <mat-label>בחר תאריך איסוף</mat-label>
-    <input matInput [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>  
-  </mat-form-field>
-  <!-- <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Choose a date</mat-label>
-    <input matInput [min]="minDate"  [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field> -->
-  
 
-  <mat-form-field appearance="fill"  *ngIf="delivery">
-    <mat-label>בחר תאריך עדיפות המשלוח</mat-label>
-    <input matInput [matDatepicker]="picker">
+  <mat-form-field appearance="fill" >
+    <mat-label *ngIf="pickUp">בחר תאריך איסוף </mat-label>
+    <mat-label *ngIf="delivery">בחר תאריך עדיפות המשלוח </mat-label>
+    <input matInput [matDatepicker]="picker" (dateChange)="cacheDate($event.value)">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field> 
@@ -115,6 +162,7 @@
 
   <button mat-flat-button class="button" (click)="next()" > הבא</button> 
 
+</div>
 </div>
 
   <div *ngIf="empty" class="empty">

@@ -1,10 +1,11 @@
 export class ProductToOrder{
     
-    constructor(public Id : number,
-        public OrderId : number,
-        public ProductId : number ,
-        public Quantity : number,
-        public SizeId : number) {
+    constructor(
+        public orderId: number,
+        public productId : number ,
+        public quantity : number,
+        public sizeId : number,
+        public id? : number) {
            
     }
 }

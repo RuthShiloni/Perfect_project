@@ -23,6 +23,7 @@ import { Shape } from 'src/app/Classes/Shape';
 import { ShapeService } from 'src/app/Services/shape.service';
 import { Layer } from 'src/app/Classes/Layer';
 import { LayerService } from 'src/app/Services/layer.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -65,8 +66,11 @@ export class PersonalProductComponent implements OnInit {
     private userServ: UsersService,
     private shapeServ: ShapeService,
     private layerServ: LayerService,
-    private personlProductserv: PersonalProductService
-  ) {
+    private personlProductserv: PersonalProductService,
+    private cartServ : CartService,
+    private _snackBar: MatSnackBar
+  ) 
+  {
     this.personalProductForm = new FormGroup({
       //OrderId: new FormControl(),
       ShapeId: new FormControl('', [Validators.required]),
@@ -129,19 +133,6 @@ export class PersonalProductComponent implements OnInit {
       this.allCream.find((e) => e.id == p.CreamId)?.price!+
       this.allLayers.find((e)=>e.id==p.LayersId)?.price!;
     this.personlProduct = new PersonalProduct(
-      //this.userServ.GetCurrentUser().id,
-      // public ShapeId:number,
-      //   public ColorId1:number,
-      //   public CreamId:number,
-      //   public LayersId:number,
-      //   public Picture:string,
-      //   public Text:string,
-      //   public Price:number,
-      //   public userId : number,
-      //   public Quantity ?:number,
-      //   public ColorId2 ?:number,
-      //   public OrderId ?:number,
-      //   public id ?: number
       p.ShapeId,
       p.ColorId1,
       p.CreamId,
@@ -149,15 +140,18 @@ export class PersonalProductComponent implements OnInit {
       p.Picture,
       p.Text,
       sumPrice,
+      1,//    p.Quantity,
       this.userServ.GetCurrentUser().id,
-      p.Quantity,
-      p.ColorId2
-      
+      p.ColorId2,
+      0   
     );
+    debugger
     console.log(this.personlProduct);
     this.personlProductserv.AddPersonalP(this.personlProduct).subscribe(
       (data) => {
         console.log(data);
+        this.cartServ.Add1()
+        this._snackBar.open("התווסף בהצלחה" , "close")
       },
       (err) => {
         console.log(err);

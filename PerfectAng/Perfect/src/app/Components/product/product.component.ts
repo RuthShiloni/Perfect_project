@@ -96,6 +96,6 @@ export class ProductComponent implements OnInit {
        }
       )
     }
-    //this.cartServ.cartUpdated.emit();
+    this.cartServ.Add1()
   }
 }

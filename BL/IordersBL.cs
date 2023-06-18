@@ -13,6 +13,6 @@ namespace BL
 
         public bool DeleteOrder(int id);
 
-        public bool AddOrder(OrdersDTO newOrder);
+        public int AddOrder(OrdersDTO newOrder);
     }
 }

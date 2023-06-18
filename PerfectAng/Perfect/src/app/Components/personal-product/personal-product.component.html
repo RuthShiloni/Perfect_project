@@ -75,11 +75,13 @@
          <mat-label>*לתמונה אישית:</mat-label>
          <!-- <input accept="image/*" type='file' id="imgInp" onchange="" />  -->
       </div> 
-    </form>
+    
     <div>
-      <button [disabled]="!personalProductForm.valid" (click)="onSubmit()"  mat-button color="red">הוספה לסל</button>
+      <button [disabled]="!personalProductForm.valid" (click)="onSubmit()" class="button">הוספה לסל</button>
     </div>
+  </form>
   </div>
+
   <div><img src=" ../../../assets/images/עיצוב אישי.jpg" height="250px" width="350px" /></div>
   </div>
 

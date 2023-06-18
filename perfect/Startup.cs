@@ -39,25 +39,33 @@ namespace perfect
             services.AddControllers();
             services.AddScoped<IuserBL, UserBL>();
             services.AddScoped<IuserDAL, UserDAL>();
+
             services.AddScoped<IpersonalProductBL, PersonalProductBL>();
             services.AddScoped<IPersonalProductDAL, PersonalProductDAL>();
+
             services.AddScoped<IordersDAL, OrdersDAL>();
             services.AddScoped<IordersBL, OrdersBL>();
+
             services.AddScoped<IshoppingCartBL, ShoppingCartBL>();
             services.AddScoped<IshoppingCartDAL, ShoppingCartDAL>();
+
             services.AddScoped<IshapeBL, ShapeBL>();
             services.AddScoped<IshapeDAL, ShapeDAL>();
+
             services.AddScoped<IlayersBL, LayersBL>();
             services.AddScoped<IlayersDAL, LayersDAL>();
+
             services.AddScoped<IProductsBL, ProductsBL>();
             services.AddScoped<IProductsDAL, ProductsDAL>();
+
             services.AddScoped<ICategoriesBL, CategoriesBL>();
             services.AddScoped<ICategoriesDAL, CategoriesDAL>();
+
             services.AddScoped<IAddressBL, AddressBL>();
             services.AddScoped<IaddressDAL, AddressDAL>();
             
-            services.AddScoped<IProductsBL, ProductsBL>();
-            services.AddScoped<IProductsDAL, ProductsDAL>();
+            //services.AddScoped<IProductsBL, ProductsBL>();
+            //services.AddScoped<IProductsDAL, ProductsDAL>();
             services.AddScoped<ISizePriceBL, SizePriceBL>();
             services.AddScoped<ISizePriceDAL, SizePriceDAL>();
          
@@ -67,6 +75,8 @@ namespace perfect
             services.AddScoped<ICreamBL, CreamBL>();
             services.AddScoped<ICreamDAL, CreamDAL>();
 
+            services.AddScoped<IproductToOrderBL, productToOrderBL>();
+            services.AddScoped<IProductToOrderDAL, ProductToOrderDAL>();
 
             services.AddSwaggerGen(c =>
             {
