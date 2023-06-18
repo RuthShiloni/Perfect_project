@@ -9,13 +9,14 @@ namespace DAL
     public class OrdersDAL : IordersDAL
     {
         PerfectContext context = new PerfectContext();
-        public bool AddOrder(Order newOrder)
+        public int AddOrder(Order newOrder)
         {
             try
             {
                 context.Orders.Add(newOrder);
                 context.SaveChanges();
-                return true;
+                //context.Orders.Last();
+                return newOrder.Id;
             }
             catch(Exception ex)
             {

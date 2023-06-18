@@ -1,11 +1,12 @@
 export class Order{
-    constructor(public Id:number,
-        public UserId:number,
-        public Delivery:string,
-        public Date:Date,
-        public PickupDate:Date,
-        public DeliveryPrice:number,
-        public Delivered:boolean
+    constructor(
+        public id? : number,
+        public userId?:number,
+        public delivery?:string,
+        public date?:Date,
+        public pickupDate?:Date,
+        public deliveryPrice?:number,
+        public delivered?:boolean,
         
        ){}
 }

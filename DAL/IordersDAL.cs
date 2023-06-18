@@ -13,6 +13,6 @@ namespace DAL
 
         public bool DeleteOrder(int id);
 
-        public bool AddOrder(Order newOrder);
+        public int AddOrder(Order newOrder);
     }
 }

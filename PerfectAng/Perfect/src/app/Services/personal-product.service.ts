@@ -17,4 +17,10 @@ export class PersonalProductService {
   public DeletePersonalP(id : number) : Observable<any>{
     return this.http.delete<any>(this.basicUrl+`deletePersonalP/${id}`)
   }
+  public GetPPByUserId(userId : number) : Observable<PersonalProduct[]>{
+    return this.http.get<PersonalProduct[]>(this.basicUrl + `getAllPPByUserId/${userId}`)
+  }
+  public UpdatePersonalP(id : number , pp : PersonalProduct) : Observable<boolean>{
+    return this.http.put<boolean>(this.basicUrl + `updatePersonalP/${id}` , pp)
+  }
 }

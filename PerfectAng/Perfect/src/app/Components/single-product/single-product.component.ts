@@ -50,6 +50,7 @@ export class SingleProductComponent implements OnInit {
       this.cart = new ShoppingCart( 0 ,this.CurrentSize.id , this.product.id , 1 ,this.CurrentSize , this.product , 0)
       console.log(this.cart)
       this.cartServ.AddToUnRegisterUserCart(this.cart);
+      this.cartServ.Add1() 
       this._snackBar.open("התווסף בהצלחה" , "close")
    }
    else{
@@ -79,7 +80,8 @@ export class SingleProductComponent implements OnInit {
               console.log(err)
             }
           )
-        }   
+        }  
+        this.cartServ.Add1() 
      }
     )
    }

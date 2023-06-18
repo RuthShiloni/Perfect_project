@@ -14,7 +14,7 @@ namespace BL
         public bool UpdatePersonalProduct(int id, PersonalProductDTO pp);
 
         public bool DeletePersonalProduct(int id);
-
+        public IList<PersonalProductDTO> GetAllPPByUserId(int UserId);
         public bool AddPersonalProduct(PersonalProductDTO pp);
     }
 }

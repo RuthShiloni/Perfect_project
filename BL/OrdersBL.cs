@@ -22,7 +22,7 @@ namespace BL
             });
             mapper = config.CreateMapper();
         }
-        public bool AddOrder(OrdersDTO newOrder)
+        public int AddOrder(OrdersDTO newOrder)
         {
             Order currentOrder = mapper.Map<OrdersDTO, Order>(newOrder);
             return ordersDAL.AddOrder(currentOrder);

@@ -14,7 +14,7 @@ namespace DAL
         public bool UpdatePersonalProduct(int id, PersonalProduct pp);
 
         public bool DeletePersonalProduct(int id);
-
+        public IList<PersonalProduct> GetAllPPByUserId(int userId);
         public bool AddPersonalProduct(PersonalProduct pp);
     }
 }

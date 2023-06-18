@@ -1,4 +1,3 @@
-
 <mat-stepper linear #stepper>
   <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
     <form [formGroup]="firstFormGroup">
@@ -8,7 +7,7 @@
         <input matInput formControlName="firstCtrl" placeholder="First name" required>
       </mat-form-field>&nbsp;
       <mat-form-field appearance="fill">
-      <mat-label>שם משפחה</mat-label>
+        <mat-label>שם משפחה</mat-label>
         <input matInput formControlName="firstCtr2" placeholder="Last name" required>
       </mat-form-field>
       <div>
@@ -16,34 +15,36 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>מלא כתובת למשלוח</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>עיר</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Jerusalem"
-               required>
-      </mat-form-field>&nbsp;
-      <mat-form-field appearance="fill">
-        <mat-label>רחוב</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Jaffo"
-               required>
-      </mat-form-field>&nbsp;
-      <mat-form-field appearance="fill">
-        <mat-label>מספר בנין</mat-label>
-        <input matInput formControlName="secondCtrl2" placeholder="14"
-               required>
-      </mat-form-field>&nbsp;
-      <mat-form-field appearance="fill">
-      <mat-label>מספר דירה</mat-label>
-      <input matInput formControlName="secondCtrl3" placeholder="6"
-             required>
-    </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
+  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable" *ngIf="isdelivary">  
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>מלא כתובת למשלוח</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>עיר</mat-label>
+            <input  matInput formControlName="secondCtrl" placeholder="Jerusalem"
+              required>
+          </mat-form-field>&nbsp;
+          <mat-form-field appearance="fill">
+            <mat-label>רחוב</mat-label>
+            <input [disabled]="selectedOption == '1'" matInput formControlName="secondCtrl1" placeholder="Jaffo"
+              required>
+          </mat-form-field>&nbsp;
+          <mat-form-field appearance="fill">
+            <mat-label>מספר בנין</mat-label>
+            <input [disabled]="selectedOption == '1'" matInput formControlName="secondCtrl2" placeholder="14" required>
+          </mat-form-field>&nbsp;
+          <mat-form-field appearance="fill">
+            <mat-label>מספר דירה</mat-label>
+            <input [disabled]="selectedOption == '1'" matInput formControlName="secondCtrl3" placeholder="6" required>
+          </mat-form-field>
+        </form>
+
+
+
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+   
   </mat-step>
   <mat-step [stepControl]="ThirdFormGroup" [editable]="isEditable">
     <form [formGroup]="ThirdFormGroup">
@@ -61,8 +62,8 @@
     <ng-template matStepLabel>מעבר לתשלום</ng-template>
     <p>מעבר לתשלום מאובטח</p>
     <div>
-       <button mat-button matStepperNext (click)="payment()">Next</button>
-       <button mat-button (click)="stepper.reset()">Reset</button> 
+      <button mat-button matStepperNext (click)="payment()">Next</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
     </div>
   </mat-step>
 </mat-stepper>

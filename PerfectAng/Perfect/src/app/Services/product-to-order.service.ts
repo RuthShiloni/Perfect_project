@@ -2,14 +2,12 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { ProductToOrder } from '../Classes/ProductToOrder';
 import { Observable } from 'rxjs';
-import { environment } from './../../environments/environment';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductToOrderService {
-  basicUrl : string = environment.baseUrl+"ProductToOrder/"
+  basicUrl : string = "https://localhost:44337/api/ProductToOrder/"
   constructor(private http : HttpClient) { }
 
 public GetAllProductToOrder():Observable <ProductToOrder[]>{

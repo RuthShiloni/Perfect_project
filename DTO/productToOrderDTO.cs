@@ -6,7 +6,7 @@ namespace DTO
 {
    public class productToOrderDTO
     {
-
+        public int id { get; set; }
         public int OrderId { get; set; }
         public int ProductId { get; set; }
         public int Quantity { get; set; }

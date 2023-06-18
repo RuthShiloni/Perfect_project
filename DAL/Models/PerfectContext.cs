@@ -36,7 +36,7 @@ namespace DAL.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=(localdb)\\ProjectsV13;Database=Perfect;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Perfect;Trusted_Connection=True;");
             }
         }
 
@@ -207,7 +207,7 @@ namespace DAL.Models
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.PersonalProducts)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__PersonalP__userI__48CFD27E");
+                    .HasConstraintName("FK_PersonalProduct_Users");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -247,9 +247,7 @@ namespace DAL.Models
             {
                 entity.ToTable("ProductToOrder");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.OrderId).HasColumnName("orderId");
 
@@ -257,9 +255,7 @@ namespace DAL.Models
 
                 entity.Property(e => e.Quantity).HasColumnName("quantity");
 
-                entity.Property(e => e.SizeId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("sizeId");
+                entity.Property(e => e.SizeId).HasColumnName("sizeId");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.ProductToOrders)

@@ -1,3 +1,8 @@
+import { Color } from "./Color";
+import { Cream } from "./Cream";
+import { Layer } from "./Layer";
+import { Shape } from "./Shape";
+
 export class PersonalProduct{
     constructor(
         public ShapeId:number,
@@ -6,13 +11,18 @@ export class PersonalProduct{
         public LayersId:number,
         public Picture:string,
         public Text:string,
-        public Price:number,
+        public price:number,
+        public quantity :number,
         public userId : number,
-        public Quantity ?:number,
-        public ColorId2 ?:number,
-        public OrderId ?:number,
-        public id ?: number
-
+        public ColorId2 :number,
+        public id : number,
+        public shape? : Shape,
+        public cream? : Cream , 
+        public layers? : Layer,
+        public colorId1Navigation? : Color,
+        public colorId2Navigation? : Color,
+        public orderId ?:number
+        
        ){}
 }
 

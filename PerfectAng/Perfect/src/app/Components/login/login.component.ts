@@ -6,6 +6,7 @@ import { UsersService } from 'src/app/Services/users.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { CartService } from 'src/app/Services/cart.service';
 import { ShoppingCart } from 'src/app/Classes/ShoppingCart';
+import { PersonalProductService } from 'src/app/Services/personal-product.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
   
   constructor(private userServ : UsersService , private router : Router , 
     public dialogRef : MatDialogRef<LoginComponent> , private _snackBar: MatSnackBar,
-    public cartServ : CartService) { }
+    public cartServ : CartService , private ppServ : PersonalProductService) { }
 
   ngOnInit(): void {
     this.showErr = false
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
           this.showErr = true
         else{ 
           debugger
+          //סוכם את מספר המוצרים 
           this.cartServ.GetAllCartByUserId(data.id).subscribe(res=>{
             console.log(res)
             this.userCart = res
@@ -50,7 +52,18 @@ export class LoginComponent implements OnInit {
             this.userCart.forEach(e => {
              item += e.quantity
             });
-            this.cartServ.SetNumItem(item)
+            //סוכם את מספר המוצרים האישיים
+            this.ppServ.GetPPByUserId(data.id).subscribe( 
+              res=>{
+                res.forEach(element => {
+                  if(element.orderId == null)
+                  item += element.quantity
+                });
+                //למה מחוץ ללולאה זה עושה את זה בלי הסכימה של המוצרים האישיים
+               this.cartServ.SetNumItem(item)
+               // console.log(item)
+              }
+            )
              this.cartServ.cartUpdated.emit()
           }
              )

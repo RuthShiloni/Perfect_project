@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using AutoMapper;
 using System.Text;
 using DAL.Models;
+using System.Linq;
 
 namespace BL
 {
@@ -56,7 +57,10 @@ namespace BL
 
         public UserDTO Login(string email, string pass)
         {
-            UserDTO user = mapper.Map<User, UserDTO>(userDAL.Login(email, pass));
+            User u = userDAL.Login(email, pass);
+            UserDTO user = mapper.Map<User, UserDTO>(u);
+            var a = u.Addresses.ToArray();
+            user.Address =mapper.Map<Address , AddressDTO>(a[0]);
             return user;
         }
     }

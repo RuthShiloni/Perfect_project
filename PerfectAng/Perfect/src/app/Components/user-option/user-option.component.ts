@@ -29,10 +29,10 @@ export class UserOptionComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.userServ.GetCurrentUser()
-    console.log(typeof this.user.Addresses)
-    if(this.user.Addresses != null){ 
+    console.log(typeof this.user.address)
+    if(this.user.address != null){ 
        this.isfull = true
-       this.currentAdd = this.user.Addresses[0]
+       this.currentAdd = this.user.address
     }    
   }
   onDateChange(event :any) {

@@ -1,7 +1,6 @@
 import { analyzeFile } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { User } from 'src/app/Classes/User';
 import { UsersService } from 'src/app/Services/users.service';
