@@ -1,7 +1,7 @@
-<br><br><br><br><br><br>
-<h1 class="g"> רעבים לעוד?</h1>
-<div>
-  <br>
+<br>
+
+<div class="g">
+  <h1> רעבים לעוד?</h1>
   <h2>חנות:039096387 </h2>
   <h2>להזמנות:0527180072</h2>
   
@@ -11,10 +11,47 @@
   <h2>כתובתינו:אלעד</h2>
 </div>
 
-<div dir=rtl class="wrapper">
-  <h5>דברו איתנו</h5>
-  <h5>תוכלו להשאיר לנו הודעה ונשמח לחזור אליכם בהקדם</h5>
-  <div style="display: flex;justify-content: space-around;">
+  <div class="contact-form-container">
+    <h2>Contact Us</h2>
+  <h3>דברו איתנו</h3>
+  <h3>תוכלו להשאיר לנו הודעה ונשמח לחזור אליכם בהקדם</h3>
+    <form [formGroup]="clubForm" (ngSubmit)="onSubmit()">
+       <div class="example-container"><mat-form-field appearance="fill">
+        <mat-label>Enter full Name</mat-label>
+        <input matInput placeholder="please enter full Name" type="text" formControlName="fulltName">
+        <mat-error *ngIf="clubForm.get('fulltName')?.invalid && clubForm.get('fulltName')?.touched">
+          {{getErrorMessage('fulltName')}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter email</mat-label>
+          <input matInput placeholder="please enter email" type="text" formControlName="email">
+          <mat-error *ngIf="clubForm.get('email')?.invalid && clubForm.get('email')?.touched">
+            {{getErrorMessage('email')}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter message</mat-label>
+          <textarea matInput placeholder="please enter message" type="text" formControlName="message"></textarea>
+          <mat-error *ngIf="clubForm.get('message')?.invalid && clubForm.get('message')?.touched">
+            {{getErrorMessage('message')}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+  
+  
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    <!-- </div></div> -->
+    </form>
+  
+  
+  <!-- <div style="display: flex;justify-content: space-around;">
     <div style="border: 5px;border-style: groove;width:30%;text-align: center;">
       <div appearance="fill" class="appearance">
         <mat-label>שם מלא</mat-label>
@@ -36,5 +73,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>

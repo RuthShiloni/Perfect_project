@@ -9,6 +9,8 @@ export class User{
         public email : string,
         public password : string,
         public address? : Address,
-        public birthdate? : Date  
+        
+        public birthdate? : Date
+
         ) {}
 }
