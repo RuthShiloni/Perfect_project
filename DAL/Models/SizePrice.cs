@@ -9,6 +9,7 @@ namespace DAL.Models
     {
         public SizePrice()
         {
+            ProductToOrders = new HashSet<ProductToOrder>();
             ShoppingCarts = new HashSet<ShoppingCart>();
         }
 
@@ -18,6 +19,7 @@ namespace DAL.Models
         public int Price { get; set; }
 
         public virtual Product Product { get; set; }
+        public virtual ICollection<ProductToOrder> ProductToOrders { get; set; }
         public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; }
     }
 }

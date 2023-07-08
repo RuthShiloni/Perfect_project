@@ -1,7 +1,6 @@
 import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { UsersService } from 'src/app/Services/users.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { CartService } from 'src/app/Services/cart.service';
@@ -20,7 +19,7 @@ export class LoginComponent implements OnInit {
   durationInSeconds = 5;
   userCart : ShoppingCart[] = []
   
-  constructor(private userServ : UsersService , private router : Router , 
+  constructor(private userServ : UsersService ,
     public dialogRef : MatDialogRef<LoginComponent> , private _snackBar: MatSnackBar,
     public cartServ : CartService , private ppServ : PersonalProductService) { }
 
@@ -28,22 +27,21 @@ export class LoginComponent implements OnInit {
     this.showErr = false
   }
   email = new FormControl('', [Validators.required, Validators.email]);
-
+  pass = new FormControl('',[Validators.required] )
   getErrorMessage() {
     this.showErr = false
-    if (this.email.hasError('required')) {
+    if (this.email.hasError('required') || this.pass.hasError('required')) {
       return 'You must enter a value';
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
-  login(email : any , pass : any ){
+  login(email : any , pass? : any ){
      this.userServ.Login(email , pass).subscribe(
       data=> {
         if(data == null)
           this.showErr = true
         else{ 
-          debugger
           //סוכם את מספר המוצרים 
           this.cartServ.GetAllCartByUserId(data.id).subscribe(res=>{
             console.log(res)
@@ -68,12 +66,17 @@ export class LoginComponent implements OnInit {
           }
              )
         
-          this._snackBar.open("login successfully" , "close")
-          console.log(data)
-          this.router.navigate([""])
+          // _snackBar.open("login successfully" , "close")
+          this._snackBar.open('התחברת בהצלחה', '', {
+            duration: 3000
+          });
+          //console.log(data)
           this.dialogRef.close()
           this.userServ.SetCurrentUser(data);
         }
+      },
+      err =>{
+         this.showErr = true
       }
     )
   }

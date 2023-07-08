@@ -10,7 +10,7 @@ export class PersonalProduct{
         public CreamId:number,
         public LayersId:number,
         public Picture:string,
-        public Text:string,
+        public text:string,
         public price:number,
         public quantity :number,
         public userId : number,

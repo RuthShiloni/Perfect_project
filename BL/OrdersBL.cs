@@ -43,5 +43,10 @@ namespace BL
             Order currentOrder = ordersDAL.GetOrderById(id);
             return mapper.Map<Order, OrdersDTO>(currentOrder);
         }
+        public IList<OrdersDTO> GetAllOrdersByUserId(int id)
+        {
+            IList<OrdersDTO> allOrders = mapper.Map<IList<Order>, IList<OrdersDTO>>(ordersDAL.GetAllOrdersByUserId(id));
+            return allOrders;
+        }
     }
 }

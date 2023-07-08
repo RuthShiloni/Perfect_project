@@ -23,4 +23,7 @@ export class PersonalProductService {
   public UpdatePersonalP(id : number , pp : PersonalProduct) : Observable<boolean>{
     return this.http.put<boolean>(this.basicUrl + `updatePersonalP/${id}` , pp)
   }
+  public GetPPById(id : number) : Observable<PersonalProduct>{
+    return this.http.get<PersonalProduct>(this.basicUrl + `getPersonalPById/${id}`)
+  }
 }

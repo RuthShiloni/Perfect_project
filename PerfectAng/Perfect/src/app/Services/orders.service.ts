@@ -12,7 +12,9 @@ export class OrdersService {
    private basicUrl : string = "https://localhost:44337/api/Orders/"
 
   constructor(private http : HttpClient , private userServ : UsersService) { }
+
   public newOrder : Order = new Order()
+
   public AddNewOrder() : Observable<number>{
     this.newOrder.date=new Date()
     this.newOrder.delivered = false
@@ -21,5 +23,9 @@ export class OrdersService {
     else 
     this.newOrder.userId = 1409
     return this.http.post<number>(this.basicUrl + `addOrder` , this.newOrder)
+  }
+
+  public GetAllOrdersByUserId(id : number) : Observable<Order[]>{
+     return this.http.get<Order[]>(this.basicUrl + `getOrdersByUserId/${id}`)
   }
 }

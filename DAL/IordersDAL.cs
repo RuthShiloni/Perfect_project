@@ -14,5 +14,6 @@ namespace DAL
         public bool DeleteOrder(int id);
 
         public int AddOrder(Order newOrder);
+        public IList<Order> GetAllOrdersByUserId(int id);
     }
 }

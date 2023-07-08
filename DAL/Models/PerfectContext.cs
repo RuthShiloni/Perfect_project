@@ -268,6 +268,12 @@ namespace DAL.Models
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ProductToOrder_Products");
+
+                entity.HasOne(d => d.Size)
+                    .WithMany(p => p.ProductToOrders)
+                    .HasForeignKey(d => d.SizeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__ProductTo__sizeI__282DF8C2");
             });
 
             modelBuilder.Entity<Shape>(entity =>

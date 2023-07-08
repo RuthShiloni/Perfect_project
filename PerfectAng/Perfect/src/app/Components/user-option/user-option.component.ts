@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Address } from 'src/app/Classes/Address';
+import { Order } from 'src/app/Classes/Order';
+import { PersonalProduct } from 'src/app/Classes/PersonalProduct';
 import { User } from 'src/app/Classes/User';
 import { AddressService } from 'src/app/Services/address.service';
+import { OrdersService } from 'src/app/Services/orders.service';
+import { PersonalProductService } from 'src/app/Services/personal-product.service';
+import { ProductToOrderService } from 'src/app/Services/product-to-order.service';
+import { ProductService } from 'src/app/Services/product.service';
+import { SizeAndPriceService } from 'src/app/Services/size-and-price.service';
 import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
@@ -19,21 +26,69 @@ export class UserOptionComponent implements OnInit {
   selectedDate !: Date
   newAddress !: Address
   isfull : boolean = false
+  hide : boolean = true
   currentAdd !: Address
+  allOrders !: Order[]
+  noOrder : boolean = false
+  orders : boolean = false
+ 
 
-  constructor(private userServ : UsersService , private addressServ : AddressService , private router : Router) { 
+  constructor(private userServ : UsersService , private addressServ : AddressService , private router : Router ,
+    private orderServ : OrdersService ,private pToOrderServ : ProductToOrderService ,
+    private ppServ : PersonalProductService) { 
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 100, 0, 1);
     this.maxDate = new Date(currentYear - 13, 11, 31);
   }
-
+  panelOpenState = false;
   ngOnInit(): void {
     this.user = this.userServ.GetCurrentUser()
     console.log(typeof this.user.address)
     if(this.user.address != null){ 
        this.isfull = true
+       this.hide = false
        this.currentAdd = this.user.address
     }    
+    this.orderServ.GetAllOrdersByUserId(this.user.id).subscribe(
+      res => {
+        console.log(res)
+        this.allOrders = res
+        if(this.allOrders.length == 0)
+        this.noOrder = true
+        else{
+          this.orders = true
+          this.allOrders.forEach(element => {
+            element.productToOrders?.forEach(e => {
+              if(e.id != null)
+             this.pToOrderServ.GetProductToOrderById(e.id).subscribe(
+              res => {
+                e.product = res.product
+                e.size = res.size
+              }
+             )
+            });
+            element.personalProducts?.forEach(ele =>{
+             if(ele.id != null)
+             this.ppServ.GetPPById(ele.id).subscribe(
+              res => {
+                ele.shape = res.shape
+                ele.colorId1Navigation = res.colorId1Navigation
+                ele.colorId2Navigation = res.colorId2Navigation
+                ele.cream = res.cream
+                ele.layers = res.layers
+              } ,
+              err => {
+                console.log(err)
+              }
+             )
+            });
+          });
+        }    
+      },
+      err =>{
+        console.log(err)
+      }
+    )
   }
   onDateChange(event :any) {
     this.selectedDate = event.value;
@@ -64,5 +119,8 @@ export class UserOptionComponent implements OnInit {
   exit(){ 
     window.location.reload()
     sessionStorage.removeItem('currentUser')
+  }
+  showP(id : number){
+    this.router.navigate(["/singleP", id])
   }
 }

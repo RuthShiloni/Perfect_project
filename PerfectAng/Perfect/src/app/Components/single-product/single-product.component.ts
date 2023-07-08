@@ -51,7 +51,9 @@ export class SingleProductComponent implements OnInit {
       console.log(this.cart)
       this.cartServ.AddToUnRegisterUserCart(this.cart);
       this.cartServ.Add1() 
-      this._snackBar.open("התווסף בהצלחה" , "close")
+      this._snackBar.open(':) המוצר התווסף לסל בהצלחה ', '', {
+        duration: 3000
+      });
    }
    else{
     this.cartServ.GetAllCartByUserId(this.userServ.GetCurrentUser().id).subscribe(

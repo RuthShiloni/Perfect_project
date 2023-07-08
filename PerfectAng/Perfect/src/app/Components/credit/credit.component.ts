@@ -14,70 +14,75 @@ import { UsersService } from 'src/app/Services/users.service';
   styleUrls: ['./credit.component.scss']
 })
 export class CreditComponent implements OnInit {
-  
 
-  constructor(private orderServ : OrdersService , private userServ : UsersService , private cartServ : CartService ,
-    private productToOrderS : ProductToOrderService , private ppServ : PersonalProductService) { }
 
-   //monthControl = new FormControl('', Validators.required);
-   month : number[] = [1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 ,12]
-   years : number[]=[]
-   currentYear !: number
-   newOrder !: Order
-   productToOrder !: ProductToOrder
-   refreshCart : ShoppingCart[] = []
+  constructor(private orderServ: OrdersService, private userServ: UsersService, private cartServ: CartService,
+    private productToOrderS: ProductToOrderService, private ppServ: PersonalProductService,) { }
+
+  //monthControl = new FormControl('', Validators.required);
+  month: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  years: number[] = []
+  currentYear !: number
+  newOrder !: Order
+  idOrder !: number
+  productToOrder !: ProductToOrder
+  refreshCart: ShoppingCart[] = []
+  showCredit: boolean = true
+  confirmOrder: boolean = false
   ngOnInit(): void {
-   this.currentYear = new Date().getFullYear()
-   this.years.push(this.currentYear)
-    for (let i = this.currentYear; i < this.currentYear + 10 ; i++) {
-      debugger
+    this.currentYear = new Date().getFullYear()
+    this.years.push(this.currentYear)
+    for (let i = this.currentYear; i < this.currentYear + 10; i++) {
       this.years.push(i)
     }
     console.log(this.years)
   }
-  ConfirmOrder(){  
+  ConfirmOrder() {
     //הוספת הזמנה חדשה
-       this.orderServ.AddNewOrder().subscribe(
+    this.orderServ.AddNewOrder().subscribe(
       res => {
+          this.idOrder = res
         //הוספת הפריטים שהוזמנו אל טבלת מוצרים להזמנה
-        //במקרה שרשום
-          if(this.userServ.GetCurrentUser() != null){
-            //מעבר על טבלת מוצרים
+        if (this.userServ.GetCurrentUser() != null) {
+          //מעבר על טבלת מוצרים
           this.cartServ.productsToOrder.forEach(element => {
-          this.productToOrder = new ProductToOrder (res , element.productId , element.quantity , element.idSize)
-          //הוספה לטבלה
-          debugger
-          this.productToOrderS.AddProductToOrder(this.productToOrder).subscribe(
-            res =>{
-              this.cartServ.productsToOrder.forEach(element =>{
-                 this.cartServ.DeleteCart(element.id).subscribe()
-              })
-            }, err =>{console.log(err)}
-          )
+            this.productToOrder = new ProductToOrder(res, element.productId, element.quantity, element.idSize)
+            //הוספה לטבלה
+            debugger
+            this.productToOrderS.AddProductToOrder(this.productToOrder).subscribe(
+              res => {
+                this.cartServ.productsToOrder.forEach(element => {
+                  this.cartServ.DeleteCart(element.id).subscribe()
+                })
+              }, err => { console.log(err) }
+            )
           });
-         //מעבר על מוצרים אישיים
-         this.cartServ.personalPToOrder.forEach(element => {
-          element.orderId = res   
-          //עידכון
-          this.ppServ.UpdatePersonalP(element.id , element).subscribe(data => {} , err => {console.log(err)})
-         });
-       }
-       else{
-        this.cartServ.GetUnRegisterCart().forEach(element => {
-          this.productToOrder = new ProductToOrder(res , element.productId , element.quantity , element.idSize)
-          //הוספה לטבלה
-          this.productToOrderS.AddProductToOrder(this.productToOrder).subscribe(res => {    
-            this.cartServ.SetUnRegisterCart(this.refreshCart)
-          } , err => {console.log(err)})
-        });
-       }
+          //מעבר על מוצרים אישיים
+          this.cartServ.personalPToOrder.forEach(element => {
+            element.orderId = res
+            //עידכון
+            this.ppServ.UpdatePersonalP(element.id, element).subscribe(data => { }, err => { console.log(err) })
+          });
+          console.log(res)
+        }
+        else {
+          this.cartServ.GetUnRegisterCart().forEach(element => {
+            this.productToOrder = new ProductToOrder(res, element.productId, element.quantity, element.idSize)
+            //הוספה לטבלה
+            this.productToOrderS.AddProductToOrder(this.productToOrder).subscribe(res => {
+              this.cartServ.SetUnRegisterCart(this.refreshCart)
+            }, err => { console.log(err) })
+          });  
+        }
+        this.cartServ.SetNumItem(0)
+        this.confirmOrder = true
+        this.showCredit = false
 
-        },err => {console.log(err)}
-      )
-      
-   
-   //במקרה שהמשתמש לא רשום
+      }, err => { console.log(err) }
+    )
 
-    
+
   }
+
 }
+

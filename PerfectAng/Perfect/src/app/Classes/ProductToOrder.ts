@@ -1,3 +1,6 @@
+import { Product } from "./Products";
+import { SizePrice } from "./SizePrice";
+
 export class ProductToOrder{
     
     constructor(
@@ -5,7 +8,10 @@ export class ProductToOrder{
         public productId : number ,
         public quantity : number,
         public sizeId : number,
-        public id? : number) {
+        public size? : SizePrice,
+        public product? : Product,
+        public id? : number ,
+        ) {
            
     }
 }

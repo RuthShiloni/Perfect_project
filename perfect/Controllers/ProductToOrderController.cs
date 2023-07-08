@@ -68,7 +68,7 @@ namespace perfect.Controllers
         }
 
         [HttpGet]
-        [Route("getProductToOrderById{id}")]
+        [Route("getProductToOrderById/{id}")]
         public IActionResult GetProductToOrderById(int id)
         {
             try

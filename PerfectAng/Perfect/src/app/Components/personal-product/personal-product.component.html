@@ -1,87 +1,107 @@
+
+<h1> מוצר בעיצוב אישי </h1>
+
 <div style="display: flex;">
   <div>
     <form [formGroup]="personalProductForm" (ngSubmit)="onSubmit()">
       <!-- <input matInput placeholder="pat@example.com"  [formControl]="email" required > -->
       <div class="field">
-        <mat-label>צורה:</mat-label>
+        <mat-label> בחר צורה : </mat-label><br>
         <mat-form-field appearance="fill">
-          <mat-select disableOptionCentering formControlName="ShapeId" [errorStateMatcher]="matcher"> 
-            <mat-option>בחר צורה</mat-option> 
-            <mat-option *ngFor="let s of allShapes" [value]="s.id"> {{s.shape1}} גודל {{s.size}} {{s.price | currency: 'ILS'}}</mat-option>
+          <mat-label> בחר צורה  &nbsp;&nbsp;&nbsp; </mat-label>
+          <mat-select disableOptionCentering formControlName="ShapeId" [errorStateMatcher]="matcher">
+            <!-- <mat-option>בחר צורה</mat-option> -->
+            <mat-option *ngFor="let s of allShapes" [value]="s.id"> {{s.shape1}} גודל {{s.size}} {{s.price | currency:
+              'ILS'}}</mat-option>
           </mat-select>
-          <mat-error *ngIf="personalProductForm.controls['ShapeId'].hasError('required')">You must make a selection</mat-error>
+          <mat-error *ngIf="personalProductForm.controls['ShapeId'].hasError('required')">You must make a
+            selection</mat-error>
         </mat-form-field>
       </div>
 
-       <div class="field">
-        <mat-label>צבע 1:</mat-label>
+      <div class="field">
+        <mat-label> בחר צבע 1 : </mat-label><br>
         <mat-form-field appearance="fill">
-          <mat-label>Choose one</mat-label>
+          <mat-label> בחר צבע 1  &nbsp;&nbsp;&nbsp; </mat-label>
           <mat-select disableOptionCentering formControlName="ColorId1" [errorStateMatcher]="matcher">
-            <mat-option>בחר צבע 1</mat-option>
             <mat-option [value]="c.id" *ngFor="let c of allColors">{{c.name}} {{c.price | currency: 'ILS'}}</mat-option>
           </mat-select>
-          <mat-error *ngIf="personalProductForm.controls['ColorId1']?.hasError('required')">You must make a selection</mat-error>
-        </mat-form-field>
-      </div> 
-
-        <div class="field">
-        <mat-label>צבע 2:</mat-label>
-        <mat-form-field appearance="fill">
-          <mat-label>Choose one</mat-label>
-          <mat-select disableOptionCentering formControlName="ColorId2" [errorStateMatcher]="matcher">
-            <mat-option>בחר צבע 2</mat-option>
-            <mat-option [value]="c.id" *ngFor="let c of allColors">{{c.name}} {{c.price | currency: 'ILS'}}</mat-option>
-          </mat-select>
-           <mat-error *ngIf="personalProductForm.controls['ColorId2']?.hasError('required')">You must make a selection</mat-error>
+          <mat-error *ngIf="personalProductForm.controls['ColorId1']?.hasError('required')">You must make a
+            selection</mat-error>
         </mat-form-field>
       </div>
 
+      <div class="field">
+        <mat-label> בחר צבע 2 : </mat-label><br>
+        <mat-form-field appearance="fill">
+          <mat-label> בחר צבע 2 &nbsp;&nbsp;&nbsp; </mat-label>
+          <mat-select disableOptionCentering formControlName="ColorId2" [errorStateMatcher]="matcher">
+            <!-- <mat-option>בחר צבע 2</mat-option> -->
+            <mat-option [value]="c.id" *ngFor="let c of allColors">{{c.name}} {{c.price | currency: 'ILS'}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="personalProductForm.controls['ColorId2']?.hasError('required')">You must make a
+            selection</mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
 
 
-       <div class="field">
+  <div class="div2">
+    <form  [formGroup]="personalProductForm">
+      <div class="field">
         <mat-label> קרם:</mat-label>
         <mat-form-field appearance="fill">
-          <mat-label>Choose one</mat-label>
+          <mat-label> בחר צבע קרם  &nbsp;&nbsp;&nbsp;</mat-label>
           <mat-select disableOptionCentering formControlName="CreamId" [errorStateMatcher]="matcher">
-            <mat-option>בחר צבע קרם:</mat-option>
-            <mat-option *ngFor="let c of allCream" [value]="c.id">{{c.details}} {{c.price | currency: 'ILS'}}</mat-option>
+            <!-- <mat-option>בחר צבע קרם:</mat-option> -->
+            <mat-option *ngFor="let c of allCream" [value]="c.id">{{c.details}} {{c.price | currency:
+              'ILS'}}</mat-option>
           </mat-select>
-           <mat-error *ngIf="personalProductForm.controls['CreamId'].hasError('required')">You must make a selection</mat-error>
+          <mat-error *ngIf="personalProductForm.controls['CreamId'].hasError('required')">You must make a
+            selection</mat-error>
         </mat-form-field>
-      </div> 
-       
-       <div class="field">
+      </div>
+
+      <div class="field">
         <mat-label>שכבות:</mat-label>
         <mat-form-field appearance="fill">
-          <mat-label>Choose one</mat-label>
+          <mat-label> בחר מספר קומות &nbsp;&nbsp;&nbsp; </mat-label>
           <mat-select disableOptionCentering formControlName="LayersId" [errorStateMatcher]="matcher">
-            <mat-option>בחר מס' קומות</mat-option>
-            <mat-option *ngFor="let l of allLayers" [value]="l.id" >{{l.number}} {{l.price | currency: 'ILS'}}</mat-option>
+            <!-- <mat-option>בחר מס' קומות</mat-option> -->
+            <mat-option *ngFor="let l of allLayers" [value]="l.id">{{l.number}} {{l.price | currency:
+              'ILS'}}</mat-option>
           </mat-select>
-           <mat-error *ngIf="personalProductForm.controls['LayersId'].hasError('required')">You must make a selection</mat-error>
+          <mat-error *ngIf="personalProductForm.controls['LayersId'].hasError('required')">You must make a
+            selection</mat-error>
         </mat-form-field>
-      </div>   
+      </div>
 
 
-        <div class="field">
+      <div class="field">
         <mat-label>*להוספת כיתוב:</mat-label>
         <mat-form-field appearance="fill">
           <mat-label>להוספת כיתוב</mat-label>
           <input matInput placeholder="להוספת כיתוב לעוגה" formControlName="Text" required>
         </mat-form-field>
-              <app-upload (onUploadFinished)="uploadFinished($event)" style="text-align: center;"></app-upload>
+        <mat-label> להוספת תמונה אישית : </mat-label>
+        <app-upload (onUploadFinished)="uploadFinished($event)" style="text-align: center;"></app-upload>
+      </div>
+    <p> * להוספת פרטים וייעוץ לעוגת החלומות שלכם <a href="/contact"> צור קשר </a></p>
+      <!-- <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">חלבי</mat-radio-button>  &nbsp;&nbsp;
+        <mat-radio-button value="2">פרווה</mat-radio-button>
+      </mat-radio-group> -->
+    </form>
+  </div>
 
-         <mat-label>*לתמונה אישית:</mat-label>
-         <!-- <input accept="image/*" type='file' id="imgInp" onchange="" />  -->
-      </div> 
-    
+  <div>
+    <img src="../../../assets/Images/personalDesign.jpg" height="250px" width="350px" />
+    <br><br>
     <div>
       <button [disabled]="!personalProductForm.valid" (click)="onSubmit()" class="button">הוספה לסל</button>
     </div>
-  </form>
   </div>
-
-  <div><img src=" ../../../assets/images/עיצוב אישי.jpg" height="250px" width="350px" /></div>
-  </div>
+</div>
+<app-footer></app-footer>
 

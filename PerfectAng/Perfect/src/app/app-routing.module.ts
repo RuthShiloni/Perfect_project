@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './Components/home-page/home-page.component';
 import { ProductComponent } from './Components/product/product.component';
 import { NavigationComponent } from './Components/Navigation/navigation.component';
-import { FooterComponent } from './Components/footer/footer.component';
 import { CartComponent } from './Components/cart/cart.component';
 import { AboutComponent } from './Components/about/about.component';
 import { RegulationsComponent } from './Components/regulations/regulations.component';

@@ -81,7 +81,7 @@ export class PersonalProductComponent implements OnInit {
       Text: new FormControl('',),
       Price: new FormControl('', ),
       // Quantity: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
-      ColorId2: new FormControl('', [Validators.required]),
+      ColorId2: new FormControl(''),
     });
   }
 
@@ -151,7 +151,10 @@ export class PersonalProductComponent implements OnInit {
       (data) => {
         console.log(data);
         this.cartServ.Add1()
-        this._snackBar.open("התווסף בהצלחה" , "close")
+       // this._snackBar.open("התווסף בהצלחה" , "close")
+       this._snackBar.open(':) המוצר התווסף לסל בהצלחה ', '', {
+        duration: 3000
+      });
       },
       (err) => {
         console.log(err);
