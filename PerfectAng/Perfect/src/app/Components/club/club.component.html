@@ -1,54 +1,180 @@
+<div style="text-align: center;">
 <br><br>
 
 <div>
-  <img src="../../../assets/images/תמונה אודותינו.jpg" style="width: 100%;">
+  <img src="../../../assets/images/aboutUs.jpg" style="width: 100%;">
 
-  <h1>מועדון הלקוחות שלנו</h1>
+  
 </div>
-<h2>החברים שלנו נהנים יותר</h2>
+<h1 style="font-size: xxx-large;color: rgb(250, 66, 5);">מועדון הלקוחות שלנו</h1>
+<h2 style="color:rgb(250, 66, 5);font-weight: bold; font-size:x-large;">החברים שלנו נהנים יותר</h2>
 
-<h3>להצטרפות יש למלא את הפרטים הבאים</h3>
-
-<div [formGroup]="clubForm" class="border">
-
-  <label for="firstName">שם פרטי</label>
-  <input id="firstName" type="text" formControlName="firstName" name="firstName" #firstName>
-  <p class="error" *ngIf="clubForm.controls['firstName'].errors?.required">this field is required</p>
-  <p class="error" *ngIf="clubForm.controls['firstName'].errors?.pattern">insert valid firstName</p>
-
-  <label for="lastName">שם משפחה</label>
-  <input id="lastName" type="text" formControlName="lastName" name="lastName" #lastName>
-  <p class="error" *ngIf="clubForm.controls['lastName'].errors?.required">this field is required</p>
-  <p class="error" *ngIf="clubForm.controls['lastName'].errors?.pattern">insert valid lastName</p>
+<h3 style="font-weight: bold;">להצטרפות יש למלא את הפרטים הבאים</h3>
+<!-- <s>t6i65</s> -->
+<form [formGroup]="clubForm" (ngSubmit)="onSubmit()">
   
+  <div class="container">
+  <div class="text">
 
-  <!-- <br><br> -->
-  <label for="email">אימייל</label>
-  <input id="email" type="email" formControlName="email" name="email" #email>
-  <p class="error" *ngIf="clubForm.controls['email'].errors?.required">this field is required</p>
-  <p class="error" *ngIf="clubForm.controls['email'].errors?.pattern">insert valid email</p>
-  <!-- <p *ngIf="this.clubForm.value.email.hasError('required')">this field is required</p>
-  <p *ngIf="this.clubForm.value.email.hasError('email')">insert valid email</p> -->
+    <div class="example-container">
+  <mat-form-field appearance="fill">
+    <mat-label>הכנס שם</mat-label>
+    <input matInput placeholder="שם פרטי" type="text" formControlName="firstName">
+    <mat-error *ngIf="clubForm.get('firstName')?.invalid && clubForm.get('firstName')?.touched">
+      {{getErrorMessage('firstName')}}
+    </mat-error>
+  </mat-form-field>
+</div>
 
-  <!-- <br><br> -->
-  <label for="phoneNumber">טלפון</label>
-  <input id="phoneNumber" type="text" formControlName="phoneNumber" name="phoneNumber" #phoneNumber >
-  <p class="error" *ngIf="clubForm.controls['phoneNumber'].errors?.required">this field is required</p>
-  <p class="error" *ngIf="clubForm.controls['phoneNumber'].errors?.pattern">insert valid phoneNumber</p>
+<div class="example-container">
+  <mat-form-field appearance="fill">
+    <mat-label>הכנס שם משפחה</mat-label>
+    <input matInput placeholder="last Name" type="text" formControlName="lastName">
+    <mat-error *ngIf="clubForm.get('lastName')?.invalid && clubForm.get('lastName')?.touched">
+      {{getErrorMessage('lastName')}}
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<div class="example-container">
+  <mat-form-field appearance="fill">
+    <mat-label>הכנס כתובת מייל</mat-label>
+    <input matInput placeholder="pat@example.com" type="email" formControlName="email">
+    <mat-error *ngIf="clubForm.get('email')?.invalid && clubForm.get('email')?.touched">
+      {{getErrorMessage('email')}}
+    </mat-error>
+  </mat-form-field></div>
+
+  <div class="example-container">
+  <mat-form-field appearance="fill">
+    <mat-label>הכנס מספר טלפון</mat-label>
+    <input matInput placeholder="מספר טלפון" type="tel" formControlName="phoneNumber">
+    <mat-error *ngIf="clubForm.get('phoneNumber')?.invalid && clubForm.get('phoneNumber')?.touched">
+      {{ getErrorMessage('phoneNumber')}}
+    </mat-error>
+  </mat-form-field></div>
+
+  <div class="example-container">
+  <mat-form-field appearance="fill">
+    <mat-label>הכנס סיסמא</mat-label>
+    <input matInput type="password" formControlName="password">
+    <mat-error *ngIf="clubForm.get('password')?.invalid && clubForm.get('password')?.touched">
+      {{ getErrorMessage('password') }}
+    </mat-error>
+  </mat-form-field></div>
+
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>הכנס תאריך יומולדת</mat-label>
+      <input matInput type="date" formControlName="Birthday">
+      <mat-error *ngIf="clubForm.get('Birthday')?.invalid &&clubForm.get('Birthday')?.touched">
+        <!-- clubForm.get('Birthday')?.invalid && clubForm.get('Birthday')?.touched -->
+        {{ getErrorMessage('Birthday') }}
+      </mat-error>
+      <mat-error *ngIf="clubForm.get('Birthday')?.hasError('pastDate')">
+        תאריך לא תקין
+      </mat-error>
+      
+    </mat-form-field></div>
   
+  
+    <!--  -->
+    <!--  -->
+
+  <button style="color: black; background:rgb(180, 170, 167);" mat-raised-button color="primary" type="submit">Submit</button>
+</div></div>
+</form>
+</div>
+<!-- 
+<div class="example-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input name="pass" #pass matInput  [type]="hide ? 'password' : 'text'" >
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <p *ngIf="showErr" class="errMassege">אחד או יותר מהשדות אינו תקין*</p>
+</div>
+
+ -->
+
+
+<!-- /////////////////////////// -->
+<!-- <div [formGroup]="clubForm" (ngSubmit)="onSubmit()">
+
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your firstName</mat-label>
+      <input matInput placeholder="pat@example.com"  formControlName="firstName" required >
+      <mat-error *ngIf="clubForm.get('firstName').invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your lastName</mat-label>
+      <input matInput placeholder="pat@example.com"  formControlName="lastName" required >
+      <mat-error *ngIf="clubForm.get('lastName')?.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+
+   <br><br> -->
+<!-- דוגמא עובדת -->
+<!--  -->
+  <!-- <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com"  formControlName="email" required >
+      <mat-error *ngIf="clubForm.get('email')?.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your phoneNumber</mat-label>
+      <input matInput placeholder="pat@example.com"  formControlName="phoneNumber" required >
+      <mat-error *ngIf="clubForm.get('phoneNumber')?.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  <br><br>
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your Birthday</mat-label>
+      <input matInput placeholder="pat@example.com" type="date" formControlName="Birthday" required >
+      <mat-error *ngIf="clubForm.get('Birthday')?.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
   <!-- <br><br> -->
-  <label for="Birthday">יום הולדת</label>
-  <input id="Birthday" type="date" formControlName="Birthday" name="Birthday" #Birthday>
-    <!-- <p class="error" *ngIf="clubForm.controls['Birthday'].errors?.required">this field is required</p> 
-  <p class="error" *ngIf="clubForm.controls['Birthday'].errors?.pattern">insert valid Birthday</p>
-    -->
+  <!-- <label for="Birthday">יום הולדת</label>
+  <input id="Birthday" type="date" formControlName="Birthday" name="Birthday" #Birthday> -->
+  
+  <!--  -->
+  <!-- <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input matInput placeholder="pat@example.com"  formControlName="password" required >
+      <mat-error *ngIf="clubForm.get('password')?.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>  -->
+
+
+<!-- טופס ישן -->
+<!-- 
   <label for="password">סיסמא</label>
   <input id="password" type="password" formControlName="password" name="password" #password>
   <p class="error" *ngIf="clubForm.controls['password'].errors?.required">this field is required</p>
-  <p class="error" *ngIf="clubForm.controls['password'].errors?.pattern">insert valid password</p>
-  <!-- <p *ngIf="this.clubForm.value.Password.hasError('required')">this field is required</p>
-  <p *ngIf="this.clubForm.value.Password.hasError('Password')">insert valid Password</p> -->
+  <p class="error" *ngIf="clubForm.controls['password'].errors?.pattern">insert valid password</p> -->
 
+  <!--  -->
+
+  <!-- <label for="firstName">שם פרטי</label>
+  <input id="firstName" type="text" formControlName="firstName" name="firstName" #firstName>
+  <p class="error" *ngIf="clubForm.controls['firstName'].errors?.required">this field is required</p>
+  <p class="error" *ngIf="clubForm.controls['firstName'].errors?.pattern">insert valid firstName</p>
+ -->
+
+<!-- 
   <div class="example-button">
     <button (click)="addUser()" mat-button>שלח</button>
   </div>
