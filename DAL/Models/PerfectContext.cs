@@ -36,7 +36,7 @@ namespace DAL.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=(localdb)\\ProjectsV13;Database=Perfect;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Perfect;Trusted_Connection=True;");
             }
         }
 
@@ -268,6 +268,12 @@ namespace DAL.Models
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ProductToOrder_Products");
+
+                entity.HasOne(d => d.Size)
+                    .WithMany(p => p.ProductToOrders)
+                    .HasForeignKey(d => d.SizeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__ProductTo__sizeI__282DF8C2");
             });
 
             modelBuilder.Entity<Shape>(entity =>

@@ -1,9 +1,15 @@
 
-.a{
+.footer{
+    text-decoration-color: goldenrod; 
+    //background-color: darkgrey; 
     background-color: #eee;
     height: 80px;
     display: flex;
-    margin-top: 200px;
+    //position: fixed;
+    width: 100%;
+    padding-bottom: 4px;
+    justify-content: center;
+    align-items: center;
 }
 // body{
 //     min-height: 100%;

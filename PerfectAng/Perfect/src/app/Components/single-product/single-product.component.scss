@@ -10,7 +10,8 @@ header{
 .container{
   display: flex;
   align-items: center;
-  justify-content: center
+  justify-content: center;
+  padding-bottom: 20px;
 }
 .type{
   font-size: 20px;
@@ -19,9 +20,11 @@ header{
   padding-top: 20px;
   font-size: 30px;
   text-decoration: underline;
+  color:  #c19a6d;
 }
   .image {
-    flex-basis: 35%;
+    flex-basis: 70%;
+    padding-right: 100px;
   }
   img{
     width: 600px;
@@ -32,7 +35,7 @@ header{
     width: 250px;
     height: 500px;
     font-size: 14px;
-    padding-left: 100px;
+    padding-right: 85px;
     margin-top: 20px;
     background-color: #eee;
 }

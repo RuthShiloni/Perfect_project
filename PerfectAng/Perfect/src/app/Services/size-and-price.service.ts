@@ -15,4 +15,8 @@ export class SizeAndPriceService {
    return this.http.get<SizePrice[]>(this.basicUrl+`getSize&PriceByPId/${id}`)
   }
 
+  public GetSizePriceById(id : number) : Observable<SizePrice>{
+    return this.http.get<SizePrice>(this.basicUrl +`getSizePriceById/${id}`)
+  }
+
 }

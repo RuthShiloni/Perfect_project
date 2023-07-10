@@ -84,7 +84,7 @@
   <ng-container matColumnDef="תמונה להמחשה">
     <mat-header-cell *matHeaderCellDef> תמונה להמחשה </mat-header-cell>
     <mat-cell *matCellDef="let element">
-       <img src="../../../assets/Images/עיצוב אישי.jpg">  
+       <img src="../../../assets/Images/personalDesign.jpg">  
     </mat-cell>
   </ng-container>
 
@@ -117,7 +117,9 @@
   <mat-form-field appearance="fill" >
     <mat-label *ngIf="pickUp">בחר תאריך איסוף </mat-label>
     <mat-label *ngIf="delivery">בחר תאריך עדיפות המשלוח </mat-label>
-    <input matInput [matDatepicker]="picker" (dateChange)="cacheDate($event.value)">
+    <input matInput [formControl]="date" [matDatepicker]="picker" (dateChange)="cacheDate($event.value)">
+   <mat-error *ngIf="date.invalid">{{getErrorMessage()}}</mat-error>
+   <p *ngIf="showErr" class="errMassege">    תאריך קטן *</p>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field> 

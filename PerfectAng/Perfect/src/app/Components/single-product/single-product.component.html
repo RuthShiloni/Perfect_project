@@ -1,19 +1,16 @@
 
   <div class="container">
-    <div class="image">
-      <img mat-card-xl-image src={{product.img}} >
-     </div>
     <div class="text"> 
       <header class="paddingTop">{{product.name}}</header>
       <br>
       <p *ngFor="let s of product.sizePrices">
         {{s.price | currency : 'ILS'}} </p>    
-      <header> : העוגה מכילה  </header>
+      <header>  העוגה מכילה : </header>
       <br>
       {{product.details}}
       <br>
       <br>
-     <header> : אלרגנים </header>
+     <header>  אלרגנים :</header>
      <br>
       {{product.allergens}}
       <br>   
@@ -29,4 +26,8 @@
        <br><br>
       <button mat-flat-button class="Sbutton" (click)="AddToCart()" >הוספה לסל</button> 
       </div>
+      <div class="image">
+        <img mat-card-xl-image src={{product.img}} >
+       </div>
     </div>
+    <app-footer></app-footer>

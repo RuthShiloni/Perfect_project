@@ -70,5 +70,18 @@ namespace perfect.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        [HttpGet]
+        [Route("getOrdersByUserId/{id}")]
+        public IActionResult GetAllOrdersByUserId(int id)
+        {
+            try
+            {
+                return Ok(ordersBL.GetAllOrdersByUserId(id));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

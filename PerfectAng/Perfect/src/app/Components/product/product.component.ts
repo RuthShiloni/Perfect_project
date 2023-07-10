@@ -8,6 +8,7 @@ import { ShoppingCart } from 'src/app/Classes/ShoppingCart';
 import { Category } from 'src/app/Classes/Category';
 import { CategoriesService } from 'src/app/Services/categories.service';
 import { SizePrice } from 'src/app/Classes/SizePrice';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class ProductComponent implements OnInit {
   showByCateg: boolean = false
 
   constructor(private productServ: ProductService, private userServ: UsersService,
-    private cartServ: CartService, private categServ: CategoriesService, private myRouter: Router) { }
+    private cartServ: CartService, private categServ: CategoriesService, private myRouter: Router,
+    private _snackBar: MatSnackBar,) { }
 
   ngOnInit(): void {
     this.productServ.GetAllProduct().subscribe(
@@ -46,7 +48,6 @@ export class ProductComponent implements OnInit {
     )
   }
   ShowByCat(id: number) {
-    debugger
     this.productServ.getProductsByCate(id).subscribe(
       data => {
         this.allProductByCate = data
@@ -96,6 +97,9 @@ export class ProductComponent implements OnInit {
        }
       )
     }
+    this._snackBar.open(':) המוצר התווסף לסל בהצלחה ', '', {
+      duration: 3000
+    });
     this.cartServ.Add1()
   }
 }

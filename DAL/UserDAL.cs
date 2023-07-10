@@ -81,6 +81,7 @@ namespace DAL
         public User Login(string email, string pass)
         {
             User user = contex.Users.Where(x => x.Email == email && x.Password == pass).Include(x => x.Addresses).SingleOrDefault();
+
             return user;
         }
     }

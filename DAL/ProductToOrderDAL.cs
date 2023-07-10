@@ -42,13 +42,13 @@ namespace DAL
 
         public IList<ProductToOrder> GetAllProductToOrder()
         {
-            IList<ProductToOrder> allProductToOrder = context.ProductToOrders.ToList();
+            IList<ProductToOrder> allProductToOrder = context.ProductToOrders.Include(x => x.Product).ToList();
             return allProductToOrder;
         }
 
         public ProductToOrder GetProductToOrderById(int id)
         {
-            ProductToOrder currentProductToOrder = context.ProductToOrders.SingleOrDefault(x => x.Id == id);
+            ProductToOrder currentProductToOrder = context.ProductToOrders.Where(x => x.Id == id).Include(x => x.Product).Include(x => x.Size).SingleOrDefault();
             return currentProductToOrder;
         }
 

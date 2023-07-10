@@ -45,14 +45,14 @@
   form {
     // max-width: 400px;
     // width: 100%;
-    padding-top: 20px;
-    margin-left: 450px;
-    padding-right: 20px;
+    padding-top: 35px;
+    margin-left: 100px;
+    padding-right: 80px;
     // border: 1px solid #ccc;
     // border-radius: 5px;
     // box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-top: 0;
-z-index: 1000;
+    top: 0;
+    z-index: 1000;
   }
   img{
       //position: fixed;
@@ -62,10 +62,9 @@ z-index: 1000;
     margin-left: 10px;
   }
 
-  mat-form-field {
-    width: 100%;
-  }
-  
+  // mat-form-field {
+  //   width: 88%;
+  // }
   mat-label {
     font-weight:normal;
     font-size: 15px;
@@ -83,13 +82,23 @@ z-index: 1000;
 //     font-size: 5px;
 //     padding: 5px;
 //   }
-  .small-input {
-    font-size: 14px;
-    height: 20px;
-    width: 100px;
-  }
+  // .small-input {
+  //   font-size: 14px;
+  //   height: 20px;
+  //   width: 100px;
+  // }
   .button{
     background-color: #c19a6d;
     font-size: 24px;
     color: white;
+    width: 400px;
+    margin-right: 25px;
+  }
+  .div2{
+   flex-basis: 55px;
+  }
+  h1{
+    text-align: center;
+    color:  #c19a6d;
+    border-bottom: 5px double;
   }

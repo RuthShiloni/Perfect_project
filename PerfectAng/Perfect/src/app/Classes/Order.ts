@@ -1,3 +1,6 @@
+import { PersonalProduct } from "./PersonalProduct";
+import { ProductToOrder } from "./ProductToOrder";
+
 export class Order{
     constructor(
         public id? : number,
@@ -7,6 +10,8 @@ export class Order{
         public pickupDate?:Date,
         public deliveryPrice?:number,
         public delivered?:boolean,
+        public personalProducts? : PersonalProduct[],
+        public productToOrders? : ProductToOrder[]
         
        ){}
 }

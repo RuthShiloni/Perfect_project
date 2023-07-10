@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,11 @@ namespace DAL
         {
             Order order = context.Orders.SingleOrDefault(x => x.Id == id);
             return order;
+        }
+        public IList<Order> GetAllOrdersByUserId(int id)
+        {
+            IList<Order> allOrder = context.Orders.Where(x => x.UserId == id).Include(x => x.PersonalProducts).Include(x => x.ProductToOrders).ToList();
+            return allOrder;
         }
     }
 }

@@ -47,7 +47,7 @@ namespace DAL
 
         public PersonalProduct GetPersonalProductById(int id)
         {
-            PersonalProduct curentpp = contex.PersonalProducts.SingleOrDefault(x => x.Id == id);
+            PersonalProduct curentpp = contex.PersonalProducts.Where(x => x.Id == id).Include(x => x.ColorId1Navigation).Include(x => x.ColorId2Navigation).Include(x => x.Shape).Include(x => x.Layers).Include(x => x.Cream).SingleOrDefault();
             return curentpp;
         }
 

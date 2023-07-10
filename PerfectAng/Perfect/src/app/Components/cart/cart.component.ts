@@ -1,5 +1,7 @@
+import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PersonalProduct } from 'src/app/Classes/PersonalProduct';
 import { ShoppingCart } from 'src/app/Classes/ShoppingCart';
@@ -31,6 +33,7 @@ export class CartComponent implements OnInit {
   show = false
   empty = true
   cachedDate !: Date;
+  showErr : boolean = false
 
   //minDate !: Date;
   constructor(private cartServ : CartService , private userServ : UsersService ,
@@ -38,6 +41,7 @@ export class CartComponent implements OnInit {
       // const currentDate = new Date();
       // this.minDate = new Date(currentDate.getFullYear() ,currentDate.getMonth() ,currentDate.getDay() + 1);
      }
+     date = new FormControl('' , [Validators.required])
 
   ngOnInit(): void {
     this.price = 0
@@ -52,8 +56,9 @@ export class CartComponent implements OnInit {
      else{
       this.empty = true
       this.full = false
-      this.show = false
      }
+     if(this.cart.length == 0 && this.personalProductUser.length == 0 )
+     this.show = false
       this.cart.forEach(element => {
       this.price += element.idSizeNavigation.price  * element.quantity
     });
@@ -73,8 +78,9 @@ export class CartComponent implements OnInit {
            else{
             this.empty = true
             this.full = false
-            this.show = false
            } 
+           if(this.cart.length == 0 && this.personalProductUser.length == 0 )
+           this.show = false
            this.cart.forEach(element => {
             this.price += element.idSizeNavigation.price * element.quantity
           }); 
@@ -112,6 +118,12 @@ export class CartComponent implements OnInit {
         }
        )
     }
+  }
+  getErrorMessage() {
+    
+       return 'You must enter a date value';  
+    
+     //return this.date.hasError('') ? 'Not a valid date' : '';
   }
   deleteItem(element : ShoppingCart){
     if(this.userServ.GetCurrentUser() == null){
@@ -158,7 +170,14 @@ export class CartComponent implements OnInit {
   next(){
     console.log(this.deliveryP)
      this.orderServ.newOrder.deliveryPrice = this.deliveryP
-     this.orderServ.newOrder.pickupDate = this.cachedDate
+     var currentDate = new Date()
+     debugger
+    //  if(this.cacheDate > currentDate.getDate)
+    //  this.orderServ.newOrder.pickupDate = this.cachedDate
+    //  else{
+    //   this.showErr = true
+    //   return
+    //  }
      this.cartServ.productsToOrder = this.cart
      this.cartServ.personalPToOrder = this.personalProductUser
     this.route.navigate(["/paymentD"])
@@ -250,7 +269,6 @@ export class CartComponent implements OnInit {
       this.fullpp = false
       this.empty = true
       this.full = false
-      this.show = false
      }
      if(this.personalProductUser.length != 0)
      this.fullpp = true 
@@ -266,6 +284,8 @@ export class CartComponent implements OnInit {
     this.personalProductUser.forEach(element => {
       this.price += element.price * element.quantity
     })
+    if(this.cart.length == 0 && this.personalProductUser.length == 0 )
+    this.show = false
     this.sumP = this.price + this.deliveryP
   }
 }

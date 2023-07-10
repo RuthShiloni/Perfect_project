@@ -59,8 +59,12 @@ namespace BL
         {
             User u = userDAL.Login(email, pass);
             UserDTO user = mapper.Map<User, UserDTO>(u);
+            if(u != null && u.Addresses.Count() != 0)
+            {
             var a = u.Addresses.ToArray();
             user.Address =mapper.Map<Address , AddressDTO>(a[0]);
+            }
+           
             return user;
         }
     }

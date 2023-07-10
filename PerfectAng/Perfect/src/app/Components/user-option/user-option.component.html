@@ -42,7 +42,7 @@
       
     <mat-tab label="עדכון כתובת">
       <br>
-      <form>
+      <form *ngIf="hide">
         <p>
             <mat-form-field appearance="fill">
                 <mat-label>עיר </mat-label>
@@ -68,39 +68,112 @@
             </mat-form-field>
           </p>
           <br>
-          <button mat-flat-button class="button" (click)="AddAddress(city.value,street.value,numB.value,numH.value)" > הוסך כתובת</button> 
+          <button mat-flat-button class="button" (click)="AddAddress(city.value,street.value,numB.value,numH.value)" > הוסף כתובת</button> 
    </form>
    <form *ngIf="isfull">
     <p>
         <mat-form-field appearance="fill">
-            <mat-label>{{currentAdd.city}} </mat-label>
-            <input matInput  #city>
+            <mat-label> עיר</mat-label>
+            <input value="{{currentAdd.city}}" matInput  #city>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
-            <mat-label>{{currentAdd.street}}</mat-label>
-            <input matInput #street>
+            <mat-label>רחוב</mat-label>
+            <input value="{{currentAdd.street}}" matInput #street>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
-            <mat-label>{{currentAdd.buildingN}}</mat-label>
-            <input matInput  #numB>
+            <mat-label>מספר בנין</mat-label>
+            <input value="{{currentAdd.buildingN}}" matInput  #numB>
         </mat-form-field>
       </p>
     <p>
         <mat-form-field appearance="fill">
-            <mat-label>{{currentAdd.houseN}}</mat-label>
-            <input matInput  #numH>
+            <mat-label>מספר דירה</mat-label>
+            <input value="{{currentAdd.houseN}}" matInput  #numH>
         </mat-form-field>
       </p>
       <br>
-      <button mat-flat-button class="button" (click)="AddAddress(city.value,street.value,numB.value,numH.value)" > הוסך כתובת</button> 
+      <button mat-flat-button class="button" (click)="AddAddress(city.value,street.value,numB.value,numH.value)" > עדכן כתובת</button> 
 </form>
     </mat-tab>
 
-    <mat-tab label="צפיה בהזמנות שלי"> 
+    <mat-tab label="צפיה בהזמנות שלי">
+     <br>
+     <p *ngIf="noOrder" class="empty"><mat-icon>mood_bad</mat-icon> אין הזמנות שבוצעו </p>
+     <div>
+    <h1 *ngIf="orders"> ההזמנות שלי</h1>
+      <br>
+      <mat-accordion *ngFor="let o of allOrders">
+        <mat-expansion-panel hideToggle >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              הזמנה מספר : {{o.id}}
+            </mat-panel-title>
+            <mat-panel-description>
+              תאריך הזמנה : {{o.date | date:'mediumDate'}}
+            </mat-panel-description>
+            <mat-panel-description>
+               זמן משלוח \ איסוף משוער : {{o.pickupDate | date:'mediumDate'}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>
+          {{o.delivery}}
+          </p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false" >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              הצג פרטי הזמנה
+            </mat-panel-title>
+            <mat-panel-description>
+              הצג {{panelOpenState ? 'פחות' : 'עוד'}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div>
+            <h2>מוצרים</h2>   
+            <mat-list *ngFor="let p of o.productToOrders">
+              <mat-list-item>
+                <img src={{p.product?.img}} (click)="showP(p.productId)"/> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                 שם : {{p.product?.name}}&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                 סוג : {{p.product?.type}}&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                 גודל : {{p.size?.size}} &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                 כמות : {{p.quantity}}&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                 מחיר : {{p.size?.price | currency : 'ILS'}}
+              </mat-list-item>
+              <mat-divider></mat-divider>
+            </mat-list>
+          </div>
+   <br> 
+   <div>
+            <h2>מוצרים אישיים</h2>
+         
+            <mat-list *ngFor="let pp of o.personalProducts">
+              <mat-list-item>
+                  <img src="../../../assets/Images/personalDesign.jpg"/> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                  
+            תאור :    שכבות: {{pp.layers?.number}} ,  קרם : {{pp.cream?.details}} ,  צבע 1 :
+                 {{pp.colorId1Navigation?.name}}  ,   צבע 2 : 
+                 {{pp.colorId2Navigation?.name}} 
+                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                 טקסט על העוגה : {{pp.text}}  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                 גודל : {{pp.shape?.shape1}}  , {{pp.shape?.size}} &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                 כמות : {{pp?.quantity}}&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                 <br><br>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                 מחיר : {{pp?.price | currency : 'ILS'}}
+              </mat-list-item>
+              <br>
+              <mat-divider></mat-divider>
+            </mat-list>
+          </div>
+        </mat-expansion-panel>
+         <br>
+      </mat-accordion>
+      
+    </div>
 
     </mat-tab>
     <mat-tab label="יציאה מהמערכת">
@@ -112,3 +185,4 @@
     </mat-tab>
 
   </mat-tab-group>
+  <!-- <app-footer></app-footer> -->
