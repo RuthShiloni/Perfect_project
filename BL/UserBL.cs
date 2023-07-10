@@ -20,7 +20,6 @@ namespace BL
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<AutoMapperProfile>();
-
             });
 
             mapper = config.CreateMapper();
@@ -42,12 +41,14 @@ namespace BL
             return mapper.Map<IList<User>, IList<UserDTO>>(userDAL.GetAllUsers());
         }
 
+
         public UserDTO GetUserById(int id)
         {
             User user = userDAL.GetUserById(id);
             UserDTO a = mapper.Map<User, UserDTO>(user);
             return a;
         }
+
 
         public bool UpdateUser(int id, UserDTO user)
         {
