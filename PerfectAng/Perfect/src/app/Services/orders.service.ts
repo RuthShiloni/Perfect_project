@@ -13,16 +13,16 @@ export class OrdersService {
 
   constructor(private http : HttpClient , private userServ : UsersService) { }
 
-  public newOrder : Order = new Order()
+  public newOrder : Order = new Order(0)
 
-  public AddNewOrder() : Observable<number>{
+  public AddNewOrder() : Observable<Order>{
     this.newOrder.date=new Date()
     this.newOrder.delivered = false
     if(this.userServ.GetCurrentUser() != null)
     this.newOrder.userId = this.userServ.GetCurrentUser().id
     else 
     this.newOrder.userId = 1409
-    return this.http.post<number>(this.basicUrl + `addOrder` , this.newOrder)
+    return this.http.post<Order>(this.basicUrl + `addOrder` , this.newOrder)
   }
 
   public GetAllOrdersByUserId(id : number) : Observable<Order[]>{

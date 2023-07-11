@@ -3,7 +3,8 @@ import { ProductToOrder } from "./ProductToOrder";
 
 export class Order{
     constructor(
-        public id? : number,
+        public id : number,
+        public sumPrice? : number,
         public userId?:number,
         public delivery?:string,
         public date?:Date,

@@ -93,7 +93,6 @@ export class CartComponent implements OnInit {
 
       this.ppServ.GetPPByUserId(this.userServ.GetCurrentUser().id).subscribe(
         res => {
-          debugger
           res.forEach(element => {
             if(element.orderId == null){
               this.personalProductUser.push(element)
@@ -170,20 +169,21 @@ export class CartComponent implements OnInit {
   next(){
     console.log(this.deliveryP)
      this.orderServ.newOrder.deliveryPrice = this.deliveryP
+     this.orderServ.newOrder.sumPrice = this.sumP
      var currentDate = new Date()
-     debugger
     //  if(this.cacheDate > currentDate.getDate)
     //  this.orderServ.newOrder.pickupDate = this.cachedDate
     //  else{
     //   this.showErr = true
     //   return
     //  }
+    this.cartServ.sumOrder = this.sumP
+    this.cartServ.deliveryPrice = this.deliveryP
      this.cartServ.productsToOrder = this.cart
      this.cartServ.personalPToOrder = this.personalProductUser
     this.route.navigate(["/paymentD"])
   }
   plusP(product : ShoppingCart){
-    debugger
     if(this.userServ.GetCurrentUser() != null){
        product.quantity += 1
        this.cartServ.UpdateCart(product.id , product).subscribe(
@@ -246,7 +246,6 @@ export class CartComponent implements OnInit {
     )
   }
   deletePersonalP(element : PersonalProduct){
-    debugger
    this.ppServ.DeletePersonalP(element.id).subscribe(
     data => {
       this.cartServ.Remove(element.quantity)
@@ -259,7 +258,6 @@ export class CartComponent implements OnInit {
    )
   }
   resetPage(){
-    debugger
     if (this.cart.length != 0 ) {
       this.empty = false
       this.full = true

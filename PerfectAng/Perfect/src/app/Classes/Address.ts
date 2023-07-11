@@ -5,6 +5,6 @@ export class Address{
         public  houseN: number,
         public buildingN:number, 
         public idUser:number,
-        public id?:number){}
+        public id:number){}
 
 }

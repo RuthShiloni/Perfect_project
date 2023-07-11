@@ -10,7 +10,6 @@ namespace DAL.Models
         public User()
         {
             Addresses = new HashSet<Address>();
-            Orders = new HashSet<Order>();
             PersonalProducts = new HashSet<PersonalProduct>();
             ShoppingCarts = new HashSet<ShoppingCart>();
         }
@@ -23,8 +22,7 @@ namespace DAL.Models
         public DateTime? Birthdate { get; set; }
         public string Password { get; set; }
 
-        public virtual ICollection<Address>? Addresses { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<PersonalProduct> PersonalProducts { get; set; }
         public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; }
     }

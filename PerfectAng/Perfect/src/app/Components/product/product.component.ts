@@ -57,6 +57,12 @@ export class ProductComponent implements OnInit {
       }
     )
   }
+  noCate(){
+    this.allProductByCate = []
+    this.showAll = true
+    this.showByCateg = false
+    
+  }
 
   showDetails(product: Product) {
     var id = product.id

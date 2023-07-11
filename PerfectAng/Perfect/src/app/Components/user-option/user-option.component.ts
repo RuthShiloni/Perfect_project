@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Address } from 'src/app/Classes/Address';
 import { Order } from 'src/app/Classes/Order';
@@ -35,7 +36,7 @@ export class UserOptionComponent implements OnInit {
 
   constructor(private userServ : UsersService , private addressServ : AddressService , private router : Router ,
     private orderServ : OrdersService ,private pToOrderServ : ProductToOrderService ,
-    private ppServ : PersonalProductService) { 
+    private ppServ : PersonalProductService , private _snackBar : MatSnackBar) { 
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 100, 0, 1);
     this.maxDate = new Date(currentYear - 13, 11, 31);
@@ -95,10 +96,13 @@ export class UserOptionComponent implements OnInit {
     console.log(this.selectedDate); // logs the selected date in a Date object format
   }
   Update(lname : string , fname : string , phone : string , email : string){
-   this.newUser = new User(this.user.id , fname , lname , phone , email,this.user.password)
+   this.newUser = new User(this.user.id , fname , lname , phone , email,this.user.password,this.selectedDate)
    this.userServ.UpdateUser(this.user.id , this.newUser).subscribe(
     response => {
-      alert("seccede update")
+      //alert("seccede update")
+      this._snackBar.open(':)  המשתמש התעדכן במערכת בהצלחה ', '', {
+        duration: 3000
+      });
     },
     err => {
       console.log(err)
@@ -106,15 +110,32 @@ export class UserOptionComponent implements OnInit {
    )
   }
   AddAddress(city : string , street : string , numB : any , numH : any){
-   this.newAddress = new Address(city , street , numH , numB , this.user.id)
+   this.newAddress = new Address(city , street , numH , numB , this.user.id , 0)
    this.addressServ.AddAddress(this.newAddress).subscribe(
     success=>{
-      alert("התעדכן בהצלחה")
+     // alert("התעדכן בהצלחה")
+     this._snackBar.open(':)  הכתובת התווספה למערכת בהצלחה ', '', {
+      duration: 3000
+    });
     },
     err =>{
       console.log(err)
     }
    )
+  }
+  UpdateAddress(city : string , street : string , numB : any , numH : any){
+    console.log(this.currentAdd.id)
+    this.newAddress = new Address(city , street , numH , numB , this.user.id , this.currentAdd.id)
+    this.addressServ.UpdateAddress(this.newAddress,this.currentAdd.id).subscribe(
+      res =>{
+        this._snackBar.open(':)  הכתובת התעדכנה במערכת בהצלחה ', '', {
+          duration: 3000
+        });
+      },
+      err => {
+        console.log(err)
+      }
+    )
   }
   exit(){ 
     window.location.reload()

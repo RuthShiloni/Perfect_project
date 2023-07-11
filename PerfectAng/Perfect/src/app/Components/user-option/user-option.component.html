@@ -30,7 +30,7 @@
               </p>
               <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>תאריך יומהולדת</mat-label>
-                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" (dateChange)="onDateChange($event)">
+                <input matInput [min]="minDate" [max]="maxDate" placeholder="{{user.birthdate}}" [matDatepicker]="picker" (dateChange)="onDateChange($event)">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>              <br>
@@ -96,7 +96,7 @@
         </mat-form-field>
       </p>
       <br>
-      <button mat-flat-button class="button" (click)="AddAddress(city.value,street.value,numB.value,numH.value)" > עדכן כתובת</button> 
+      <button mat-flat-button class="button" (click)="UpdateAddress(city.value,street.value,numB.value,numH.value)" > עדכן כתובת</button> 
 </form>
     </mat-tab>
 
@@ -134,7 +134,7 @@
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div>
-            <h2>מוצרים</h2>   
+            <h2>מוצרים :</h2>   
             <mat-list *ngFor="let p of o.productToOrders">
               <mat-list-item>
                 <img src={{p.product?.img}} (click)="showP(p.productId)"/> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
@@ -149,7 +149,7 @@
           </div>
    <br> 
    <div>
-            <h2>מוצרים אישיים</h2>
+            <h2>מוצרים אישיים :</h2>
          
             <mat-list *ngFor="let pp of o.personalProducts">
               <mat-list-item>
@@ -168,6 +168,11 @@
               <br>
               <mat-divider></mat-divider>
             </mat-list>
+            <br>
+            <h2>סיכום : </h2>
+            <p>מחיר כולל משלוח : {{o.sumPrice | currency : 'ILS'}}</p>
+            <p> מחיר משלוח : {{o.deliveryPrice | currency : 'ILS'}}</p> 
+            
           </div>
         </mat-expansion-panel>
          <br>

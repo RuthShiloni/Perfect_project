@@ -20,8 +20,8 @@ namespace DAL.Models
         public DateTime PickupDate { get; set; }
         public int DeliveryPrice { get; set; }
         public bool Delivered { get; set; }
+        public int SumPrice { get; set; }
 
-        public virtual User User { get; set; }
         public virtual ICollection<PersonalProduct> PersonalProducts { get; set; }
         public virtual ICollection<ProductToOrder> ProductToOrders { get; set; }
     }

@@ -13,6 +13,7 @@ namespace DTO
         public DateTime PickupDate { get; set; }
         public int DeliveryPrice { get; set; }
         public bool Delivered { get; set; }
+        public int SumPrice { get; set; }
         public PersonalProductDTO[] PersonalProducts { get; set; }
         public productToOrderDTO[] ProductToOrders { get; set; }
 

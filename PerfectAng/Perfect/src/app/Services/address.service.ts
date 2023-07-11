@@ -14,5 +14,9 @@ export class AddressService {
   public AddAddress(add : Address):Observable<boolean>{
     return this.http.post<boolean>(this.basicUrl + "addAddress" , add)
   }
+
+  public UpdateAddress(updateAdd : Address,id : number) : Observable<boolean>{
+   return this.http.put<boolean>(this.basicUrl + `updateAddress/${id}` , updateAdd)
+  }
   
 }

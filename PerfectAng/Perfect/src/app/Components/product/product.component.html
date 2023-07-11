@@ -7,6 +7,7 @@
         *ngFor="let c of allCategories" (click)="ShowByCat(c.id)">
         {{c.name}}
       </mat-chip>
+      <mat-chip (click)="noCate()">כל המוצרים </mat-chip>
     </mat-chip-list>
     </div>
 <mat-grid-list cols="4" rowHeight="3:3" *ngIf="showAll">

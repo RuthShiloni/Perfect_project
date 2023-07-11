@@ -56,7 +56,7 @@
     </mat-select>
   </mat-form-field>
   <br>
-  <button mat-raised-button style="background-color:#c19a6d ; color: white;" (click)="ConfirmOrder()">אישור</button>
+  <button mat-raised-button style="background-color:#c19a6d ; color: white;" (click)="ConfirmOrder()"  [disabled]="isDisable" >אישור</button>
 
 </form>
 
@@ -65,13 +65,37 @@
 
 
 <div *ngIf="confirmOrder" class="div">
-
     <div>
-      <h2>אישור הזמנה מספר : {{idOrder}} </h2>
-       <p>  תודה לך . הזמנתך  
+      <h2>אישור הזמנה מספר : {{Order.id}} </h2>
+       <p class="p">  תודה לך . הזמנתך  
         התקבלה בהצלחה. </p>
-
-    <p>מעבר להמשך קניות : <a href="/products">מוצרים</a></p>
+    
+        <h2>פרטי הזמנה : </h2>
+         <p class="p"> תאריך ביצוע ההזמנה : {{date | date:'mediumDate'}}</p>
+        <!-- <p class="p">תאריך משלוח \ איסוף נבחר : {{newOrder.pickupDate | date:'mediumDate'}}</p>  -->
+        <mat-list>
+          <mat-list-item class="header">
+             <p>קוד מוצר</p> <p>שם מוצר</p>
+             <p>גודל</p> <p>כמות</p> <p>מחיר</p> 
+            </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item *ngFor="let p of product"> 
+            <p> {{p.productId}}</p> <p>{{p.product.name}} </p> <p>{{p.idSizeNavigation.size}}</p>
+             <p>{{p.quantity}}</p><p>{{p.idSizeNavigation.price | currency : 'ILS'}}</p> 
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item *ngFor="let pp of pp">
+            <p> {{pp.id}}</p> <p>מוצר בעיצוב אישי </p> <p>{{pp.shape?.shape1}} ,  {{pp.shape?.size}}</p>
+            <p>{{pp.quantity}}</p><p>{{pp.price | currency : 'ILS'}}</p> 
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <p>סה"כ כולל משלוח : {{sumPrice | currency : 'ILS'}} </p> 
+            <p> מחיר משלוח : {{deliveryP | currency : 'ILS'}}</p>
+          </mat-list-item>
+        </mat-list>
+        
+    <p class="p">מעבר להמשך קניות : <a href="/products">המוצרים שלנו</a></p>
 
     </div>
 

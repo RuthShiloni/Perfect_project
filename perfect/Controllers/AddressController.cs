@@ -83,7 +83,7 @@ namespace perfect.Controllers
         }
 
         [HttpPut]
-        [Route("updateAddress{id}")]
+        [Route("updateAddress/{id}")]
         public IActionResult UpdateAddress([FromBody] AddressDTO address, int id)
         {
             try

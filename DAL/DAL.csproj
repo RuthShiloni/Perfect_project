@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="AdressDAL.cs~RF23545d0e.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.15">
       <PrivateAssets>all</PrivateAssets>

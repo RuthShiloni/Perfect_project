@@ -20,6 +20,8 @@ export class CartService {
   public isDelivary : boolean = false
   public productsToOrder : ShoppingCart[] = []
   public personalPToOrder : PersonalProduct[] = []
+  public sumOrder : number = 0
+  public deliveryPrice : number = 0
 
   constructor(private http : HttpClient , private userServ : UsersService) { }
   

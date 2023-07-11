@@ -61,7 +61,7 @@ namespace DAL
         {
             try
             {
-                Address currentAddress = contex.Addresses.SingleOrDefault(x => x.Id == id);
+                Address currentAddress = contex.Addresses.Where(x => x.Id == id).FirstOrDefault();
                 contex.Entry(currentAddress).CurrentValues.SetValues(address);
                 address.Id = id;
                 contex.SaveChanges();

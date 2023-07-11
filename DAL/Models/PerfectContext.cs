@@ -133,13 +133,9 @@ namespace DAL.Models
                     .HasColumnType("date")
                     .HasColumnName("pickupDate");
 
-                entity.Property(e => e.UserId).HasColumnName("userId");
+                entity.Property(e => e.SumPrice).HasColumnName("sumPrice");
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Orders_Users");
+                entity.Property(e => e.UserId).HasColumnName("userId");
             });
 
             modelBuilder.Entity<PersonalProduct>(entity =>
