@@ -33,14 +33,14 @@ export class PaymentDetailsComponent implements OnInit {
   this.currentUser = this.userServ.GetCurrentUser()
     this.isdelivary = this.cartServ.isDelivary
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required] ,
-      firstCtr2 : ['' , Validators.required]
+      firstCtrl: ['', [Validators.required, Validators.minLength(2),Validators.pattern("[a-zA-Zא-ת][a-zA-Zא-ת ]+")]] ,
+      firstCtr2 : ['' ,  [Validators.required, Validators.minLength(2),Validators.pattern("[a-zA-Zא-ת][a-zA-Zא-ת ]+")]]
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
-      secondCtrl1 : ['' , Validators.required],
-      secondCtrl2: ['', Validators.required],
-      secondCtrl3: ['', Validators.required]
+      secondCtrl: ['', [Validators.required, Validators.minLength(2),Validators.pattern("[a-zA-Zא-ת][a-zA-Zא-ת ]+")]],
+      secondCtrl1 : ['' ,  [Validators.required, Validators.minLength(2),Validators.pattern("[a-zA-Zא-ת][a-zA-Zא-ת ]+")]],
+      secondCtrl2: ['',  [Validators.required, Validators.pattern('^[0-9]+$')]],
+      secondCtrl3: ['',  [Validators.required, Validators.pattern('^[0-9]+$')]]
     });
     this.ThirdFormGroup = this._formBuilder.group({
       thirdCtrl : ['' , [Validators.required ,  Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]

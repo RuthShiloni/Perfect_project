@@ -1,6 +1,7 @@
 import { analyzeFile } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { User } from 'src/app/Classes/User';
 import { UsersService } from 'src/app/Services/users.service';
@@ -14,8 +15,9 @@ export class ClubComponent implements OnInit {
   showErr = false
   clubForm: FormGroup;
   newUser!: User
+  cachedDate !: Date;
 
-  constructor(private userServ: UsersService, private router: Router) {
+  constructor(private userServ: UsersService, private router: Router , private _snackBar: MatSnackBar) {
     this.clubForm = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.minLength(2),Validators.pattern("[a-zA-Zא-ת][a-zA-Zא-ת ]+")
     ]),
@@ -23,8 +25,8 @@ export class ClubComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
       phoneNumber: new FormControl('', [Validators.required, Validators.pattern("[0-9]*"), Validators.minLength(10), Validators.maxLength(10)]),
       password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
-      Birthday: new FormControl('', Validators.compose([Validators.required, this.dateIsPast])),
-      address: new FormControl('', [Validators.minLength(2),Validators.pattern("[a-zA-Z][a-zA-Z ]+")])
+      Birthday: new FormControl('', Validators.compose([this.dateIsPast])),
+      //address: new FormControl('', [Validators.minLength(2),Validators.pattern("[a-zA-Z][a-zA-Z ]+")])
     })
   }
 
@@ -82,10 +84,10 @@ getErrorMessage(parameter: string): string | null {
     
     if(parameter === 'Birthday' ){
 
-      const selectedDate = new Date(control.value);
-      const currentDate = new Date();
+      // const selectedDate = new Date(control.value);
+       const currentDate = new Date();
     
-      if (selectedDate < currentDate) {
+      if (this.cachedDate < currentDate) {
         return null; // התאריך תקין
       } else {
         return 'iutiutiutiu' // התאריך אינו קטן מהיום הנוכחי
@@ -109,30 +111,37 @@ getErrorMessage(parameter: string): string | null {
 
     // Perform necessary actions for valid form
   }
-
+  cacheDate(selectedDate: Date){
+    this.cachedDate = selectedDate;
+    console.log(this.cachedDate)
+  }
 
   addUser() {
+    debugger
     if (!this.clubForm.valid) {
       alert("טופס לא תקין");
       return;
     }
-    this.newUser=new User(0,this.clubForm.controls.firstName.value,this.clubForm.controls.lastName.value,this.clubForm.controls.phoneNumber.value,this.clubForm.controls.email.value,this.clubForm.controls.password.value,this.clubForm.controls.address.value,this.clubForm.controls.address.value)
+    // this.newUser=new User(0,this.clubForm.controls.firstName.value,this.clubForm.controls.lastName.value,this.clubForm.controls.phoneNumber.value,this.clubForm.controls.email.value,this.clubForm.controls.password.value,this.clubForm.controls.address.value,this.clubForm.controls.address.value)
+    this.newUser=new User(0,this.clubForm.controls.firstName.value,this.clubForm.controls.lastName.value,this.clubForm.controls.phoneNumber.value,this.clubForm.controls.email.value,this.clubForm.controls.password.value,this.clubForm.controls.Birthday.value)
     // this.newUser = new User(0, this.clubForm.controls.firstName.value,
     //   this.clubForm.controls.lastName.value, this.clubForm.controls.phoneNumber.value,
     //   this.clubForm.controls.email.value, this.clubForm.controls.password.value,
     //   this.clubForm.controls.Birthday.value != new Date() ? this.clubForm.controls.Birthday.value : null)
       
     this.userServ.AddUser(this.newUser).subscribe(data => {
-      debugger
       if (data == true)
-        alert("Added user successfully")
+       // alert("Added user successfully")
+        this._snackBar.open(':) נוסף בהצלחה ', '', {
+          duration: 3000
+        });
       /// לבדוק למה זה לא עושה את השורה שזה 
       ///הוספה של יוזר חדש-(שאינו קיים) אך לא תקין???
       if (data == false)
         alert("Error adding user ")
     },
       err => {
-        alert("Error-user exist");
+        //alert("Error-user exist");
         console.log(err);
       })
   }

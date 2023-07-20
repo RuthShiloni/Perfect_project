@@ -26,11 +26,14 @@
           <mat-form-field appearance="fill">
             <mat-label>רחוב</mat-label>
             <input [disabled]="selectedOption == '1'" matInput formControlName="secondCtrl1" placeholder="Jaffo"
-              required>
-          </mat-form-field>&nbsp;
+              required >
+          </mat-form-field>
+          &nbsp;
           <mat-form-field appearance="fill">
             <mat-label>מספר בנין</mat-label>
             <input [disabled]="selectedOption == '1'" matInput formControlName="secondCtrl2" placeholder="14" required>
+            <!-- <div *ngIf="numberControl.hasError('required')">Number is required</div> -->
+            <!-- <mat-error *ngIf="secondFormGroup.secondCtrl2.hasError('pattern')">Invalid number format</mat-error> -->
           </mat-form-field>&nbsp;
           <mat-form-field appearance="fill">
             <mat-label>מספר דירה</mat-label>

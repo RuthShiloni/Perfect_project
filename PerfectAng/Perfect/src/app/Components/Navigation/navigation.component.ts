@@ -57,7 +57,6 @@ export class NavigationComponent implements OnInit {
     this.router.navigate(["/UserOp"])
   }
   fetchCartItems(){
-    debugger
     this.totalProduct = this.cartServ.getNumItem()
   }
   }

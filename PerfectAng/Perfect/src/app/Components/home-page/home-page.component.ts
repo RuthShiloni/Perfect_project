@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactUsComponent } from '../contact-us/contact-us.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -9,7 +10,7 @@ import { ContactUsComponent } from '../contact-us/contact-us.component';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(public Dialog: MatDialog
+  constructor(public Dialog: MatDialog , public router : Router
     
     ) { }
 
@@ -31,6 +32,18 @@ export class HomePageComponent implements OnInit {
 
   
   ngOnInit(): void {   
+  }
+  buyNow(){
+    this.router.navigate(["/products"])
+  }
+  contact(){
+    this.router.navigate(["/contact"])
+  }
+  about(){
+    this.router.navigate(["/about"])
+  }
+  club(){
+    this.router.navigate(["/club"])
   }
 
 }

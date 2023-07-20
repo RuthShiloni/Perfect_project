@@ -29,7 +29,7 @@
 
       <ng-container matColumnDef="תמונת מוצר">
         <mat-header-cell *matHeaderCellDef> תמונת מוצר </mat-header-cell>
-        <mat-cell *matCellDef="let element"><img src={{element.product.img}}> </mat-cell>
+        <mat-cell *matCellDef="let element"><img src={{element.product.img}} (click)="showP(element.product.id)"> </mat-cell>
       </ng-container> 
 
     <mat-header-row *matHeaderRowDef="header"></mat-header-row>
@@ -118,11 +118,14 @@
     <mat-label *ngIf="pickUp">בחר תאריך איסוף </mat-label>
     <mat-label *ngIf="delivery">בחר תאריך עדיפות המשלוח </mat-label>
     <input matInput [formControl]="date" [matDatepicker]="picker" (dateChange)="cacheDate($event.value)">
-   <mat-error *ngIf="date.invalid">{{getErrorMessage()}}</mat-error>
-   <p *ngIf="showErr" class="errMassege">    תאריך קטן *</p>
+   <!-- <mat-error *ngIf="date?.invalid && date?.touched">{{getErrorMessage()}}</mat-error> -->
+   <mat-error *ngIf="date.hasError('required')">חייב להכניס תאריך</mat-error>
+   <!-- <mat-erro *ngIf="date.hasError('pattern')"> invalid date</mat-erro> -->
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field> 
+  <div *ngIf="showErr" class="errMassege"> תאריך קטן *</div>
+  <div *ngIf="req" class="errMassege">  חייב להכניס תאריך</div>
 </div>
 <mat-divider></mat-divider>
 <div class="container">

@@ -20,6 +20,7 @@ export class SingleProductComponent implements OnInit {
  sizeAndPrice !: SizePrice[]
  CurrentSize !: SizePrice
  cart !: ShoppingCart
+ showPrice = false
   constructor(private route : ActivatedRoute ,private productServ : ProductService ,
     private _snackBar: MatSnackBar , private userServ : UsersService , private cartServ : CartService) { 
   }
@@ -41,6 +42,7 @@ export class SingleProductComponent implements OnInit {
   }
   SaveCurrentSizeId(size : SizePrice){
    this.CurrentSize = size
+   this.showPrice = true
   }
   AddToCart(){
     if(this.CurrentSize == null){
@@ -58,7 +60,6 @@ export class SingleProductComponent implements OnInit {
    else{
     this.cartServ.GetAllCartByUserId(this.userServ.GetCurrentUser().id).subscribe(
       data => {
-        debugger
         if (data.findIndex(e => e.idSizeNavigation.id == this.CurrentSize.id) >= 0) {
           const element = data.find(e => e.idSizeNavigation.id == this.CurrentSize.id)!;
           this.cart = new ShoppingCart(this.userServ.GetCurrentUser().id, this.CurrentSize.id, this.product.id, element.quantity += 1, this.CurrentSize, this.product, element.id)

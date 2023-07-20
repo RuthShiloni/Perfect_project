@@ -13,7 +13,7 @@
 <mat-grid-list cols="4" rowHeight="3:3" *ngIf="showAll">
       <mat-grid-tile *ngFor="let i of allProducts">
       <mat-card class="example-card">
-            <img mat-card-image src={{i.img}} (click)="showDetails(i)">   
+           <img mat-card-image src={{i.img}} (click)="showDetails(i)"> 
             <header (click)="showDetails(i)">{{i.name}} </header>
             <br>
             <p *ngFor="let p of i.sizePrices"> {{p.price | currency : 'ILS'}} &nbsp; | &nbsp; </p> 

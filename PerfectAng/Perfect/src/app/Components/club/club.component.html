@@ -3,7 +3,7 @@
   <br><br>
 
   <div>
-    <img src="../../../assets/images/aboutUs.jpg" style="width: 100%;">
+    <img src="../../../assets/Images/aboutUs.jpg" style="width: 100%;">
 
 
   </div>
@@ -11,7 +11,7 @@
   <h2 style="color:rgb(250, 66, 5);font-weight: bold; font-size:x-large;">החברים שלנו נהנים יותר</h2>
 
   <h3 style="font-weight: bold;">להצטרפות יש למלא את הפרטים הבאים</h3>
-   <s>t6i65</s> 
+   <!-- <s>t6i65</s>  -->
   <form [formGroup]="clubForm" (ngSubmit)="onSubmit()">
 
     <div class="container">
@@ -67,7 +67,7 @@
           </mat-form-field>
         </div>
 
-        <div class="example-container">
+        <!-- <div class="example-container">
           <mat-form-field appearance="fill">
             <mat-label>הכנס תאריך יומולדת</mat-label>
             <input matInput type="date" formControlName="Birthday">
@@ -80,7 +80,29 @@
             </mat-error>
 
           </mat-form-field>
+        </div> -->
+
+
+        <div>
+
+          <mat-form-field appearance="fill" >
+            <mat-label>   הכנס תאריך יומהולדת </mat-label>
+            <input matInput formControlName="Birthday" [matDatepicker]="picker" (dateChange)="cacheDate($event.value)">
+            <mat-error *ngIf="clubForm.get('Birthday')?.invalid &&clubForm.get('Birthday')?.touched">
+              clubForm.get('Birthday')?.invalid && clubForm.get('Birthday')?.touched 
+            {{ getErrorMessage('Birthday') }}
+           </mat-error>
+           <mat-error *ngIf="clubForm.get('Birthday')?.hasError('pastDate')">
+             תאריך לא תקין
+           </mat-error>
+           <!-- <mat-error *ngIf="date.invalid">{{getErrorMessage()}}</mat-error> -->
+           <!-- <mat-error *ngIf="date.hasError('required')">Date is required</mat-error> -->
+           <!-- <p *ngIf="showErr" class="errMassege">    תאריך קטן *</p> -->
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field> 
         </div>
+
         <button style="color: black; background:rgb(180, 170, 167);" mat-raised-button color="primary"
           type="submit">Submit</button>
       </div>

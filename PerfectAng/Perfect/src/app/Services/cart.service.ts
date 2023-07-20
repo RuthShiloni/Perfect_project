@@ -97,7 +97,6 @@ export class CartService {
   }
 //פונקציות שמרידות ומעלות 1 ממספר הפריטים  ומעדכנות
   public Add1(){
-    debugger
     if(this.userServ.GetCurrentUser() != null){
       var numberItem = JSON.stringify(this.numItem+1)
       sessionStorage.setItem('numItem' , numberItem)

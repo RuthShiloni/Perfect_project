@@ -10,18 +10,18 @@
         באלך לפנק את עצמך ? <br>
         או אולי מישהו קרוב עם קינוח מתוק .<br>
         או אולי עוגה טעימה<br><br>
-        <button>קנה עכשיו</button>
+        <button (click)="buyNow()">קנה עכשיו</button>
       </div>
     </mat-grid-tile>
     <mat-grid-tile><img src="../../../assets/Images/BackingCake.JPG"/></mat-grid-tile>
     <mat-grid-tile>
       <div>
-      <p>HandMake With LOve</p>
+      <p>אופים באהבה</p>
       כשלוקחים חומרי גלם מעולים . <br>
       מוסיפים להם אנשים מסורים <br>
       ומוספים מעל שירות קשוב מתקבל המכון <br>
       לחוויה ושמה "Perfect"<br><br>
-      <button>קנה עכשיו</button>
+      <button (click)="about()">אודותינו</button>
     </div>
     </mat-grid-tile>
   </mat-grid-list>
@@ -33,7 +33,7 @@
       באלך לפרגן <br>
        אנו נשמח מאוד לשמוע את חוות <br>
        דעתך על הקניה ב - "Perfect" <br><br>
-       <button>צור קשר</button>
+       <button (click)="contact()">צור קשר</button>
       </div>
       
     </mat-grid-tile>
@@ -41,7 +41,12 @@
       <img src="../../../assets/Images/contactUsHome.jfif"/>
     </mat-grid-tile>
     <mat-grid-tile>
-      3
+      <div>
+     <p> עדיין לא חבר מועדון </p>
+      כנס לבדוק למה שווה <br>
+      להיות חבר שלנו ....<br><br>
+      <button (click)="club()">מועדון</button>
+      </div>
     </mat-grid-tile>
     <mat-grid-tile>
       <img src="../../../assets/Images/SignInHome.jfif"/>
